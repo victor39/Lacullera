@@ -1,5 +1,5 @@
 package model;
 
-public class Cambrer {
+public class Cambrer extends Personal {
 
 }
