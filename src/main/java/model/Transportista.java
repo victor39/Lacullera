@@ -1,6 +1,11 @@
 package model;
 
-public class Transportista {
+public class Transportista extends Personal{
 
+	public Transportista() {
+		super();
+	}
+
+	
 	
 }
