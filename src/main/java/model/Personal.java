@@ -1,5 +1,5 @@
 package model;
 
-public class Personal {
+public class Personal extends Persona{
 
 }
