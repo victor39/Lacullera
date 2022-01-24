@@ -1,6 +1,6 @@
 package model;
 
-public class LiniaComanda extends Comanda {
+public class LiniaComanda {
 	
     int lineaComanda;
 	int article;
