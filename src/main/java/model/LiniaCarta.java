@@ -2,9 +2,9 @@ package model;
 
 public class LiniaCarta {
 	
-	private int idCarta;
 	private int idLiniaCarta;
-	private int idArticle;
+	private Carta carta;
+	private Article article;
 	private float preu;
 
 }
