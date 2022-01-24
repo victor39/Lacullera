@@ -1,5 +1,7 @@
 package model;
 
-public class Client {
+public class Client extends Persona{
 
+	private String correu;
+	
 }
