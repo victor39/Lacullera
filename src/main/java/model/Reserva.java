@@ -8,7 +8,7 @@ public class Reserva {
 	private Client client;
 	private Restaurant restaurant;
 	private LocalDate data;
-	private int torn;
+	private Torn torn;
 	private int comensals;
 	private String observacions;
 	
