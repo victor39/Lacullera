@@ -2,33 +2,36 @@ package model;
 
 public class LiniaComanda {
 	
-    int lineaComanda;
-	int article;
-	int quantitat;
-	float preu;
-	Comanda idComanda;
+	private Comanda comanda;
+    private int idLiniaComanda;
+	private Article article;
+	private int quantitat;
+	private float preu;
 	
-	public LiniaComanda(int lineaComanda, int article, int quantitat, float preu, Comanda idComanda) {
-		this.lineaComanda = lineaComanda;
+	public LiniaComanda(int idLiniaComanda, Article article, int quantitat, float preu, Comanda comanda) {
+		this.idLiniaComanda = idLiniaComanda;
 		this.article = article;
 		this.quantitat = quantitat;
 		this.preu = preu;
-		this.idComanda = idComanda;
+		this.comanda = comanda;
 	}
 
-	public int getLineaComanda() {
-		return lineaComanda;
+	public LiniaComanda(Article article, int quantitat, float preu, Comanda comanda) {
+		this.article = article;
+		this.quantitat = quantitat;
+		this.preu = preu;
+		this.comanda = comanda;
 	}
 
-	public void setLineaComanda(int lineaComanda) {
-		this.lineaComanda = lineaComanda;
+	public int getidLiniaComanda() {
+		return idLiniaComanda;
 	}
 
-	public int getArticle() {
+	public Article getArticle() {
 		return article;
 	}
 
-	public void setArticle(int article) {
+	public void setArticle(Article article) {
 		this.article = article;
 	}
 
@@ -48,22 +51,18 @@ public class LiniaComanda {
 		this.preu = preu;
 	}
 
-	public Comanda getIdComanda() {
-		return idComanda;
+	public Comanda getComanda() {
+		return comanda;
 	}
 
-	public void setIdComanda(Comanda idComanda) {
-		this.idComanda = idComanda;
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
 	}
 
 	@Override
 	public String toString() {
-		return "LiniaComanda [lineaComanda=" + lineaComanda + ", article=" + article + ", quantitat=" + quantitat
-				+ ", preu=" + preu + ", idComanda=" + idComanda + "]";
+		return article.getNom() + ": " + preu;
 	}
-	
-	
-	
 	
 }
 

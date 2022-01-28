@@ -28,7 +28,6 @@ public class Restaurant {
 		this.nom = nom;
 	}
 
-
 	public int getIdRestaurant() {
 		return idRestaurant;
 	}
@@ -54,5 +53,4 @@ public class Restaurant {
 		return nom;
 	}
 	
-
 }

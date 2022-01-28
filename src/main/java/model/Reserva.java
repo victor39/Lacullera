@@ -87,12 +87,7 @@ public class Reserva {
 
 	@Override
 	public String toString() {
-		return "Reserva [idReserva=" + idReserva + ", client=" + client + ", restaurant=" + restaurant + ", data="
-				+ data + ", torn=" + torn + ", comensals=" + comensals + ", observacions=" + observacions + "]";
+		return "Num Reserva: " + idReserva + "/n Client: " + client.toString() + "/n Restaurant: " + restaurant.toString() + "/n Data: " + data + "/n Torn: " + torn.toString() + "/n Comensals: " + comensals;
 	}
-	
-	
-	
-	
-	
+
 }

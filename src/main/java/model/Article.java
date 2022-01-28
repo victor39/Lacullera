@@ -20,7 +20,6 @@ public class Article {
 		this.observacions = observacions;
 	}
 	
-
 	public int getIdArticle() {
 		return idArticle;
 	}
@@ -69,9 +68,6 @@ public class Article {
 	public String toString() {
 		return  nom+": " +  preu ;
 	} 
-	
-	
-	
 	
 	
 }

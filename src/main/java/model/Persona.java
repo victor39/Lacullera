@@ -61,7 +61,4 @@ public class Persona {
 		return nom + " " + cognom;
 	}
 	
-	
-	
-	
 }

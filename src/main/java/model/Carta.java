@@ -16,6 +16,12 @@ public class Carta {
 		this.liniesCarta = new ArrayList <LiniaCarta>();
 	}
 
+	public Carta(String nomCarta, boolean activat) {
+		this.nomCarta = nomCarta;
+		this.activat = activat;
+		this.liniesCarta = new ArrayList <LiniaCarta>();
+	}
+
 	public int getIdCarta() {
 		return idCarta;
 	}
@@ -46,8 +52,7 @@ public class Carta {
 
 	@Override
 	public String toString() {
-		return  nomCarta;
+		return nomCarta;
 	}
-
 	
 }
