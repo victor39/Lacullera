@@ -19,6 +19,7 @@ public class Article {
 		this.descripcio = descripcio;
 		this.observacions = observacions;
 	}
+	
 
 	public int getIdArticle() {
 		return idArticle;
