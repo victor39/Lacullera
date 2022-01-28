@@ -11,6 +11,7 @@ public class Article {
 	private String observacions;
 	
 	
+	
 	public Article(String nom, float preu, String alergens, String descripcio, String observacions) {
 		this.nom = nom;
 		this.preu = preu;
