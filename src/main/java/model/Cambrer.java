@@ -8,4 +8,9 @@ public class Cambrer extends Personal {
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
+	public String toString(){
+		return super.toString();
+	}
+	
 }

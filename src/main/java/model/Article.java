@@ -62,6 +62,8 @@ public class Article {
 	public void setObservacions(String observacions) {
 		this.observacions = observacions;
 	}
+	
+	//Hola esto es una prueba
 
 	@Override
 	public String toString() {
