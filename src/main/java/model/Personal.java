@@ -48,11 +48,6 @@ public class Personal extends Persona{
 		this.restaurant = restaurant;
 	}
 
-	@Override
-	public String toString() {
-		return "Personal [correu=" + correu + ", administració=" + administració + ", tipus=" + tipus + ", restaurant="
-				+ restaurant + "]";
-	}
 	
 	
 	
