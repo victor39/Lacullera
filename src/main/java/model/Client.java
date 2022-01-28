@@ -19,9 +19,7 @@ public class Client extends Persona{
 
 	@Override
 	public String toString() {
-		return super.getNom()+ ""+ super.getCognom();
+		return super.toString();
 	}
-	
-	
 	
 }

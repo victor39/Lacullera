@@ -48,7 +48,9 @@ public class Personal extends Persona{
 		this.restaurant = restaurant;
 	}
 
-	
-	
+	@Override
+	public String toString(){
+		return super().toString();
+	}
 	
 }

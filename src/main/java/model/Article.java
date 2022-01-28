@@ -2,7 +2,6 @@ package model;
 
 public class Article {
 	
-	
 	private int idArticle;
 	private String nom;
 	private float preu;
@@ -11,8 +10,17 @@ public class Article {
 	private String observacions;
 	
 	
-	
+	//Aquest es per si tenim id autoincremental a la base de dades
 	public Article(String nom, float preu, String alergens, String descripcio, String observacions) {
+		this.nom = nom;
+		this.preu = preu;
+		this.alergens = alergens;
+		this.descripcio = descripcio;
+		this.observacions = observacions;
+	}
+
+	public Article(int idArticle, String nom, float preu, String alergens, String descripcio, String observacions) {
+		this.idArticle = idArticle;
 		this.nom = nom;
 		this.preu = preu;
 		this.alergens = alergens;
@@ -63,16 +71,10 @@ public class Article {
 	public void setObservacions(String observacions) {
 		this.observacions = observacions;
 	}
-	
-	//Hola esto es una prueba
 
 	@Override
 	public String toString() {
-		return  nom+": " +  preu ;
+		return  nom + ": " +  preu ;
 	} 
-	
-	
-	
-	
 	
 }

@@ -24,7 +24,6 @@ public class LiniaCarta {
 		return idLiniaCarta;
 	}
 
-
 	public Carta getCarta() {
 		return carta;
 	}
@@ -54,8 +53,4 @@ public class LiniaCarta {
 		return article +": "+ preu;
 	}
 	
-	
-	
-	
-
 }
