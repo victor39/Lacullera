@@ -64,8 +64,6 @@ public class Article {
 		this.observacions = observacions;
 	}
 	
-	//Hola esto es una prueba
-
 	@Override
 	public String toString() {
 		return  nom+": " +  preu ;
