@@ -49,11 +49,8 @@ public class Personal extends Persona{
 	}
 
 	@Override
-	public String toString() {
-		return "Personal [correu=" + correu + ", administració=" + administració + ", tipus=" + tipus + ", restaurant="
-				+ restaurant + "]";
+	public String toString(){
+		return super.toString();
 	}
-	
-	
 	
 }

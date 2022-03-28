@@ -10,6 +10,8 @@ public class Article {
 	private String descripcio;
 	private String observacions;
 	
+	
+	
 	public Article(String nom, float preu, String alergens, String descripcio, String observacions) {
 		this.nom = nom;
 		this.preu = preu;
@@ -17,7 +19,7 @@ public class Article {
 		this.descripcio = descripcio;
 		this.observacions = observacions;
 	}
-
+	
 	public int getIdArticle() {
 		return idArticle;
 	}
@@ -61,15 +63,11 @@ public class Article {
 	public void setObservacions(String observacions) {
 		this.observacions = observacions;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Article [idArticle=" + idArticle + ", nom=" + nom + ", preu=" + preu + ", alergens=" + alergens
-				+ ", descripcio=" + descripcio + ", observacions=" + observacions + "]";
-	}
-	
-	
-	
+		return  nom+": " +  preu ;
+	} 
 	
 	
 }

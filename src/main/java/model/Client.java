@@ -19,9 +19,7 @@ public class Client extends Persona{
 
 	@Override
 	public String toString() {
-		return "Client [correu=" + correu + "]";
+		return super.toString();
 	}
-	
-	
 	
 }
