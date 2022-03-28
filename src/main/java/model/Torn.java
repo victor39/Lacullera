@@ -63,8 +63,7 @@ public class Torn {
 
 	@Override
 	public String toString() {
-		return "Torn [idHorari=" + idHorari + ", restaurant=" + restaurant + ", diaSetmana=" + diaSetmana
-				+ ", horaInici=" + horaInici + ", reservesDisponibles=" + reservesDisponibles + "]";
+		return "Hora: " + horaInici.toString();
 	}
 	
 }

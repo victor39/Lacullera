@@ -24,7 +24,6 @@ public class LiniaCarta {
 		return idLiniaCarta;
 	}
 
-
 	public Carta getCarta() {
 		return carta;
 	}
@@ -51,12 +50,7 @@ public class LiniaCarta {
 
 	@Override
 	public String toString() {
-		return "LiniaCarta [idLiniaCarta=" + idLiniaCarta + ", carta=" + carta + ", article=" + article + ", preu="
-				+ preu + "]";
+		return article +": "+ preu;
 	}
 	
-	
-	
-	
-
 }

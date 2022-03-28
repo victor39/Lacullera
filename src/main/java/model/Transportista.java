@@ -7,7 +7,9 @@ public class Transportista extends Personal{
 		super(nom, cognom, adreça, dni, telefon, correu, administració, tipus, restaurant);
 	}
 
-	
-	
+	@Override
+	public String toString(){
+		return super.toString();
+	}
 	
 }

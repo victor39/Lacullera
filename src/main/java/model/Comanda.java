@@ -2,19 +2,22 @@ package model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Comanda {
 
-	int idComanda;
-	Client client;
-	Personal responsable;
-	LocalTime hora;
-	LocalDate data;
-	String descompte;
-	float preu;
-	Restaurant restaurant;
+	private int idComanda;
+	private Client client;
+	private Personal responsable;
+	private LocalTime hora;
+	private LocalDate data;
+	private int descompte;
+	private float preu;
+	private Restaurant restaurant;
+	private ArrayList<LiniaComanda> liniesComanda;
+
 	
-	public Comanda(Client client, Personal responsable, LocalTime hora, LocalDate data, String descompte, float preu,
+	public Comanda(Client client, Personal responsable, LocalTime hora, LocalDate data, int descompte, float preu,
 			Restaurant restaurant) {
 		this.client = client;
 		this.responsable = responsable;
@@ -23,9 +26,10 @@ public class Comanda {
 		this.descompte = descompte;
 		this.preu = preu;
 		this.restaurant = restaurant;
+		this.liniesComanda = new ArrayList<LiniaComanda>();
 	}
 
-	public Comanda(int idComanda, Client client, Personal responsable, LocalTime hora, LocalDate data, String descompte,
+	public Comanda(int idComanda, Client client, Personal responsable, LocalTime hora, LocalDate data, int descompte,
 			float preu, Restaurant restaurant) {
 		this.idComanda = idComanda;
 		this.client = client;
@@ -35,12 +39,13 @@ public class Comanda {
 		this.descompte = descompte;
 		this.preu = preu;
 		this.restaurant = restaurant;
+		this.liniesComanda = new ArrayList<LiniaComanda>();
+
 	}
 
 	public int getIdComanda() {
 		return idComanda;
 	}
-
 
 	public Client getClient() {
 		return client;
@@ -74,11 +79,11 @@ public class Comanda {
 		this.data = data;
 	}
 
-	public String getDescompte() {
+	public int getDescompte() {
 		return descompte;
 	}
 
-	public void setDescompte(String descompte) {
+	public void setDescompte(int descompte) {
 		this.descompte = descompte;
 	}
 
@@ -98,11 +103,17 @@ public class Comanda {
 		this.restaurant = restaurant;
 	}
 
+	public ArrayList<LiniaComanda> getLiniesComanda(){
+		return liniesComanda;
+	}
+	
+	public void setLiniesComanda(ArrayList<LiniaComanda> liniesComanda){
+		this.liniesComanda = liniesComanda;
+	}
+
 	@Override
 	public String toString() {
-		return "Comanda [idComanda=" + idComanda + ", client=" + client + ", responsable=" + responsable + ", hora="
-				+ hora + ", data=" + data + ", descompte=" + descompte + ", preu=" + preu + ", restaurant=" + restaurant
-				+ "]";
+		return "Num Comanda: " + idComanda + "/n Client: " + client.toString() + "/n Restaurant: " + restaurant.toString() + "/n Preu: " + preu;
 	}
 	
 	

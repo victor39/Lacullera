@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane layoutX="81.0" layoutY="274.0" prefHeight="358.0" prefWidth="907.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextArea prefHeight="55.0" prefWidth="306.0" text="Nom : ">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </TextArea>
+            <TextField fx:id="TfNom" prefWidth="453.0" GridPane.columnIndex="1" />
+            <TextArea layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="306.0" text="Cognom:" GridPane.rowIndex="1">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </TextArea>
+            <TextField fx:id="TfCognom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextArea prefHeight="55.0" prefWidth="306.0" text="Adreça :" GridPane.rowIndex="2">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </TextArea>
+            <TextArea prefHeight="55.0" prefWidth="306.0" text="DNI:" GridPane.rowIndex="3">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </TextArea>
+            <TextField fx:id="TfAdreca" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="TfDni" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="TfCorreu" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextArea prefHeight="145.0" prefWidth="454.0" text="Correu Electronic" GridPane.rowIndex="4">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </TextArea>
+         </children>
+      </GridPane>
+      <Text layoutX="183.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRE " wrappingWidth="541.8333435058594">
+         <font>
+            <Font size="61.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
