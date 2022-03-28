@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public interface ComandaDAO {
 	
 	static int Tots(Connexio con, List <Comanda> comandas) {

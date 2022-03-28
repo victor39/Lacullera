@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public interface TransportistaDAO {
 	
 	static int Tots(Connexio con, List <Transportista> transportistas) {
