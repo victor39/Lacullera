@@ -11,7 +11,7 @@ public class Connexio {
 	public Connexio() {
 		try {
 			
-			this.connexio = DriverManager.getConnection("jdbc:mysql://localhost:3306/practica","aduran","Dam2020!");
+			this.connexio = DriverManager.getConnection("jdbc:mysql://192.168.17.108/projectegrupal","root","");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.toString());
