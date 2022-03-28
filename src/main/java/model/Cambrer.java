@@ -4,8 +4,8 @@ public class Cambrer extends Personal {
 
 	public Cambrer(String nom, String cognom, String adreça, String dni, int telefon, String correu,
 			boolean administració, int tipus, int restaurant) {
-		super(nom, cognom, adreça, dni, telefon, correu, administració, tipus, restaurant);
-		// TODO Auto-generated constructor stub
+			super(nom, cognom, adreça, dni, telefon, correu, administració, tipus, restaurant);
+			// TODO Auto-generated constructor stub
 	}
 	
 }
