@@ -14,18 +14,26 @@ public class ControllerInici {
     private AnchorPane ApMenu;
 
     @FXML
+    private Text BtnBuscarRestaurants;
+
+    @FXML
     private Text BtnReserva;
 
     @FXML
     private AnchorPane escena;
-    
-    
 
     @FXML
     void cargarEscena(MouseEvent event) throws IOException {
     	
     	AnchorPane nuevo;
     	nuevo = FXMLLoader.load(getClass().getResource("OtherFXML.fxml"));
+    	escena.getChildren().setAll(nuevo);
+    }
+
+    @FXML
+    void cargarEscenaVerda(MouseEvent event) throws IOException {
+    	AnchorPane nuevo;
+    	nuevo = FXMLLoader.load(getClass().getResource("GreenFXML.fxml"));
     	escena.getChildren().setAll(nuevo);
     }
 
