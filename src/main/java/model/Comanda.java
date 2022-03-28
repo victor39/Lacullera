@@ -11,13 +11,13 @@ public class Comanda {
 	private Personal responsable;
 	private LocalTime hora;
 	private LocalDate data;
-	private String descompte;
+	private int descompte;
 	private float preu;
 	private Restaurant restaurant;
 	private ArrayList<LiniaComanda> liniesComanda;
 
 	
-	public Comanda(Client client, Personal responsable, LocalTime hora, LocalDate data, String descompte, float preu,
+	public Comanda(Client client, Personal responsable, LocalTime hora, LocalDate data, int descompte, float preu,
 			Restaurant restaurant) {
 		this.client = client;
 		this.responsable = responsable;
@@ -29,7 +29,7 @@ public class Comanda {
 		this.liniesComanda = new ArrayList<LiniaComanda>();
 	}
 
-	public Comanda(int idComanda, Client client, Personal responsable, LocalTime hora, LocalDate data, String descompte,
+	public Comanda(int idComanda, Client client, Personal responsable, LocalTime hora, LocalDate data, int descompte,
 			float preu, Restaurant restaurant) {
 		this.idComanda = idComanda;
 		this.client = client;
@@ -79,11 +79,11 @@ public class Comanda {
 		this.data = data;
 	}
 
-	public String getDescompte() {
+	public int getDescompte() {
 		return descompte;
 	}
 
-	public void setDescompte(String descompte) {
+	public void setDescompte(int descompte) {
 		this.descompte = descompte;
 	}
 
