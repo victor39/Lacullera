@@ -35,14 +35,40 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 	@Override
 	public int update(Article article, Connexio con) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int res = 0;
+		
+		try {
+			String sql = "UPDATE article SET preu = " + article.getPreu() + ", nom = " + article.getNom() + ", Alergens = " + article.getAlergens() + ", Descripcio = " + article.getDescripcio() + ", Observacions = " + article.getObservacions() + " WHERE idArticle = " + article.getIdArticle() + ";";
+			
+			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
+			res = stm.executeUpdate(sql);
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override
 	public int delete(Article article, Connexio con) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int res = 0;
+		
+		try {
+			String sql = "DELETE FROM article WHERE idArticle = " + article.getIdArticle() +";";
+			
+			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
+			res = stm.executeUpdate(sql);
+			System.out.println(sql);
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 }

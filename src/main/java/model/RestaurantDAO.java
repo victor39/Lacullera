@@ -8,8 +8,8 @@ public interface RestaurantDAO {
 		return 0;
 	}
 	
-	boolean create(Connexio con, Restaurant restaurant);
-	boolean update(Connexio con, Restaurant restaurant);
-	boolean delete(Connexio con, int id);
+	int create(Connexio con, Restaurant restaurant);
+	int update(Connexio con, Restaurant restaurant);
+	int delete(Connexio con, Restaurant restaurant);
 
 }
