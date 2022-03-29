@@ -32,14 +32,13 @@ public class CambrerDAOImpl implements CambrerDAO {
 	@Override
 	public int update(Cambrer cambre, Connexio con) {
 
-		int result=0;
-		
+		int result = 0;
+
 		try {
 			String sql = "UPDATE projecte.personal " + "SET nom = " + cambre.getNom() + "," + "cognom"
-					+ cambre.getCognom() + "," + "telefon" + cambre.getTelefon() + "," + "correu = " + cambre.getCorreu() + ","
-					+ "tipus = " + cambre.getTipus() + "," + "restaurant = " + cambre.getRestaurant() + ","
-					+ "WHERE dni = " + cambre.getDni()
-					+ ";";
+					+ cambre.getCognom() + "," + "telefon" + cambre.getTelefon() + "," + "correu = "
+					+ cambre.getCorreu() + "," + "tipus = " + cambre.getTipus() + "," + "restaurant = "
+					+ cambre.getRestaurant() + "," + "WHERE dni = " + cambre.getDni() + ";";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
@@ -55,8 +54,22 @@ public class CambrerDAOImpl implements CambrerDAO {
 
 	@Override
 	public int delete(Cambrer cambre, Connexio con) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int result = 0;
+		try {
+
+			String sql = "DELETE FROM projecte.personal WHERE dni = " + cambre.getDni() + " ;";
+
+			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
+			stm.executeUpdate(sql);
+			System.out.println(sql);
+			result = 1;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+
 	}
 
 }
