@@ -11,9 +11,9 @@ public interface TransportistaDAO {
 	// Bicicleta cercaArticle(Bicicleta art, Conexio connexio);
 	int create(Transportista transportista, Connexio con);
 
-	int update(Transportista client, Connexio con);
+	int update(Transportista transportista, Connexio con);
 
-	int delete(Transportista client, Connexio con);
+	int delete(Transportista transportista, Connexio con);
 
 
 }
