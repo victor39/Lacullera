@@ -33,6 +33,10 @@ public class Reserva {
 		this.observacions = observacions;
 	}
 
+	
+	public void setIdReserva(int idReserva) {
+		this.idReserva = idReserva;
+	}
 	public int getIdReserva() {
 		return idReserva;
 	}

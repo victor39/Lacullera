@@ -8,8 +8,8 @@ public interface ReservaDAO {
 		return 0;
 	}
 	
-	boolean create(Connexio con, Reserva reserva);
-	boolean update(Connexio con, Reserva reserva);
-	boolean delete(Connexio con, int id);
+	int create(Connexio con, Reserva reserva);
+	int update(Connexio con, Reserva reserva);
+	int delete(Connexio con, Reserva reserva);
 
 }
