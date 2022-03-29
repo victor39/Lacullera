@@ -8,15 +8,15 @@ import java.util.List;
 public class CambrerDAOImpl implements CambrerDAO {
 
 	@Override
-	public int create(Cambrer cambre, Connexio con) {
+	public int create(Cambrer cambrer, Connexio con) {
 
 		int result = 0;
 
 		try {
 
 			String sql = "INSERT INTO personal (dni,nom,cognom,telefon,adreca,correu,administrador,tipus,restaurant) VALUES ('"
-					+ cambre.getDni() + "'," + cambre.getNom() + "," + cambre.getCognom() + "," + cambre.getTelefon()
-					+ "," + cambre.getCorreu() + "," + cambre.getTipus() + "," + cambre.getRestaurant() + ");";
+					+ cambrer.getDni() + "'," + cambrer.getNom() + "," + cambrer.getCognom() + "," + cambrer.getTelefon()
+					+ "," + cambrer.getCorreu() + "," + cambrer.getTipus() + "," + cambrer.getRestaurant() + ");";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
@@ -30,15 +30,15 @@ public class CambrerDAOImpl implements CambrerDAO {
 	}
 
 	@Override
-	public int update(Cambrer cambre, Connexio con) {
+	public int update(Cambrer cambrer, Connexio con) {
 
 		int result = 0;
 
 		try {
-			String sql = "UPDATE projecte.personal " + "SET nom = " + cambre.getNom() + "," + "cognom"
-					+ cambre.getCognom() + "," + "telefon" + cambre.getTelefon() + "," + "correu = "
-					+ cambre.getCorreu() + "," + "tipus = " + cambre.getTipus() + "," + "restaurant = "
-					+ cambre.getRestaurant() + "," + "WHERE dni = " + cambre.getDni() + ";";
+			String sql = "UPDATE projecte.personal " + "SET nom = " + cambrer.getNom() + "," + "cognom"
+					+ cambrer.getCognom() + "," + "telefon" + cambrer.getTelefon() + "," + "correu = "
+					+ cambrer.getCorreu() + "," + "tipus = " + cambrer.getTipus() + "," + "restaurant = "
+					+ cambrer.getRestaurant() + "," + "WHERE dni = " + cambrer.getDni() + ";";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
@@ -53,12 +53,12 @@ public class CambrerDAOImpl implements CambrerDAO {
 	}
 
 	@Override
-	public int delete(Cambrer cambre, Connexio con) {
+	public int delete(Cambrer cambrer, Connexio con) {
 		
 		int result = 0;
 		try {
 
-			String sql = "DELETE FROM projecte.personal WHERE dni = " + cambre.getDni() + " ;";
+			String sql = "DELETE FROM projecte.personal WHERE dni = " + cambrer.getDni() + " ;";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);

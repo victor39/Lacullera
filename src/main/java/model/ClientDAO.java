@@ -8,8 +8,8 @@ public interface ClientDAO {
 		return 0;
 	}
 	
-	boolean create(Connexio con, Client client);
-	boolean update(Connexio con, Client client);
-	boolean delete(Connexio con, int id);
+	int create(Connexio con, Client client);
+	int update(Connexio con, Client client);
+	int delete(Connexio con, Client client);
 
 }
