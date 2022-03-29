@@ -12,7 +12,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 		int res = 0;
 		
 		try {
-			String sql = "INSERT INTO article(preu, nom, Alergens, Descripcio, Observacions) VALUES ("article.getPreu()");";
+			String sql = "INSERT INTO article(preu, nom, Alergens, Descripcio, Observacions) VALUES (" + article.getPreu() + ", " + article.getNom() + ", " + article.getAlergens() + ", " + article.getDescripcio() + ", " + article.getObservacions() + ");";
 			
 			System.out.println(sql);
 			
@@ -23,7 +23,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 			
 			if(rst.next()) {
 
-				tiq.setId(rst.getInt("id"));
+				article.setIdArticle(rst.getInt("id"));
 			}
 			
 		}catch(SQLException e) {
