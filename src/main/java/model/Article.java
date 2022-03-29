@@ -23,6 +23,10 @@ public class Article {
 	public int getIdArticle() {
 		return idArticle;
 	}
+	
+	public void setIdArticle(int idArticle) {
+		this.idArticle = idArticle;
+	}
 
 	public String getNom() {
 		return nom;
