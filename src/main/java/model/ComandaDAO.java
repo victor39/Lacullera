@@ -9,11 +9,11 @@ public interface ComandaDAO {
 	}
 
 	// Bicicleta cercaArticle(Bicicleta art, Conexio connexio);
-	int create(Comanda client, Connexio con);
+	int create(Comanda comanda, Connexio con);
 
-	int update(Comanda client, Connexio con);
+	int update(Comanda comanda, Connexio con);
 
-	int delete(Comanda client, Connexio con);
+	int delete(Comanda comanda, Connexio con);
 
 
 }
