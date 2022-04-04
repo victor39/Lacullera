@@ -1,18 +1,25 @@
 package dam2.amv;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 public class ControllerInici {
-
-    @FXML
+	
+	static AnchorPane nuevo = new AnchorPane();
+	
+	@FXML
     private AnchorPane ApMenu;
+	
+	@FXML
+    static AnchorPane escena;
 
     @FXML
     private Text BtnBuscarRestaurants;
@@ -21,13 +28,12 @@ public class ControllerInici {
     private Text BtnReserva;
 
     
-    @FXML
-    private AnchorPane escena;
+    
 
     @FXML
     void cargarEscena(MouseEvent event) throws IOException {
     	
-    	AnchorPane nuevo;
+    	
     	nuevo = FXMLLoader.load(getClass().getResource("EntrarDadesClient.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
@@ -35,7 +41,7 @@ public class ControllerInici {
 
     @FXML
     void cargarEscenaVerda(MouseEvent event) throws IOException {
-    	AnchorPane nuevo;
+    	
     	nuevo = FXMLLoader.load(getClass().getResource("BuscarRestaurant.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
@@ -44,11 +50,12 @@ public class ControllerInici {
     @FXML
     void configuració(MouseEvent event) throws IOException {
 
-     	AnchorPane nuevo;
+     	
     	nuevo = FXMLLoader.load(getClass().getResource("ConfiguracioUsuari.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
     }
+<<<<<<< HEAD
     void cargarTorn(MouseEvent event) throws IOException {
     	AnchorPane nuevo;
     	nuevo = FXMLLoader.load(getClass().getResource("ReservaComensals.fxml"));
@@ -56,5 +63,14 @@ public class ControllerInici {
     	
     }
     
+=======
+    
+ 
+    public static void event(String panel) throws IOException {
+    	URL url = new URL(panel);
+    	nuevo = FXMLLoader.load(url);
+    	escena.getChildren().setAll(nuevo);
+    }
+>>>>>>> branch 'master' of git@github.com:victor39/projecteAMV.git
 
 }

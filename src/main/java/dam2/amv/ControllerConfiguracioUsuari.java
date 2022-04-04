@@ -1,63 +1,59 @@
 package dam2.amv;
 
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.ResourceBundle;
-
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import model.Client;
 import model.ClientDAOImpl;
 import model.Connexio;
 
 public class ControllerConfiguracioUsuari {
 
+	public static Connexio con = new Connexio();
+	
+	
+	
     @FXML
     private Button BtnModificar;
 
     @FXML
-    private ComboBox<String> CMM;
+    private TextField TFAdreça;
 
     @FXML
-    private TextField TFModificar;
+    private TextField TFCognom;
+
+    @FXML
+    private TextField TFCorreu;
 
     @FXML
     private TextField TFDni;
-    
-    private ObservableList<String> clientlist;
 
-    public static Connexio con = new Connexio();
-    
-    public void initialize(URL location, ResourceBundle resources) {
-    	
-     	clientlist=FXCollections.observableArrayList();
-    	
-    	clientlist.setAll("Nom","Cognom","Dni","Correu","Adreça","Telefon");
-    	
-    	CMM = new ComboBox<String>(clientlist);
+    @FXML
+    private TextField TFNom;
 
-    }
-    
+    @FXML
+    private TextField TFTelefon;
+
+    @FXML
+    private TextField TFid;
+
     @FXML
     void modificar(ActionEvent event) {
+    	
+    	con = new Connexio();
 
-    	String dni = TFDni.getText();
+		ClientDAOImpl client = new ClientDAOImpl();
+		
+		Client cliente = new Client(TFNom,TFCognom,TFA);
+		
+    	String id = TFid.getText();
     	
-    	System.out.println("dni:" + dni);
+    	System.out.println("id agafat correctament: " + id);
     	
-    	String dades = TFModificar.getText();
-    	
-    	System.out.println("dades a modificar:" + dades);
-    	
+    	client.Tots(con, client);
     	
     }
 
 }
+
