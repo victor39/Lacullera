@@ -81,7 +81,7 @@ public class ControllerBuscarRestaurant implements Initializable{
 	  
 	    }
 	    public void submit(ActionEvent event) throws IOException {
- 	
+
 	    	ControllerInici.event("EleccioRestaurant.fxml");
 	    	
 //	        Stage stage = new Stage();
@@ -96,13 +96,12 @@ public class ControllerBuscarRestaurant implements Initializable{
 //	        
 //	        stage.setScene(scene);
 //	        stage.show();
-	    }
-	    
-	   
+
 //	    private void enviarDatos () {
 //	    	String nomRestaurant = cmbTriaRestaurant.getValue().getNom();
 //	        
 //	    	
 //	    }
+	    }
 	    
 }
