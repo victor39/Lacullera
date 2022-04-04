@@ -55,7 +55,6 @@ public class ControllerInici {
     	escena.getChildren().setAll(nuevo);
     	
     }
-<<<<<<< HEAD
     void cargarTorn(MouseEvent event) throws IOException {
     	AnchorPane nuevo;
     	nuevo = FXMLLoader.load(getClass().getResource("ReservaComensals.fxml"));
@@ -63,14 +62,6 @@ public class ControllerInici {
     	
     }
     
-=======
     
  
-    public static void event(String panel) throws IOException {
-    	URL url = new URL(panel);
-    	nuevo = FXMLLoader.load(url);
-    	escena.getChildren().setAll(nuevo);
-    }
->>>>>>> branch 'master' of git@github.com:victor39/projecteAMV.git
-
 }
