@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CartaDAOImpl implements CartaDAO {
 
-	static int Tots(Connexio con, List <Carta> cartas) {
+	public static int Tots(Connexio con, List <Carta> cartas) {
 		return 0;
 	}
 	

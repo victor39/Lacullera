@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.ControllerSeleccio">
+   <children>
+      <Text fx:id="idText" layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="El teu restaurant es " wrappingWidth="308.13671875" />
+      <ComboBox fx:id="cmbPrimers" layoutX="97.0" layoutY="113.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmbSegons" layoutX="97.0" layoutY="188.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmbPostres" layoutX="97.0" layoutY="261.0" prefWidth="150.0" />
+      <Text layoutX="97.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer : " />
+      <Text layoutX="97.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segons:" />
+      <Text layoutX="97.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postres : " />
+      <Button fx:id="btComanda" layoutX="421.0" layoutY="324.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="122.0" text="Comanda feta ! " />
+   </children>
+</AnchorPane>
