@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ReservaDAO {
 	
-	static int Tots(Connexio con, List<Reserva> array) {
+	public static int Tots(Connexio con, List<Reserva> array) {
 		return 0;
 	}
 	

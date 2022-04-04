@@ -33,7 +33,7 @@ public class ControllerInici {
     @FXML
     void cargarEscenaVerda(MouseEvent event) throws IOException {
     	AnchorPane nuevo;
-    	nuevo = FXMLLoader.load(getClass().getResource("GreenFXML.fxml"));
+    	nuevo = FXMLLoader.load(getClass().getResource("BuscarRestaurant.fxml"));
     	escena.getChildren().setAll(nuevo);
     }
 
