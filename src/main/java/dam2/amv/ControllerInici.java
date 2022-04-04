@@ -49,5 +49,12 @@ public class ControllerInici {
     	escena.getChildren().setAll(nuevo);
     	
     }
+    void cargarTorn(MouseEvent event) throws IOException {
+    	AnchorPane nuevo;
+    	nuevo = FXMLLoader.load(getClass().getResource("ReservaComensals.fxml"));
+    	escena.getChildren().setAll(nuevo);
+    	
+    }
+    
 
 }

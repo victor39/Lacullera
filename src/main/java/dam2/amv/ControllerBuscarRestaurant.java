@@ -85,11 +85,14 @@ public class ControllerBuscarRestaurant implements Initializable{
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("EleccioRestaurant.fxml"));
 	        Parent parent = loader.load();
 	        Scene scene = new Scene(parent);
-	        Map<String, String> rest = new HashMap<>();
-	        rest.put("nom",cmbTriaRestaurant.getValue().getNom());
-	        rest.put("prova","prova");
-	        scene.setUserData(rest);
+     
+//	        Map<String, String> rest = new HashMap<>();
+//	        rest.put("nom",cmbTriaRestaurant.getValue().getNom());
+//	        rest.put("prova","prova");
+	        String restaurant = new String (cmbTriaRestaurant.getValue().getNom());
+//	        scene.setUserData(rest);
 	        stage.setScene(scene);
+	        
 	        stage.show();
 	    }
 	    
