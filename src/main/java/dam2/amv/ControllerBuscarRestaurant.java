@@ -96,6 +96,7 @@ public class ControllerBuscarRestaurant implements Initializable{
 //	        
 //	        stage.setScene(scene);
 //	        stage.show();
+
 	    }
 	    
 	   

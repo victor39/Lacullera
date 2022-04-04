@@ -55,12 +55,12 @@ public class ControllerInici {
     	escena.getChildren().setAll(nuevo);
     	
     }
-    
- 
-    public static void event(String panel) throws IOException {
-    	URL url = new URL(panel);
-    	nuevo = FXMLLoader.load(url);
+    void cargarTorn(MouseEvent event) throws IOException {
+    	AnchorPane nuevo;
+    	nuevo = FXMLLoader.load(getClass().getResource("ReservaComensals.fxml"));
     	escena.getChildren().setAll(nuevo);
+    	
     }
+    
 
 }

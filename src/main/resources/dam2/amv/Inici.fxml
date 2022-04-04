@@ -57,6 +57,11 @@
                               <Font size="30.0" />
                            </font>
                         </Text>
+                        <Text fx:id="btnReservaComensals" onMouseClicked="#cargarTorn" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserva Comensals" textAlignment="CENTER" wrappingWidth="267.13671875" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
                      </children>
                   </GridPane>
                </children>

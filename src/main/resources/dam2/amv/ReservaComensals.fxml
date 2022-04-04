@@ -7,7 +7,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1001.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ComboBox fx:id="cmbTorn" layoutX="269.0" layoutY="296.0" prefHeight="47.0" prefWidth="270.0" />
@@ -27,7 +26,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="btnReservar" layoutX="332.0" layoutY="642.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="135.0" text="Reservar">
+      <Button fx:id="btnReservar" layoutX="332.0" layoutY="642.0" mnemonicParsing="false" onAction="#reservar" prefHeight="61.0" prefWidth="135.0" text="Reservar">
          <font>
             <Font size="24.0" />
          </font>
