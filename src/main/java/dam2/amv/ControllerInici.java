@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -19,6 +20,7 @@ public class ControllerInici {
     @FXML
     private Text BtnReserva;
 
+    
     @FXML
     private AnchorPane escena;
 
@@ -26,8 +28,9 @@ public class ControllerInici {
     void cargarEscena(MouseEvent event) throws IOException {
     	
     	AnchorPane nuevo;
-    	nuevo = FXMLLoader.load(getClass().getResource("OtherFXML.fxml"));
+    	nuevo = FXMLLoader.load(getClass().getResource("EntrarDadesClient.fxml"));
     	escena.getChildren().setAll(nuevo);
+    	
     }
 
     @FXML
@@ -35,6 +38,16 @@ public class ControllerInici {
     	AnchorPane nuevo;
     	nuevo = FXMLLoader.load(getClass().getResource("GreenFXML.fxml"));
     	escena.getChildren().setAll(nuevo);
+    	
+    }
+    
+    @FXML
+    void configuració(MouseEvent event) throws IOException {
+
+     	AnchorPane nuevo;
+    	nuevo = FXMLLoader.load(getClass().getResource("ConfiguracioUsuari.fxml"));
+    	escena.getChildren().setAll(nuevo);
+    	
     }
 
 }
