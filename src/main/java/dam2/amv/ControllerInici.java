@@ -62,6 +62,10 @@ public class ControllerInici {
     	
     }
     
+<<<<<<< HEAD
     
  
+=======
+
+>>>>>>> branch 'master' of git@github.com:victor39/projecteAMV.git
 }

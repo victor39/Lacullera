@@ -81,7 +81,6 @@ public class ControllerBuscarRestaurant implements Initializable{
 	  
 	    }
 	    public void submit(ActionEvent event) throws IOException {
-
 	    	
 	    	ControllerInici.event("EleccioRestaurant.fxml");
 	    	
@@ -97,7 +96,6 @@ public class ControllerBuscarRestaurant implements Initializable{
 //	        
 //	        stage.setScene(scene);
 //	        stage.show();
-	    }
 	    
 	   
 //	    private void enviarDatos () {
