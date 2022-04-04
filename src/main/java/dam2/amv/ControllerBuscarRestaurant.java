@@ -81,16 +81,21 @@ public class ControllerBuscarRestaurant implements Initializable{
 	  
 	    }
 	    public void submit(ActionEvent event) throws IOException {
-	        Stage stage = new Stage();
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("EleccioRestaurant.fxml"));
-	        Parent parent = loader.load();
-	        Scene scene = new Scene(parent);
-	        Map<String, String> rest = new HashMap<>();
-	        rest.put("nom",cmbTriaRestaurant.getValue().getNom());
-	        rest.put("prova","prova");
-	        scene.setUserData(rest);
-	        stage.setScene(scene);
-	        stage.show();
+	    	
+	    	ControllerInici.event("EleccioRestaurant.fxml");
+	    	
+//	        Stage stage = new Stage();
+//	        FXMLLoader loader = new FXMLLoader(getClass().getResource("EleccioRestaurant.fxml"));
+//	        Parent parent = loader.load();
+	        
+//	        Scene scene = new Scene(parent);
+//	        Map<String, String> rest = new HashMap<>();
+//	        rest.put("nom",cmbTriaRestaurant.getValue().getNom());
+//	        rest.put("prova","prova");
+//	        scene.setUserData(rest);
+//	        
+//	        stage.setScene(scene);
+//	        stage.show();
 	    }
 	    
 	   

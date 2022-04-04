@@ -1,24 +1,27 @@
 package model;
 
+import java.sql.Time;
 import java.time.LocalTime;
 
 public class Torn {
 	
 	private int idHorari;
-	private Restaurant restaurant;
+	private int restaurant;
 	private int diaSetmana;
 	private LocalTime horaInici;
 	private int reservesDisponibles;
 	
-	public Torn(int idHorari, Restaurant restaurant, int diaSetmana, LocalTime horaInici, int reservesDisponibles) {
+	
+	
+	public Torn(int idHorari, int idRestaurant, int diaSetmana, LocalTime horaInici2, int reservesDisponibles) {
 		this.idHorari = idHorari;
-		this.restaurant = restaurant;
+		this.restaurant = idRestaurant;
 		this.diaSetmana = diaSetmana;
-		this.horaInici = horaInici;
+		this.horaInici = horaInici2;
 		this.reservesDisponibles = reservesDisponibles;
 	}
 
-	public Torn(Restaurant restaurant, int diaSetmana, LocalTime horaInici, int reservesDisponibles) {
+	public Torn(int restaurant, int diaSetmana, LocalTime horaInici, int reservesDisponibles) {
 		this.restaurant = restaurant;
 		this.diaSetmana = diaSetmana;
 		this.horaInici = horaInici;
@@ -29,11 +32,11 @@ public class Torn {
 		return idHorari;
 	}
 
-	public Restaurant getRestaurant() {
+	public int getRestaurant() {
 		return restaurant;
 	}
 
-	public void setRestaurant(Restaurant restaurant) {
+	public void setRestaurant(int restaurant) {
 		this.restaurant = restaurant;
 	}
 
