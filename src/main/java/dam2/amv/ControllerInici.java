@@ -13,13 +13,11 @@ import javafx.scene.text.Text;
 
 public class ControllerInici {
 	
-	static AnchorPane nuevo = new AnchorPane();
-	
 	@FXML
     private AnchorPane ApMenu;
 	
 	@FXML
-    static AnchorPane escena;
+    private AnchorPane escena;
 
     @FXML
     private Text BtnBuscarRestaurants;
@@ -32,7 +30,7 @@ public class ControllerInici {
 
     @FXML
     void cargarEscena(MouseEvent event) throws IOException {
-    	
+    	AnchorPane nuevo;
     	nuevo = FXMLLoader.load(getClass().getResource("EntrarDadesClient.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
@@ -40,7 +38,7 @@ public class ControllerInici {
 
     @FXML
     void cargarEscenaVerda(MouseEvent event) throws IOException {
-    	
+    	AnchorPane nuevo;
     	nuevo = FXMLLoader.load(getClass().getResource("BuscarRestaurant.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
@@ -49,7 +47,7 @@ public class ControllerInici {
     @FXML
     void configuració(MouseEvent event) throws IOException {
 
-     	
+    	AnchorPane nuevo;
     	nuevo = FXMLLoader.load(getClass().getResource("ConfiguracioUsuari.fxml"));
     	escena.getChildren().setAll(nuevo);
     	

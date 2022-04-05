@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ClientDAOImpl implements ClientDAO {
 
-	public static int Tots(Connexio con, List<Client> array) {
+	public int Tots(Connexio con, List<Client> array) {
 
 		try {
 			String sql = "SELECT * FROM Client ;";
