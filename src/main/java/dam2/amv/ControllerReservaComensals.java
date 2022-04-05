@@ -73,7 +73,7 @@ public class ControllerReservaComensals implements Initializable{
 		    	//Cridem al m�tode que ens retorna els elements de la taula Carrera Com els par�metres es passen per refer�ncia el que estem fent �s actualitzar la llista que passem per par�metre
 
 		    	cmbTorn.setItems(llistaTorns);
-		    	TornDAOImpl.Tots(con, llistaTorns, idRestaurant);
+		    	//TornDAOImpl.Tots(con, llistaTorns, idRestaurant);
 		    	
 		    	cmbTorn.setOnAction(e -> System.out.println("Nova selecció: " + cmbTorn.getValue()));
 

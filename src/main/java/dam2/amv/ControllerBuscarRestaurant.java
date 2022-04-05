@@ -82,7 +82,7 @@ public class ControllerBuscarRestaurant implements Initializable{
 	    }
 	    public void submit(ActionEvent event) throws IOException {
 
-	    	ControllerInici.event("EleccioRestaurant.fxml");
+	    	//ControllerInici.event("EleccioRestaurant.fxml");
 	    	
 //	        Stage stage = new Stage();
 //	        FXMLLoader loader = new FXMLLoader(getClass().getResource("EleccioRestaurant.fxml"));
