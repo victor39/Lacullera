@@ -12,4 +12,6 @@ public interface RestaurantDAO {
 	int update(Connexio con, Restaurant restaurant);
 	int delete(Connexio con, Restaurant restaurant);
 
+
+
 }

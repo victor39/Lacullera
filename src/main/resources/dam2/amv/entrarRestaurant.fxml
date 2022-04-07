@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="escena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.EntrarRestaurantController">
+   <children>
+      <Text layoutX="301.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTRA UN NOU RESTAURANT:" textAlignment="CENTER" wrappingWidth="402.13671875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="TFNom" layoutX="307.0" layoutY="192.0" prefHeight="51.0" prefWidth="385.0" promptText="Escriu el nom del restaurant:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TFAdreca" layoutX="308.0" layoutY="259.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra la adreça del restaurant:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TFTelefon" layoutX="307.0" layoutY="330.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el telefon del restaurant:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Button fx:id="BtnReservar" layoutX="352.0" layoutY="612.0" mnemonicParsing="false" onAction="#entrarDades" prefHeight="79.0" prefWidth="297.0" text="ENTRAR RESTAURANT">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

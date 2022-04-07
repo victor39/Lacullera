@@ -42,10 +42,9 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		int result = 0;
 
 		try {
-
-			String sql = "INSERT INTO restaurant (Adreca,Telefon) VALUES ('"
-					+ restaurant.getAdreca() + "," + restaurant.getTelefon() + ");";
-
+			System.out.println("prova");
+			String sql = "INSERT INTO Restaurant (Nom,Adreca,Telefon) VALUES ('" + restaurant.getNom() + "' , '" + restaurant.getAdreca() + "'," + restaurant.getTelefon() + ");";
+			System.out.println("prova");
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
 			System.out.println(sql);
@@ -81,7 +80,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		int result = 0;
 		try {
 
-			String sql = "DELETE FROM restaurant WHERE idRestaurant = " + restaurant.getIdRestaurant() + " ;";
+			String sql = "DELETE FROM Restaurant WHERE idRestaurant = " + restaurant.getIdRestaurant() + " ;";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);

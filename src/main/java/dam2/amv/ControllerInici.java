@@ -48,16 +48,26 @@ public class ControllerInici {
     void configuració(MouseEvent event) throws IOException {
 
     	AnchorPane nuevo;
-    	nuevo = FXMLLoader.load(getClass().getResource("ConfiguracioUsuari.fxml"));
+    	nuevo = FXMLLoader.load(getClass().getResource("BorrarRestaurant.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
     }
     @FXML
-    void cargarTorn(MouseEvent event) throws IOException {
+    void entrarRestaurant(MouseEvent event) throws IOException {
     	AnchorPane nuevo;
-    	nuevo = FXMLLoader.load(getClass().getResource("ReservaComensals.fxml"));
+    	nuevo = FXMLLoader.load(getClass().getResource("entrarRestaurant.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
     }
+    
+    @FXML
+    void torns(MouseEvent event) throws IOException {
+    	AnchorPane nuevo;
+    	nuevo = FXMLLoader.load(getClass().getResource("MenuTorn.fxml"));
+    	escena.getChildren().setAll(nuevo);
+    	
+    }
+    
+    
     
 }

@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Client;
+import model.ClientDAO;
 import model.ClientDAOImpl;
 import model.Connexio;
 import model.Persona;
@@ -60,7 +61,7 @@ public class EntrarDadesController {
 
 		con = new Connexio();
 
-		ClientDAOImpl client = new ClientDAOImpl();
+		ClientDAO client = new ClientDAOImpl();
 
 		Client cliento = new Client(Dni,Nom,Cognom,Adreca,Telefono,Correu);
 
