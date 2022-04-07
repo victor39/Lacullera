@@ -18,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
@@ -91,6 +92,9 @@ public class ControllerReserva implements Initializable{
 
 	@FXML
 	private Text txtNomRestaurant;
+	
+    @FXML
+    private DatePicker data;
 
 	private ObservableList<Restaurant> listaRestaurant;
 
@@ -143,7 +147,7 @@ public class ControllerReserva implements Initializable{
 		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu);
 
 		client.create(con, cliento);
-		
+	
 		
 		
 		
@@ -165,7 +169,7 @@ public class ControllerReserva implements Initializable{
     			missatge.setContentText("Perfecte , ja tens la teva reserva");
     			missatge.setContentText("  Nom reserva : " + res.getClient().getNom()+
     					"\n Nom Restaurant :" + res.getRestaurant().getNom()+
-    					"\n  Dia :" + res.getTorn().getDiaSetmana()+
+    					"\n  Dia :" + data.getValue()+
     					"\n  Hora : " + res.getTorn().getHoraInici().toString());
     			
     			missatge.setHeaderText("Alerta:");

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -14,39 +15,39 @@
    <children>
       <HBox prefHeight="800.0" prefWidth="1002.0">
          <children>
-            <AnchorPane fx:id="idPanelDades" prefHeight="800.0" prefWidth="507.0">
+            <AnchorPane fx:id="idPanelDades" prefHeight="800.0" prefWidth="476.0">
                <children>
                   <Text layoutX="10.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTRA LES TEVES DADES:" textAlignment="CENTER" wrappingWidth="402.13671875">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="TFNom" layoutX="84.0" layoutY="94.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu nom:">
+                  <TextField fx:id="TFNom" layoutX="52.0" layoutY="99.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu nom:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="TFCognom" layoutX="71.0" layoutY="171.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu cognom:">
+                  <TextField fx:id="TFCognom" layoutX="52.0" layoutY="177.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu cognom:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="TFDni" layoutX="82.0" layoutY="255.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu dni:">
+                  <TextField fx:id="TFDni" layoutX="52.0" layoutY="254.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu dni:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="TFTelefon" layoutX="75.0" layoutY="336.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu telefon:">
+                  <TextField fx:id="TFTelefon" layoutX="53.0" layoutY="334.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu telefon:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="TFCorreu" layoutX="65.0" layoutY="417.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu correu:">
+                  <TextField fx:id="TFCorreu" layoutX="52.0" layoutY="413.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu correu:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="TFAdreca" layoutX="52.0" layoutY="507.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra la teva adreça:">
+                  <TextField fx:id="TFAdreca" layoutX="52.0" layoutY="490.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra la teva adreça:">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -58,9 +59,9 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="412.0" prefWidth="475.0">
+            <AnchorPane prefHeight="800.0" prefWidth="496.0">
                <children>
-                  <SplitPane dividerPositions="0.48115577889447236" layoutX="3.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="464.0">
+                  <SplitPane dividerPositions="0.48115577889447236" layoutX="3.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="515.0">
                     <items>
                       <AnchorPane fx:id="panelTria" minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="462.0">
                            <children>
@@ -77,30 +78,31 @@
                               <ComboBox fx:id="cmbTriaRestaurant" layoutX="40.0" layoutY="200.0" prefHeight="71.0" prefWidth="390.0" />
                            </children>
                         </AnchorPane>
-                      <AnchorPane fx:id="panelTorn" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane fx:id="panelTorn" minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="498.0">
                            <children>
                               <Button fx:id="btnReservar" layoutX="308.0" layoutY="311.0" mnemonicParsing="false" onAction="#reservar" prefHeight="61.0" prefWidth="135.0" text="Reservar">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Button>
-                              <Text layoutX="84.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Comensals:" textAlignment="CENTER">
+                              <Text layoutX="66.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Comensals:" textAlignment="CENTER">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
-                              <Spinner fx:id="spnComensals" layoutX="82.0" layoutY="159.0" prefHeight="37.0" prefWidth="115.0" />
-                              <ComboBox fx:id="cmbTorn" layoutX="67.0" layoutY="247.0" prefHeight="47.0" prefWidth="270.0" />
-                              <Text fx:id="txtNomRestaurant" layoutX="46.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui nom de RESTAURANT" textAlignment="CENTER" wrappingWidth="328.13671875">
+                              <Spinner fx:id="spnComensals" layoutX="68.0" layoutY="110.0" prefHeight="37.0" prefWidth="115.0" />
+                              <ComboBox fx:id="cmbTorn" layoutX="68.0" layoutY="197.0" prefHeight="47.0" prefWidth="270.0" />
+                              <Text fx:id="txtNomRestaurant" layoutX="39.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui nom de RESTAURANT" textAlignment="CENTER" wrappingWidth="437.47003173828125">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="75.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Triar Torn:" textAlignment="CENTER" wrappingWidth="147.625">
+                              <Text layoutX="47.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Triar Torn:" textAlignment="CENTER" wrappingWidth="147.625">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
+                              <DatePicker fx:id="data" layoutX="66.0" layoutY="286.0" />
                            </children>
                         </AnchorPane>
                     </items>
