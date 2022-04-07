@@ -73,12 +73,12 @@ public class TornDAOImpl {
 		return res;
 	}
 
-	public int delete(Connexio con, Torn torn) {
+	public int delete(Connexio con, Torn torn, int tornr) {
 
 		int res = 0;
 
 		try {
-			String sql = "DELETE FROM Torn WHERE idHorari = " + torn.getIdHorari() + "and idRestaurant = " + torn.getRestaurant() + ";";
+			String sql = "DELETE FROM Torn WHERE idHorari = " + torn.getIdHorari() + "and idRestaurant = " + tornr + ";";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			res = stm.executeUpdate(sql);

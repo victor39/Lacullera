@@ -10,7 +10,7 @@ public interface TornDAO {
 
 	int update(Torn torn, Connexio con);
 
-	int delete(Torn torn, Connexio con);
+	int delete(Connexio con, Torn torn, int tornr);
 
 
 }
