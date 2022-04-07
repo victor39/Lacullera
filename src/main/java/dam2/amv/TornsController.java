@@ -1,6 +1,7 @@
 package dam2.amv;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -9,8 +10,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import model.Client;
+import model.ClientDAO;
+import model.ClientDAOImpl;
 import model.Connexio;
 import model.Restaurant;
 import model.RestaurantDAO;
@@ -22,15 +28,19 @@ import model.TornDAOImpl;
 public class TornsController implements Initializable{
 
 	@FXML
-	private Button BtnBorrar;
+    private Button BtnEntrar;
 
+    @FXML
+    private ChoiceBox<String> CbHorari;
 
-	@FXML
-	private ComboBox<Torn> CBHorari;
+    @FXML
+    private TextField TFDiaReservesDisponibles;
 
-	@FXML
-	private ComboBox<Restaurant> CBRestaurant;
+    @FXML
+    private TextField TFDiaSemana;
 
+    @FXML
+    private TextField TFidRest;
 
 	public Connexio con = new Connexio();
 
@@ -43,36 +53,38 @@ public class TornsController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		listaRestaurant=FXCollections.observableArrayList();
-		CBRestaurant.setItems(listaRestaurant);
-		RestaurantDAOImpl.Tots(con, listaRestaurant);
+		CbHorari.getItems().setAll("13:00","14:00","21:00","22:00");
 
 	}
 
 	@FXML
-	void omplirHorari(MouseEvent event) {
-
-		int idRestaurant = CBRestaurant.getValue().getIdRestaurant();
-
-		llistaTorns=FXCollections.observableArrayList();
-		CBHorari.setItems(llistaTorns);
-
-		System.out.println(idRestaurant);
-
-		TornDAOImpl.Tots(con, llistaTorns, idRestaurant);
-	}
-
-	@FXML
-	void borrar(ActionEvent event) {
-
-		Torn torn = CBHorari.getValue();
+	void entrar(ActionEvent event) {
 		
-		int tornr = CBHorari.getValue().getRestaurant();
+		int segons=0;
+		
+		String horaid = CbHorari.getValue().toString();
+		int hora2 = Integer.parseInt(horaid);
+		System.out.println(hora2);
+		
+		LocalTime hora = LocalTime.of(hora2,segons);
+		
+		String integerid = TFidRest.getText();
+		int id = Integer.parseInt(integerid);
+		
+		String diaseman = TFDiaSemana.getText();
+		int diasemana = Integer.parseInt(diaseman);
+		
+		String reservesdinsponibles = TFDiaReservesDisponibles.getText();
+		int reservesd = Integer.parseInt(reservesdinsponibles);
+		
+		TornDAO torn = new TornDAOImpl();
 
-		TornDAOImpl tornDAO = new TornDAOImpl();
+		Torn torno = new Torn(id, diasemana, hora, reservesd);
 
-		tornDAO.delete(con,torn,tornr);
-
+		torn.create(con, torno);
+		
+		
+		
 
 	}
 

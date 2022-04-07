@@ -7,9 +7,9 @@ import java.sql.Time;
 import java.time.LocalTime;
 import java.util.List;
 
-public class TornDAOImpl {
+public class TornDAOImpl implements TornDAO{
 
-	
+
 	public static int Tots(Connexio con, List<Torn> torn, int idRestaurant) {
 
 		try {
@@ -27,21 +27,21 @@ public class TornDAOImpl {
 				torn.add(torns);
 
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-			}
+		}
 
-			return torn.size();
-			}
-
+		return torn.size();
+	}
+	@Override
 	public int create(Connexio con, Torn torn) {
 
 		int res = 0;
 
 		try {
 			String sql = "INSERT INTO Torn (idRestaurant, DiaSetmana, HoraInici, ReservesDisponibles) VALUES ('" + torn.getRestaurant()
-					+ "','" + torn.getDiaSetmana() + "','" + torn.getHoraInici() + "'," + torn.getReservesDisponibles()  + "');";
+			+ "','" + torn.getDiaSetmana() + "','" + torn.getHoraInici() + "'," + torn.getReservesDisponibles()  + "');";
 
 			System.out.println(sql);
 
@@ -54,14 +54,14 @@ public class TornDAOImpl {
 
 		return res;
 	}
-
+	@Override
 	public int update(Connexio con, Torn torn) {
 
 		int res = 0;
 
 		try {
 			String sql = "UPDATE Torn SET DiaSetmana = " + torn.getDiaSetmana() + ", HoraInici = " + torn.getHoraInici()
-					+ ", ReservesDisponibles = " + torn.getHoraInici() + " WHERE idHorari = " + torn.getIdHorari() + "and idRestaurant = " + torn.getRestaurant() + ";";
+			+ ", ReservesDisponibles = " + torn.getHoraInici() + " WHERE idHorari = " + torn.getIdHorari() + "and idRestaurant = " + torn.getRestaurant() + ";";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			res = stm.executeUpdate(sql);
@@ -72,13 +72,13 @@ public class TornDAOImpl {
 
 		return res;
 	}
-
-	public int delete(Connexio con, Torn torn, int tornr) {
+	@Override
+	public int delete(Connexio con, int torn, int restaurant) {
 
 		int res = 0;
 
 		try {
-			String sql = "DELETE FROM Torn WHERE idHorari = " + torn.getIdHorari() + "and idRestaurant = " + tornr + ";";
+			String sql = "DELETE FROM Torn WHERE idRestaurant = " + restaurant + "and idHorari = " + torn + ";";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			res = stm.executeUpdate(sql);
@@ -89,6 +89,6 @@ public class TornDAOImpl {
 		}
 
 		return res;
-		
+
 	}
 }

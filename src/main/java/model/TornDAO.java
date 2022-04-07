@@ -4,13 +4,15 @@ import java.util.List;
 
 public interface TornDAO {
 	
-	int Tots(Connexio con, List <Torn> torn, int idTorn);
+	static int Tots(Connexio con, List <Torn> torn, int idTorn) {
+		return 0;
+	}
 	
-	int create(Torn torn, Connexio con);
+	int create(Connexio con, Torn torn);
 
-	int update(Torn torn, Connexio con);
+	int update(Connexio con, Torn torn);
 
-	int delete(Connexio con, Torn torn, int tornr);
+	int delete(Connexio con, int torn, int tornr);
 
 
 }
