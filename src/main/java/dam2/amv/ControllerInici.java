@@ -63,7 +63,7 @@ public class ControllerInici {
     @FXML
     void torns(MouseEvent event) throws IOException {
     	AnchorPane nuevo;
-    	nuevo = FXMLLoader.load(getClass().getResource("MenuTorns.fxml"));
+    	nuevo = FXMLLoader.load(getClass().getResource("ModificarReserva.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
     }

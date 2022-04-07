@@ -41,7 +41,7 @@ public class TornDAOImpl implements TornDAO{
 
 		try {
 			String sql = "INSERT INTO Torn (idRestaurant, DiaSetmana, HoraInici, ReservesDisponibles) VALUES ('" + torn.getRestaurant()
-			+ "','" + torn.getDiaSetmana() + "','" + torn.getHoraInici() + "'," + torn.getReservesDisponibles()  + "');";
+			+ "','" + torn.getDiaSetmana() + "','" + torn.getHoraInici() + "'," + torn.getReservesDisponibles()  + ");";
 
 			System.out.println(sql);
 

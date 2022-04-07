@@ -47,12 +47,12 @@
                               <Font size="30.0" />
                            </font>
                         </Text>
-                        <Text onMouseClicked="#configuració" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrar Restaurant" textAlignment="CENTER" wrappingWidth="267.13671875" GridPane.rowIndex="4">
+                        <Text onMouseClicked="#torns" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrar Restaurant" textAlignment="CENTER" wrappingWidth="267.13671875" GridPane.rowIndex="4">
                            <font>
                               <Font size="30.0" />
                            </font>
                         </Text>
-                        <Text onMouseClicked="#torns" strokeType="OUTSIDE" strokeWidth="0.0" text="Torns" textAlignment="CENTER" wrappingWidth="267.13671875" GridPane.rowIndex="5">
+                        <Text onMouseClicked="#configuració" strokeType="OUTSIDE" strokeWidth="0.0" text="Torns" textAlignment="CENTER" wrappingWidth="267.13671875" GridPane.rowIndex="5">
                            <font>
                               <Font size="30.0" />
                            </font>

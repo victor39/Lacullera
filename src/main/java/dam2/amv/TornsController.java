@@ -63,7 +63,7 @@ public class TornsController implements Initializable{
 		int segons=0;
 		
 		String horaid = CbHorari.getValue().toString();
-		int hora2 = Integer.parseInt(horaid);
+		int hora2 = Integer.parseInt(horaid.substring(0, 2));
 		System.out.println(hora2);
 		
 		LocalTime hora = LocalTime.of(hora2,segons);

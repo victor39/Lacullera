@@ -32,7 +32,6 @@ public class Reserva {
 		this.comensals = comensals;
 		this.observacions = observacions;
 	}
-
 	
 	public void setIdReserva(int idReserva) {
 		this.idReserva = idReserva;
