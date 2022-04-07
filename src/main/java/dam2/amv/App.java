@@ -11,7 +11,7 @@ import model.Connexio;
 
 import java.io.IOException;
 
-/**
+/**s
  * JavaFX App
  */
 public class App extends Application {
