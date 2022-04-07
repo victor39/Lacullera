@@ -44,9 +44,7 @@ public class ControllerBuscarRestaurant implements Initializable{
 	    
 	    private Restaurant eleccio;
 	    private AnchorPane escena;
-	 
 
-	    
 	    
 	    // mètode per inicialitzar els components, per exemple si no inicialitzem els components combobox pot generar una excepció per que es troba a null.
 	    //Aquest métode l'hem dimplementar ja que la classe implementa inicializable.

@@ -11,7 +11,7 @@ public class ReservaDAOImpl implements ReservaDAO {
 	int res = 0;
 		
 		try {
-			String sql = "INSERT INTO reserva(idClient, idRestaurant, idTorn, Data, Comensals, Observacions) VALUES (" + reserva.getClient() + ", " + reserva.getRestaurant() + ", " + reserva.getTorn() + ", " + reserva.getData() + reserva.getComensals() + reserva.getObservacions() +");";
+			String sql = "INSERT INTO Reserva(idClient, idRestaurant, idTorn, Data, Comensals, Observacions) VALUES (" +"'"+ reserva.getClient().getDni() +"'"+ ", " + reserva.getRestaurant().getIdRestaurant() + ", " + reserva.getTorn().getIdHorari() + ", " +"'"+ reserva.getData()  +"'"+ ", " + reserva.getComensals() + ", "  + reserva.getObservacions() +");";
 			
 			System.out.println(sql);
 			

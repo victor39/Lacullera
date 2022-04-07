@@ -13,7 +13,7 @@ public class TornDAOImpl {
 	public static int Tots(Connexio con, List<Torn> torn, int idRestaurant) {
 
 		try {
-			String sql = "SELECT * FROM torn where idRestaurant = " + idRestaurant + ";";
+			String sql = "SELECT * FROM Torn where idRestaurant = " + idRestaurant + ";";
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			ResultSet rst = stm.executeQuery(sql);
 
