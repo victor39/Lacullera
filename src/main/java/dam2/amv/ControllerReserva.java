@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -11,14 +12,21 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Client;
 import model.ClientDAO;
 import model.ClientDAOImpl;
@@ -99,25 +107,8 @@ public class ControllerReserva implements Initializable{
 	}
 	@FXML
 	void agafarDades(ActionEvent event) throws IOException{
-		
 
-//		String Nom = TFNom.getText();
-//		String Cognom = TFCognom.getText();
-//		String Dni = TFDni.getText();
-//		String Adreca = TFAdreca.getText();
-//		String Correu = TFCorreu.getText();
-//		String Telefon = TFTelefon.getText();
-//		int Telefono = Integer.parseInt(Telefon);
-//
-//		con = new Connexio();
-//
-//		ClientDAO client = new ClientDAOImpl();
-//
-//		Client cliento = new Client(Dni, Nom, Cognom, Adreca, Telefono, Correu);
 
-		//client.create(con, cliento);
-
-	
         idPanelDades.setDisable(true);
         panelTria.setDisable(false);
 
@@ -153,15 +144,44 @@ public class ControllerReserva implements Initializable{
 
 		client.create(con, cliento);
 		
-		Reserva res = new Reserva (cliento, cmbTriaRestaurant.getValue(),LocalDate.now() , cmbTorn.getValue(), spnComensals.getValue(), null);
-		
-		ReservaDAO reserva = new ReservaDAOImpl();
-		
-		reserva.create(con, res);
 		
 		
 		
-		
+		Alert confirmacio=new Alert(AlertType.CONFIRMATION);
+    	confirmacio.initModality(Modality.WINDOW_MODAL);
+    	confirmacio.setTitle("Estas segur que vols fer la reserva? ");
+    	confirmacio.setContentText("Prem Enter si es aixi ");
+    	
+        	
+    	Optional<ButtonType> result = confirmacio.showAndWait();
+    	if(result.isPresent() && result.get() == ButtonType.OK) {
+    		Reserva res = new Reserva (cliento, cmbTriaRestaurant.getValue(),LocalDate.now() , cmbTorn.getValue(), spnComensals.getValue(), null);
+    		ReservaDAO reserva = new ReservaDAOImpl();
+        	int resultat = reserva.create(con, res);
+        	if (resultat==1)
+        	{
+        		Alert missatge=new Alert(AlertType.INFORMATION);
+    			missatge.setTitle("Reserva feta ");
+    			missatge.setContentText("Perfecte , ja tens la teva reserva");
+    			missatge.setContentText("  Nom reserva : " + res.getClient().getNom()+
+    					"\n Nom Restaurant :" + res.getRestaurant().getNom()+
+    					"\n  Dia :" + res.getTorn().getDiaSetmana()+
+    					"\n  Hora : " + res.getTorn().getHoraInici().toString());
+    			
+    			missatge.setHeaderText("Alerta:");
+    			missatge.show();
+    			
+        	}else 
+        	{
+        		Alert missatge=new Alert(AlertType.ERROR);
+    			missatge.setTitle("Hi ha un problema, no pots fer la reserva");
+    			missatge.setContentText("Tornar a provar ");
+    			missatge.setHeaderText("Alerta:");
+    			missatge.show();
+        		
+        	}
+    	}
+	
 
 	}
 
@@ -191,8 +211,6 @@ public class ControllerReserva implements Initializable{
 
     	panelTria.setDisable(true);
 
-    	
-	
     }
 
 }

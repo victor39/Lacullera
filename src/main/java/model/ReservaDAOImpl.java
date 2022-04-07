@@ -23,6 +23,7 @@ public class ReservaDAOImpl implements ReservaDAO {
 			if(rst.next()) {
 
 				reserva.setIdReserva(rst.getInt("id"));
+				
 			}
 			
 		}catch(SQLException e) {
