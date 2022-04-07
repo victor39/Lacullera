@@ -14,6 +14,7 @@ import model.Connexio;
 import model.Restaurant;
 import model.RestaurantDAOImpl;
 import model.Torn;
+import model.TornDAOImpl;
 
 public class TornsController implements Initializable{
 
@@ -31,14 +32,25 @@ public class TornsController implements Initializable{
 
 	private ObservableList <Restaurant> listaRestaurant;
 
+	private ObservableList <Torn> listaTorns;
+
 	private String eleccio;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		listaRestaurant=FXCollections.observableArrayList();
+		
+
 		CBRestaurant.setItems(listaRestaurant);
 		RestaurantDAOImpl.Tots(con, listaRestaurant);
+		
+		listaTorns=FXCollections.observableArrayList();
+        //int idRestaurant = CBRestaurant.getValue().getIdRestaurant();
+		CBHorari.setItems(listaTorns);
+    	//TornDAOImpl.Tots(con, listaTorns, idRestaurant);
+    	
+    	
 
 	}
 

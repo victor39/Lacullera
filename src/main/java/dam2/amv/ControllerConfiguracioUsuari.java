@@ -69,9 +69,8 @@ public class ControllerConfiguracioUsuari {
 		TFDni.setText(Dni);
 		
 		//TFAdreça.setText(value);
-		
-		
-		
+	
+	
    
     	};
   
