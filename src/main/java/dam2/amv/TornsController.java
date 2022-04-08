@@ -37,19 +37,19 @@ import model.TornDAOImpl;
 public class TornsController implements Initializable{
 
 	@FXML
-    private Button BtnEntrar;
+	private Button BtnEntrar;
 
-    @FXML
-    private ChoiceBox<String> CbHorari;
+	@FXML
+	private ChoiceBox<String> CbHorari;
 
-    @FXML
-    private TextField TFDiaReservesDisponibles;
+	@FXML
+	private TextField TFDiaReservesDisponibles;
 
-    @FXML
-    private TextField TFDiaSemana;
+	@FXML
+	private TextField TFDiaSemana;
 
-    @FXML
-    private TextField TFidRest;
+	@FXML
+	private TextField TFidRest;
 
 	public Connexio con = new Connexio();
 
@@ -68,6 +68,7 @@ public class TornsController implements Initializable{
 
 	@FXML
 	void entrar(ActionEvent event) {
+
 		
 		int segons=0;
 		
@@ -120,6 +121,36 @@ public class TornsController implements Initializable{
 		
 		
 
+
+		if(!TFidRest.getText().isEmpty() && !TFDiaSemana.getText().isEmpty() && !TFDiaReservesDisponibles.getText().isEmpty()) {
+
+			int segons=0;
+
+
+			String horaid = CbHorari.getValue().toString();
+			int hora2 = Integer.parseInt(horaid.substring(0, 2));
+			System.out.println(hora2);
+
+			LocalTime hora = LocalTime.of(hora2,segons);
+
+			String integerid = TFidRest.getText();
+			int id = Integer.parseInt(integerid);
+
+			String diaseman = TFDiaSemana.getText();
+			int diasemana = Integer.parseInt(diaseman);
+
+			String reservesdinsponibles = TFDiaReservesDisponibles.getText();
+			int reservesd = Integer.parseInt(reservesdinsponibles);
+
+			TornDAO torn = new TornDAOImpl();
+
+			Torn torno = new Torn(id, diasemana, hora, reservesd);
+
+			torn.create(con, torno);
+
+
+
+		}
 	}
 
 }

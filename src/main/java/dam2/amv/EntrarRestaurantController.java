@@ -25,74 +25,78 @@ import model.RestaurantDAO;
 import model.RestaurantDAOImpl;
 
 public class EntrarRestaurantController {
-	
+
 	public static Connexio con = new Connexio();
-	
-    @FXML
-    private Button BtnReservar;
 
-    @FXML
-    private TextField TFAdreca;
+	@FXML
+	private Button BtnReservar;
 
-    @FXML
-    private TextField TFNom;
+	@FXML
+	private TextField TFAdreca;
 
-    @FXML
-    private TextField TFTelefon;
+	@FXML
+	private TextField TFNom;
 
-    @FXML
-    private AnchorPane escena;
+	@FXML
+	private TextField TFTelefon;
 
-    @FXML
-    void entrarDades(ActionEvent event) {
-    	String Nom = TFNom.getText();
-		String Adreca = TFAdreca.getText();
-		String Telefon = TFTelefon.getText();
-		int Telefono=Integer.parseInt(Telefon);
-		
-		con = new Connexio();
-		
-		
-		
-		System.out.println("Nom: " + Nom);
-		System.out.println("Adreça: " + Adreca);
-		System.out.println("Telefon: " + Telefon);
-		
-		Alert confirmacio=new Alert(AlertType.CONFIRMATION);
-    	confirmacio.initModality(Modality.WINDOW_MODAL);
-    	confirmacio.setTitle("Estas segur ? ");
-    	confirmacio.setContentText("Prem Enter si vols entrar un Restaurant nou ");
-    	
-	  	
-    	Optional<ButtonType> result = confirmacio.showAndWait();
-    	if(result.isPresent() && result.get() == ButtonType.OK) {
-    		
-    		RestaurantDAO restaurantDAOI = new RestaurantDAOImpl();
-    		Restaurant restaurant = new Restaurant(Nom,Adreca,Telefono);
-    		
-        	int resultat = restaurantDAOI.create(con, restaurant);
-        	if (resultat==1)
-        	{
-        		Alert missatge=new Alert(AlertType.INFORMATION);
-    			missatge.setTitle("Restaurant Afegit ");
-    			missatge.setContentText(" Restaurant afegit :  " + restaurant.getNom());
-    			missatge.setHeaderText("Alerta:");
-    			missatge.show();
-    			
-        	}else 
-        	{
-        		Alert missatge=new Alert(AlertType.ERROR);
-    			missatge.setTitle("Hi ha un problema, no pots fer aquest restaurant ");
-    			missatge.setContentText("Tornar a provar ");
-    			missatge.setHeaderText("Alerta:");
-    			missatge.show();
-        		
-        	}
-    	}
-	
-		
+	@FXML
+	private AnchorPane escena;
 
-    }
-    
-    
+	@FXML
+	void entrarDades(ActionEvent event) {
+
+		if(!TFNom.getText().isEmpty() && !TFAdreca.getText().isEmpty() && !TFTelefon.getText().isEmpty()) {
+
+			String Nom = TFNom.getText();
+			String Adreca = TFAdreca.getText();
+			String Telefon = TFTelefon.getText();
+			int Telefono=Integer.parseInt(Telefon);
+
+			con = new Connexio();
+
+
+
+			System.out.println("Nom: " + Nom);
+			System.out.println("Adreça: " + Adreca);
+			System.out.println("Telefon: " + Telefon);
+
+			Alert confirmacio=new Alert(AlertType.CONFIRMATION);
+			confirmacio.initModality(Modality.WINDOW_MODAL);
+			confirmacio.setTitle("Estas segur ? ");
+			confirmacio.setContentText("Prem Enter si vols entrar un Restaurant nou ");
+
+
+			Optional<ButtonType> result = confirmacio.showAndWait();
+			if(result.isPresent() && result.get() == ButtonType.OK) {
+
+				RestaurantDAO restaurantDAOI = new RestaurantDAOImpl();
+				Restaurant restaurant = new Restaurant(Nom,Adreca,Telefono);
+
+				int resultat = restaurantDAOI.create(con, restaurant);
+				if (resultat==1)
+				{
+					Alert missatge=new Alert(AlertType.INFORMATION);
+					missatge.setTitle("Restaurant Afegit ");
+					missatge.setContentText(" Restaurant afegit :  " + restaurant.getNom());
+					missatge.setHeaderText("Alerta:");
+					missatge.show();
+
+				}else 
+				{
+					Alert missatge=new Alert(AlertType.ERROR);
+					missatge.setTitle("Hi ha un problema, no pots fer aquest restaurant ");
+					missatge.setContentText("Tornar a provar ");
+					missatge.setHeaderText("Alerta:");
+					missatge.show();
+
+				}
+			}
+
+
+
+		}
+
+	}
+
 }

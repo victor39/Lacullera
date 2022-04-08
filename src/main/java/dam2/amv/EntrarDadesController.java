@@ -66,6 +66,7 @@ public class EntrarDadesController {
 		Client cliento = new Client(Dni,Nom,Cognom,Adreca,Telefono,Correu);
 
 		client.create(con, cliento);
+		
 
 		System.out.println("Nom: " + Nom);
 		System.out.println("Cognom: " + Cognom);
