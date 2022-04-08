@@ -49,7 +49,6 @@
                                     <Insets right="5.0" />
                                  </padding>
                               </Label>
-                              <TextField fx:id="TFClient" editable="false" prefHeight="25.0" prefWidth="169.0" GridPane.columnIndex="1" />
                               <Label text="Torn" GridPane.rowIndex="2">
                                  <padding>
                                     <Insets right="5.0" />
@@ -61,6 +60,7 @@
                               <ComboBox fx:id="cmbTorn" disable="true" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <DatePicker fx:id="DPData" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Spinner fx:id="spnComensals" disable="true" prefHeight="25.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="TFClient" prefHeight="28.0" prefWidth="174.0" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
