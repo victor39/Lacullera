@@ -87,6 +87,7 @@ public class Reserva {
 	public void setObservacions(String observacions) {
 		this.observacions = observacions;
 	}
+	
 
 	@Override
 	public String toString() {

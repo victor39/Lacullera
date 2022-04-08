@@ -20,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import model.Client;
 import model.ComandaDAOImpl;
 import model.Connexio;
 import model.Reserva;
@@ -70,13 +71,13 @@ public class ControllerModificarReserva implements Initializable {
     private TableView<Reserva> tblViewTiquets;
 
 	@FXML
-	private TableColumn<Reserva, String> clmClient;
+	private TableColumn<Reserva, Client> clmClient;
 
 	@FXML
-	private TableColumn<Reserva, String> clmRestaurant;
+	private TableColumn<Reserva, Restaurant> clmRestaurant;
 
 	@FXML
-	private TableColumn<Reserva, String> clmTorn;
+	private TableColumn<Reserva, Torn> clmTorn;
 
 	@FXML
 	private TableColumn<Reserva, LocalDate> clmData;
@@ -102,7 +103,7 @@ public class ControllerModificarReserva implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		btnBuscar.setDisable(true);
+		//btnBuscar.setDisable(true);
 		btnNeteja.setDisable(true);
 
 		llistaRestaurant = FXCollections.observableArrayList();
@@ -113,16 +114,17 @@ public class ControllerModificarReserva implements Initializable {
 		
 		filtradaReserva = new FilteredList<>(llistaReserva, p -> true);
 
-		tblViewTiquets.setItems(filtradaReserva);
+		tblViewTiquets.setItems(llistaReserva);
 		
 		cmbRestaurant.setItems(llistaRestaurant);
 		cmbTorn.setItems(llistaTorn);
 
-		clmClient.setCellValueFactory(new PropertyValueFactory<Reserva, String>("client"));
-		clmRestaurant.setCellValueFactory(new PropertyValueFactory<Reserva, String>("restaurant"));
-		clmTorn.setCellValueFactory(new PropertyValueFactory<Reserva, String>("torn"));
-		clmData.setCellValueFactory(new PropertyValueFactory<Reserva, LocalDate>("data"));
-		clmComensals.setCellValueFactory(new PropertyValueFactory<Reserva, Integer>("comensals"));
+		clmClient.setCellValueFactory(new PropertyValueFactory<Reserva,Client>("clt"));
+		clmRestaurant.setCellValueFactory(new PropertyValueFactory<Reserva,Restaurant>("rest"));
+		clmTorn.setCellValueFactory(new PropertyValueFactory<Reserva,Torn>("torn"));
+		clmData.setCellValueFactory(new PropertyValueFactory<Reserva,LocalDate>("Data"));
+		clmComensals.setCellValueFactory(new PropertyValueFactory<Reserva,Integer>("Comensals"));
+	
 		/*
 		 * 
 		 * TiquetDAOImpl.Tots(App.con, llistaTiquets);
@@ -137,6 +139,7 @@ public class ControllerModificarReserva implements Initializable {
 
 	    String DNI = TFClient.getText();
 		ReservaDAOImpl.buscar(con, llistaReserva, DNI);
+		
 		
 	}
 

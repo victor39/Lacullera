@@ -43,7 +43,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 		try {
 			System.out.println("prova");
-			String sql = "INSERT INTO Restaurant (Nom,Adreca,Telefon) VALUES ('" + restaurant.getNom() + "' , '" + restaurant.getAdreca() + "'," + restaurant.getTelefon() + ");";
+			String sql = "INSERT INTO Restaurant (Nom,Adreca,telefon) VALUES ('" + restaurant.getNom() + "' , '" + restaurant.getAdreca() + "'," + restaurant.getTelefon() + ");";
 			System.out.println("prova");
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
