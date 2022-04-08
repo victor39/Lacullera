@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.ControllerSeleccio">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.ControllerSeleccio">
    <children>
       <Text fx:id="idText" layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="El teu restaurant es " wrappingWidth="308.13671875" />
       <ComboBox fx:id="cmbPrimers" layoutX="97.0" layoutY="113.0" prefWidth="150.0" />

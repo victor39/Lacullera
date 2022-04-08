@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1001.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.ControllerReservaComensals">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1001.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.ControllerReservaComensals">
    <children>
       <ComboBox fx:id="cmbTorn" layoutX="269.0" layoutY="296.0" prefHeight="47.0" prefWidth="270.0" />
       <Text fx:id="txtRestaurant" layoutX="246.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui nom de RESTAURANT" textAlignment="CENTER" wrappingWidth="318.13671875">
