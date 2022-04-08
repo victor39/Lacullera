@@ -30,115 +30,139 @@ import model.RestaurantDAOImpl;
 import model.Torn;
 import model.TornDAOImpl;
 
-public class ControllerModificarReserva implements Initializable{
+public class ControllerModificarReserva implements Initializable {
+
+	private ObservableList<Restaurant> llistaRestaurant;
+	private ObservableList<Torn> llistaTorn;
 	
-	private ObservableList <Restaurant> llistaRestaurant;
-	private ObservableList <Torn> llistaTorn; 
+	private ObservableList<Reserva> llistaReserva;
+	private FilteredList<Reserva> filtradaReserva;
+
+	public Connexio con = new Connexio();
+
+	// .setMaximize()
+
+	@FXML
+	private DatePicker DPData;
+
+	@FXML
+	private SplitPane SplitPane;
+
+	@FXML
+	private TextField TFClient;
+
+	@FXML
+	private AnchorPane anchor;
+
+	@FXML
+	private Button btnActualizar;
+
+	@FXML
+	private Button btnBuscar;
+
+	@FXML
+	private Button btnEliminar;
+
+	@FXML
+	private Button btnNeteja;
 	
-	private FilteredList <Reserva> llistaReserva;
-	
-	public  Connexio con = new Connexio();
-	
-	//.setMaximize()
-
     @FXML
-    private DatePicker DPData;
+    private TableView<Reserva> tblViewTiquets;
 
-    @FXML
-    private SplitPane SplitPane;
+	@FXML
+	private TableColumn<Reserva, String> clmClient;
 
-    @FXML
-    private TextField TFClient;
+	@FXML
+	private TableColumn<Reserva, String> clmRestaurant;
 
-    @FXML
-    private AnchorPane anchor;
+	@FXML
+	private TableColumn<Reserva, String> clmTorn;
 
-    @FXML
-    private Button btnActualizar;
+	@FXML
+	private TableColumn<Reserva, LocalDate> clmData;
 
-    @FXML
-    private Button btnBuscar;
+	@FXML
+	private TableColumn<Reserva, Integer> clmComensals;
 
-    @FXML
-    private Button btnEliminar;
+	@FXML
+	private ComboBox<Restaurant> cmbRestaurant;
 
-    @FXML
-    private Button btnNeteja;
+	@FXML
+	private ComboBox<Torn> cmbTorn;
 
-    @FXML
-    private TableColumn<Reserva, String> clmClient;
+	@FXML
+	private Spinner<Integer> spnComensals;
 
-    @FXML
-    private TableColumn<Reserva, String> clmRestaurant;
+	@FXML
+	private TextField textCerca;
 
-    @FXML
-    private TableColumn<Reserva, String> clmTorn;
-
-    @FXML
-    private TableColumn<Reserva, LocalDate> clmData;
-    
-    @FXML
-    private TableColumn<Reserva, Integer> clmComensals;
-
-    @FXML
-    private ComboBox<Restaurant> cmbRestaurant;
-
-    @FXML
-    private ComboBox<Torn> cmbTorn;
-
-    @FXML
-    private Spinner<Integer> spnComensals;
-
-    @FXML
-    private TextField textCerca;
-
-    @FXML
-    void actualitzarReserva(ActionEvent event) {
-
-    }
-
-    @FXML
-    void buscarReserves(ActionEvent event) {
-    	
-    	String DNI = TFClient.getText();
-    	
-    	ReservaDAOImpl.buscar(con, llistaReserva, DNI);
-    }
-
-    @FXML
-    void eliminarReserva(ActionEvent event) {
-
-    }
-
-    @FXML
-    void limpiarComponentes(ActionEvent event) {
-
-    }
+	@FXML
+	private TextField tfClient;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		btnBuscar.setDisable(true);
+		btnNeteja.setDisable(true);
+
 		llistaRestaurant = FXCollections.observableArrayList();
 		llistaTorn = FXCollections.observableArrayList();
+		llistaReserva = FXCollections.observableArrayList();
+		// llistaFiltrada = new FilteredList<>(llistaTiquets, p -> true);
+
 		
-		//llistaFiltrada = new FilteredList<>(llistaTiquets, p -> true);
+		filtradaReserva = new FilteredList<>(llistaReserva, p -> true);
+
+		tblViewTiquets.setItems(filtradaReserva);
 		
 		cmbRestaurant.setItems(llistaRestaurant);
 		cmbTorn.setItems(llistaTorn);
-		
+
 		clmClient.setCellValueFactory(new PropertyValueFactory<Reserva, String>("client"));
 		clmRestaurant.setCellValueFactory(new PropertyValueFactory<Reserva, String>("restaurant"));
 		clmTorn.setCellValueFactory(new PropertyValueFactory<Reserva, String>("torn"));
 		clmData.setCellValueFactory(new PropertyValueFactory<Reserva, LocalDate>("data"));
 		clmComensals.setCellValueFactory(new PropertyValueFactory<Reserva, Integer>("comensals"));
 		/*
-		
-		TiquetDAOImpl.Tots(App.con, llistaTiquets);
-		*/
-		
-		//gestionarEventos();
+		 * 
+		 * TiquetDAOImpl.Tots(App.con, llistaTiquets);
+		 */
+
+		// gestionarEventos();
+
+	}
+
+	@FXML
+	void buscarReserves(ActionEvent event) {
+
+	    String DNI = TFClient.getText();
+		ReservaDAOImpl.buscar(con, llistaReserva, DNI);
 		
 	}
 
-}
+	@FXML
+	void actualitzarReserva(ActionEvent event) {//
+		
 
+	}
+
+	@FXML
+	void eliminarReserva(ActionEvent event) {
+		
+		String DNI = TFClient.getText();
+		
+
+		
+	}
+
+	@FXML
+	void limpiarComponentes(ActionEvent event) {
+		
+		tfClient.setText(null);
+		cmbRestaurant.setValue(null);
+		cmbTorn.setValue(null);
+		
+
+	}
+
+}

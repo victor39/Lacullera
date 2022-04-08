@@ -126,7 +126,7 @@ public class ControllerReserva implements Initializable{
     	SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
     	spnComensals.setValueFactory(valueFactory);
     
-    	
+
 	}
 
 	@FXML
@@ -148,7 +148,6 @@ public class ControllerReserva implements Initializable{
 
 		client.create(con, cliento);
 	
-		
 		
 		Alert confirmacio=new Alert(AlertType.CONFIRMATION);
     	confirmacio.initModality(Modality.WINDOW_MODAL);
