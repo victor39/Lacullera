@@ -127,7 +127,7 @@ public class ControllerReserva implements Initializable{
 			String Telefon = TFTelefon.getText();
 			int Telefono = Integer.parseInt(Telefon);
 
-<<<<<<< HEAD
+
 		listaRestaurant = FXCollections.observableArrayList();
 		
 		
@@ -139,7 +139,7 @@ public class ControllerReserva implements Initializable{
     	spnComensals.setValueFactory(valueFactory);
     
 
-=======
+
 			con = new Connexio();
 
 			ClientDAO client = new ClientDAOImpl();
@@ -165,12 +165,10 @@ public class ControllerReserva implements Initializable{
 			RestaurantDAOImpl.Tots(con, listaRestaurant);
 
 
-			SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
-			spnComensals.setValueFactory(valueFactory);
+			
 
 
 		}
->>>>>>> refs/remotes/origin/master
 	}
 
 	@FXML
@@ -192,13 +190,7 @@ public class ControllerReserva implements Initializable{
 		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu);
 
 		client.create(con, cliento);
-<<<<<<< HEAD
-	
-		
-=======
 
-
->>>>>>> refs/remotes/origin/master
 		Alert confirmacio=new Alert(AlertType.CONFIRMATION);
 		confirmacio.initModality(Modality.WINDOW_MODAL);
 		confirmacio.setTitle("Estas segur que vols fer la reserva? ");

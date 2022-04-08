@@ -34,7 +34,7 @@ import model.Torn;
 import model.TornDAO;
 import model.TornDAOImpl;
 
-public class TornsController implements Initializable{
+public class TornsController implements Initializable {
 
 	@FXML
 	private Button BtnEntrar;
@@ -53,103 +53,66 @@ public class TornsController implements Initializable{
 
 	public Connexio con = new Connexio();
 
-	private ObservableList <Restaurant> listaRestaurant;
+	private ObservableList<Restaurant> listaRestaurant;
 
-	private ObservableList <Torn> llistaTorns;
+	private ObservableList<Torn> llistaTorns;
 
 	private String eleccio;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		CbHorari.getItems().setAll("13:00","14:00","21:00","22:00");
+		CbHorari.getItems().setAll("13:00", "14:00", "21:00", "22:00");
 
 	}
 
 	@FXML
 	void entrar(ActionEvent event) {
 
-		
-		int segons=0;
-		
+		int segons = 0;
+
 		String horaid = CbHorari.getValue().toString();
 		int hora2 = Integer.parseInt(horaid.substring(0, 2));
 		System.out.println(hora2);
-		
-		LocalTime hora = LocalTime.of(hora2,segons);
-		
+
+		LocalTime hora = LocalTime.of(hora2, segons);
+
 		String integerid = TFidRest.getText();
 		int id = Integer.parseInt(integerid);
-		
+
 		String diaseman = TFDiaSemana.getText();
 		int diasemana = Integer.parseInt(diaseman);
-		
+
 		String reservesdinsponibles = TFDiaReservesDisponibles.getText();
 		int reservesd = Integer.parseInt(reservesdinsponibles);
-		
-		Alert confirmacio=new Alert(AlertType.CONFIRMATION);
-    	confirmacio.initModality(Modality.WINDOW_MODAL);
-    	confirmacio.setTitle("Estas segur que vols entrar aquest torn ? ");
-    	confirmacio.setContentText("Prem Enter si es aixi ");
-    	
-        	
-    	Optional<ButtonType> result = confirmacio.showAndWait();
-    	if(result.isPresent() && result.get() == ButtonType.OK) {
-    		TornDAO torn = new TornDAOImpl();
-    		Torn torno = new Torn(id, diasemana, hora, reservesd);
-        	int resultat = torn.create(con, torno);;
-        	if (resultat==1)
-        	{
-        		Alert missatge=new Alert(AlertType.INFORMATION);
-    			missatge.setTitle("Torn afegit ");
-    			missatge.setContentText("Perfecte , ja tens el teu torn fet ");
-    			
-    			missatge.setHeaderText("Alerta:");
-    			missatge.show();
-    			
-        	}else 
-        	{
-        		Alert missatge=new Alert(AlertType.ERROR);
-    			missatge.setTitle("Hi ha un problema, no pots fer aquest torn ");
-    			missatge.setContentText("Tornar a provar ");
-    			missatge.setHeaderText("Alerta:");
-    			missatge.show();
-        		
-        	}
-    	}
-	
-		
-		
 
+		Alert confirmacio = new Alert(AlertType.CONFIRMATION);
+		confirmacio.initModality(Modality.WINDOW_MODAL);
+		confirmacio.setTitle("Estas segur que vols entrar aquest torn ? ");
+		confirmacio.setContentText("Prem Enter si es aixi ");
 
-		if(!TFidRest.getText().isEmpty() && !TFDiaSemana.getText().isEmpty() && !TFDiaReservesDisponibles.getText().isEmpty()) {
-
-			int segons=0;
-
-
-			String horaid = CbHorari.getValue().toString();
-			int hora2 = Integer.parseInt(horaid.substring(0, 2));
-			System.out.println(hora2);
-
-			LocalTime hora = LocalTime.of(hora2,segons);
-
-			String integerid = TFidRest.getText();
-			int id = Integer.parseInt(integerid);
-
-			String diaseman = TFDiaSemana.getText();
-			int diasemana = Integer.parseInt(diaseman);
-
-			String reservesdinsponibles = TFDiaReservesDisponibles.getText();
-			int reservesd = Integer.parseInt(reservesdinsponibles);
-
+		Optional<ButtonType> result = confirmacio.showAndWait();
+		if (result.isPresent() && result.get() == ButtonType.OK) {
 			TornDAO torn = new TornDAOImpl();
-
 			Torn torno = new Torn(id, diasemana, hora, reservesd);
+			int resultat = torn.create(con, torno);
+			;
+			if (resultat == 1) {
+				Alert missatge = new Alert(AlertType.INFORMATION);
+				missatge.setTitle("Torn afegit ");
+				missatge.setContentText("Perfecte , ja tens el teu torn fet ");
 
-			torn.create(con, torno);
+				missatge.setHeaderText("Alerta:");
+				missatge.show();
 
+			} else {
+				Alert missatge = new Alert(AlertType.ERROR);
+				missatge.setTitle("Hi ha un problema, no pots fer aquest torn ");
+				missatge.setContentText("Tornar a provar ");
+				missatge.setHeaderText("Alerta:");
+				missatge.show();
 
-
+			}
 		}
 	}
 
