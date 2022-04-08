@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="escena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.EntrarRestaurantController">
    <children>
-      <Text layoutX="301.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTRA UN NOU RESTAURANT:" textAlignment="CENTER" wrappingWidth="402.13671875">
+      <Text layoutX="301.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTRAR UN NOU RESTAURANT:" textAlignment="CENTER" wrappingWidth="402.13671875">
          <font>
             <Font size="30.0" />
          </font>

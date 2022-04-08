@@ -150,7 +150,6 @@ public class ControllerReserva implements Initializable{
 	
 		
 		
-		
 		Alert confirmacio=new Alert(AlertType.CONFIRMATION);
     	confirmacio.initModality(Modality.WINDOW_MODAL);
     	confirmacio.setTitle("Estas segur que vols fer la reserva? ");

@@ -29,7 +29,7 @@ public class ControllerInici {
     
 
     @FXML
-    void cargarEscena(MouseEvent event) throws IOException {
+    void reserva(MouseEvent event) throws IOException {
     	AnchorPane nuevo;
     	nuevo = FXMLLoader.load(getClass().getResource("Reserva.fxml"));
     	escena.getChildren().setAll(nuevo);
@@ -37,21 +37,13 @@ public class ControllerInici {
     }
 
     @FXML
-    void cargarEscenaVerda(MouseEvent event) throws IOException {
+    void modificarReserva(MouseEvent event) throws IOException {
     	AnchorPane nuevo;
-    	nuevo = FXMLLoader.load(getClass().getResource("BuscarRestaurant.fxml"));
+    	nuevo = FXMLLoader.load(getClass().getResource("ModificarReserva.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
     }
     
-    @FXML
-    void configuració(MouseEvent event) throws IOException {
-
-    	AnchorPane nuevo;
-    	nuevo = FXMLLoader.load(getClass().getResource("BorrarRestaurant.fxml"));
-    	escena.getChildren().setAll(nuevo);
-    	
-    }
     @FXML
     void entrarRestaurant(MouseEvent event) throws IOException {
     	AnchorPane nuevo;
@@ -61,9 +53,18 @@ public class ControllerInici {
     }
     
     @FXML
+    void borrarRestaurant(MouseEvent event) throws IOException {
+
+    	AnchorPane nuevo;
+    	nuevo = FXMLLoader.load(getClass().getResource("BorrarRestaurant.fxml"));
+    	escena.getChildren().setAll(nuevo);
+    	
+    }
+    
+    @FXML
     void torns(MouseEvent event) throws IOException {
     	AnchorPane nuevo;
-    	nuevo = FXMLLoader.load(getClass().getResource("ModificarReserva.fxml"));
+    	nuevo = FXMLLoader.load(getClass().getResource("MenuTorns.fxml"));
     	escena.getChildren().setAll(nuevo);
     	
     }
