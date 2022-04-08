@@ -103,7 +103,7 @@ public class ControllerModificarReserva implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		//btnBuscar.setDisable(true);
+		btnBuscar.setDisable(true);
 		btnNeteja.setDisable(true);
 
 		llistaRestaurant = FXCollections.observableArrayList();
