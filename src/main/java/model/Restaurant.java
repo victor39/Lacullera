@@ -20,6 +20,10 @@ public class Restaurant {
 		this.telefon = telefon;
 	}
 	
+	public Restaurant(int idRestaurant) {
+		this.idRestaurant = idRestaurant;
+	}
+	
 	public String getNom() {
 		return nom;
 	}
@@ -50,7 +54,7 @@ public class Restaurant {
 
 	@Override
 	public String toString() {
-		return nom;
+		return idRestaurant + " - " + nom;
 	}
 	
 }

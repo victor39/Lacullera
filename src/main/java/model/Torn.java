@@ -13,12 +13,16 @@ public class Torn {
 	
 	
 	
-	public Torn(int idHorari, int idRestaurant, int diaSetmana, LocalTime horaInici2, int reservesDisponibles) {
+	public Torn(int idHorari, int idRestaurant, int diaSetmana, LocalTime horaInici, int reservesDisponibles) {
 		this.idHorari = idHorari;
 		this.restaurant = idRestaurant;
 		this.diaSetmana = diaSetmana;
-		this.horaInici = horaInici2;
+		this.horaInici = horaInici;
 		this.reservesDisponibles = reservesDisponibles;
+	}
+	
+	public Torn(LocalTime horaInici) {
+		this.horaInici = horaInici;
 	}
 
 	public Torn(int restaurant, int diaSetmana, LocalTime horaInici, int reservesDisponibles) {
