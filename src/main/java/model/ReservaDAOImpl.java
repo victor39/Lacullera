@@ -102,10 +102,8 @@ public class ReservaDAOImpl implements ReservaDAO {
 		int result = 0;
 
 		try {
-			String sql = "UPDATE reserva " + "SET idClient" + reserva.getClient() + "," + "idRestaurant"
-					+ reserva.getRestaurant() + "," + "idTorn = " + reserva.getTorn() + "," + "Data = "
-					+ reserva.getData() + "," + "Comensals = " + reserva.getComensals() + "," + "Observacions = "
-					+ reserva.getObservacions() + "," + "WHERE idReserva = " + reserva.getIdReserva() + ";";
+			String sql = "UPDATE Reserva " + "SET idTorn = " + reserva.getTorn().getIdHorari() + "," + "Data = "
+					+"'"+ reserva.getData()+ "'"+ "," + "Comensals = " + reserva.getComensals() + " WHERE idReserva = " + reserva.getIdReserva() + ";";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
@@ -124,7 +122,7 @@ public class ReservaDAOImpl implements ReservaDAO {
 		int result = 0;
 		try {
 
-			String sql = "DELETE FROM reserva WHERE idReserva = " + reserva.getIdReserva() + " ;";
+			String sql = "DELETE FROM Reserva WHERE idReserva = " + reserva.getIdReserva() + " ;";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);

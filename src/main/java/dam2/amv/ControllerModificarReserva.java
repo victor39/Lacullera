@@ -123,7 +123,6 @@ public class ControllerModificarReserva implements Initializable {
 		clmTorn.setCellValueFactory(new PropertyValueFactory<Reserva,Torn>("torn"));
 		clmData.setCellValueFactory(new PropertyValueFactory<Reserva,LocalDate>("data"));
 		clmComensals.setCellValueFactory(new PropertyValueFactory<Reserva,Integer>("comensals"));
-		
 
 		gestionarEventos();
 
@@ -136,21 +135,49 @@ public class ControllerModificarReserva implements Initializable {
 		neteja();
 
 	    String DNI = TFClient.getText();
-	    System.out.println(ReservaDAOImpl.buscar(con, llistaReserva, DNI));
+	    ReservaDAOImpl.buscar(con, llistaReserva, DNI);
 		
 	}
 
 	@FXML
 	void actualitzarReserva(ActionEvent event) {//
 		
+		Client clt = new Client(TFClient.getText());
+		Restaurant rest = new Restaurant(tblViewReserva.getSelectionModel().getSelectedItem().getRestaurant().getIdRestaurant());
+		
+		Reserva reserv = new Reserva(tblViewReserva.getSelectionModel().getSelectedItem().getIdReserva(),clt, rest, DPData.getValue(), cmbTorn.getValue(), spnComensals.getValue(), "" );
+		
+		ReservaDAO rDAO = new ReservaDAOImpl();
+		int res = rDAO.update(con, reserv);
+		
+		if(res>0) {
+    		llistaReserva.set(tblViewReserva.getSelectionModel().getSelectedIndex(), reserv);
+    	}
 
 	}
 
 	@FXML
 	void eliminarReserva(ActionEvent event) {
 		
-		String DNI = TFClient.getText();
+		Client clt = new Client(TFClient.getText());
+		Restaurant rest = new Restaurant(tblViewReserva.getSelectionModel().getSelectedItem().getRestaurant().getIdRestaurant());
 		
+		Reserva reserv = new Reserva(tblViewReserva.getSelectionModel().getSelectedItem().getIdReserva(),clt, rest, DPData.getValue(), cmbTorn.getValue(), spnComensals.getValue(), "" );
+		
+		ReservaDAO rDAO = new ReservaDAOImpl();
+		int res = rDAO.delete(con, reserv);
+		
+		boolean trobat = false;
+		int comptador = 0;
+		
+		if(res>0) {
+			while(!trobat & comptador > llistaReserva.size()) {
+				if(llistaReserva.get(comptador).getIdReserva() == tblViewReserva.getSelectionModel().getSelectedItem().getIdReserva()) {
+					llistaReserva.remove(comptador);
+					trobat = true;
+				}
+			}
+		}
 	}
 
 	@FXML

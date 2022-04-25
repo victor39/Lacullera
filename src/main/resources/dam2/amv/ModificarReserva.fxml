@@ -70,8 +70,8 @@
                                     <Insets left="30.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnActualizar" alignment="TOP_CENTER" disable="true" mnemonicParsing="false" onAction="#actualitzarReserva" text="Actualitzar" />
-                              <Button fx:id="btnEliminar" alignment="TOP_CENTER" disable="true" mnemonicParsing="false" onAction="#eliminarReserva" text="Eliminar" />
+                              <Button fx:id="btnActualizar" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#actualitzarReserva" text="Actualitzar" />
+                              <Button fx:id="btnEliminar" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#eliminarReserva" text="Eliminar" />
                               <Button fx:id="btnNeteja" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#limpiarComponentes" text="Netejar" />
                            </children>
                            <VBox.margin>
