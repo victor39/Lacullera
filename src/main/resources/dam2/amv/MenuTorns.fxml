@@ -30,6 +30,6 @@
             <Font size="24.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="CBRestaurants" layoutX="265.0" layoutY="184.0" prefHeight="77.0" prefWidth="458.0" />
+      <ComboBox fx:id="CBRestaurants" layoutX="265.0" layoutY="184.0" prefHeight="77.0" prefWidth="458.0" promptText="Entra el restaurant:" />
    </children>
 </AnchorPane>
