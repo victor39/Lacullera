@@ -63,10 +63,10 @@ public class Torn {
 	public void setReservesDisponibles(int reservesDisponibles) {
 		this.reservesDisponibles = reservesDisponibles;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Hora: " + horaInici.toString();
+		return this.horaInici.toString();
 	}
 	
 }

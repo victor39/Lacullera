@@ -43,7 +43,7 @@ public class ReservaDAOImpl implements ReservaDAO {
 		return res;
 	}
 
-	public static int buscar(Connexio con, ObservableList <Reserva> llista, String id) {
+	public static int buscar(Connexio con, ObservableList<Reserva> llista, String id) {
 
 		try {
 			// String sql = "SELECT * FROM Reserva WHERE idClient = " + id + " AND Data =
@@ -62,33 +62,35 @@ public class ReservaDAOImpl implements ReservaDAO {
 				String dni = rst.getString("Dni");
 				int telefon = rst.getInt("Telefon");
 				String correu = rst.getString("Adreca");
-				Client clt = new Client(nom, cognom, adreca, dni, telefon, correu);
+				Client client = new Client(nom, cognom, adreca, dni, telefon, correu);
 
 				int idRestaurant = rst.getInt("idRestaurant");
 				String nomRestaurant = rst.getString("r.Nom");
 				String adrecaRestaurant = rst.getString("r.Adreca");
 				int telefonRestaurant = rst.getInt("r.Telefon");
-				Restaurant rest = new Restaurant(idRestaurant, nomRestaurant, adrecaRestaurant, telefonRestaurant);
+				Restaurant restaurant = new Restaurant(idRestaurant, nomRestaurant, adrecaRestaurant, telefonRestaurant);
 
-				int horari = rst.getInt("t.idHorari");
+				int idHorari = rst.getInt("t.idHorari");
 				int diaSetmana = rst.getInt("t.diaSetmana");
-				LocalTime horari1 = null;
+				LocalTime horari1 = rst.getTime("t.HoraInici").toLocalTime();
 				int reservesDisponibles = rst.getInt("t.reservesDisponibles");
-				Torn torn = new Torn(horari, idRestaurant, horari1, reservesDisponibles);
+				Torn torn = new Torn(idHorari, idRestaurant, horari1, reservesDisponibles);
 
 				LocalDate Data = rst.getObject("Data", LocalDate.class);
 				int Comensals = rst.getInt("Comensals");
-				Reserva res = new Reserva(idReserva, clt, rest, Data, torn, Comensals, "");
+				Reserva reserva = new Reserva(idReserva, client, restaurant, Data, torn, Comensals, "");
 
-				llista.add(res);
+				llista.add(reserva);
 			}
+			/*
 			for (int i = 0; i < llista.size(); i++) {
-				System.out.println("IDREserva: " + llista.get(i).getIdReserva() + "Observacions : "
+				System.out.println("IdReserva: " + llista.get(i).getIdReserva() + ", Observacions : "
 						+ llista.get(i).getObservacions() + "NomClient : " + llista.get(i).getClient().getNom());
 			}
+			*/
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Error: " + e.toString());
 		}
 
 		return llista.size();

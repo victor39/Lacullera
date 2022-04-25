@@ -4,6 +4,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -14,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -33,9 +36,7 @@ import model.TornDAOImpl;
 
 public class ControllerModificarReserva implements Initializable {
 
-	private ObservableList<Restaurant> llistaRestaurant;
 	private ObservableList<Torn> llistaTorn;
-	
 	private ObservableList<Reserva> llistaReserva;
 	private FilteredList<Reserva> filtradaReserva;
 
@@ -68,7 +69,7 @@ public class ControllerModificarReserva implements Initializable {
 	private Button btnNeteja;
 	
     @FXML
-    private TableView<Reserva> tblViewTiquets;
+    private TableView<Reserva> tblViewReserva;
 
 	@FXML
 	private TableColumn<Reserva, Client> clmClient;
@@ -86,7 +87,7 @@ public class ControllerModificarReserva implements Initializable {
 	private TableColumn<Reserva, Integer> clmComensals;
 
 	@FXML
-	private ComboBox<Restaurant> cmbRestaurant;
+	private TextField TFRestaurant;
 
 	@FXML
 	private ComboBox<Torn> cmbTorn;
@@ -103,43 +104,39 @@ public class ControllerModificarReserva implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		btnBuscar.setDisable(true);
-		btnNeteja.setDisable(true);
+		
+		TFRestaurant.setDisable(true);
+		cmbTorn.setDisable(true);
+		DPData.setDisable(true);
+		spnComensals.setDisable(true);
 
-		llistaRestaurant = FXCollections.observableArrayList();
 		llistaTorn = FXCollections.observableArrayList();
 		llistaReserva = FXCollections.observableArrayList();
-		// llistaFiltrada = new FilteredList<>(llistaTiquets, p -> true);
-
-		
 		filtradaReserva = new FilteredList<>(llistaReserva, p -> true);
 
-		tblViewTiquets.setItems(llistaReserva);
+		tblViewReserva.setItems(filtradaReserva);
 		
-		cmbRestaurant.setItems(llistaRestaurant);
 		cmbTorn.setItems(llistaTorn);
 
-		clmClient.setCellValueFactory(new PropertyValueFactory<Reserva,Client>("clt"));
-		clmRestaurant.setCellValueFactory(new PropertyValueFactory<Reserva,Restaurant>("rest"));
+		clmClient.setCellValueFactory(new PropertyValueFactory<Reserva,Client>("client"));
+		clmRestaurant.setCellValueFactory(new PropertyValueFactory<Reserva,Restaurant>("restaurant"));
 		clmTorn.setCellValueFactory(new PropertyValueFactory<Reserva,Torn>("torn"));
-		clmData.setCellValueFactory(new PropertyValueFactory<Reserva,LocalDate>("Data"));
-		clmComensals.setCellValueFactory(new PropertyValueFactory<Reserva,Integer>("Comensals"));
-	
-		/*
-		 * 
-		 * TiquetDAOImpl.Tots(App.con, llistaTiquets);
-		 */
+		clmData.setCellValueFactory(new PropertyValueFactory<Reserva,LocalDate>("data"));
+		clmComensals.setCellValueFactory(new PropertyValueFactory<Reserva,Integer>("comensals"));
+		
 
-		// gestionarEventos();
+		gestionarEventos();
 
 	}
 
 	@FXML
 	void buscarReserves(ActionEvent event) {
+		
+		llistaReserva.clear();
+		neteja();
 
 	    String DNI = TFClient.getText();
-		ReservaDAOImpl.buscar(con, llistaReserva, DNI);
-		
+	    System.out.println(ReservaDAOImpl.buscar(con, llistaReserva, DNI));
 		
 	}
 
@@ -154,18 +151,66 @@ public class ControllerModificarReserva implements Initializable {
 		
 		String DNI = TFClient.getText();
 		
-
-		
 	}
 
 	@FXML
 	void limpiarComponentes(ActionEvent event) {
 		
-		tfClient.setText(null);
-		cmbRestaurant.setValue(null);
-		cmbTorn.setValue(null);
+		TFRestaurant.setDisable(true);
+		cmbTorn.setDisable(true);
+		DPData.setDisable(true);
+		spnComensals.setDisable(true);
 		
-
+		tfClient.setText(null);
+		TFRestaurant.setText(null);
+		cmbTorn.setValue(null);
+		DPData.setValue(null);
+		spnComensals.getValueFactory().setValue(0);
+		
 	}
+	
+	public void neteja() {
+		
+		TFRestaurant.setDisable(true);
+		cmbTorn.setDisable(true);
+		DPData.setDisable(true);
+		spnComensals.setDisable(true);
+		
+	}
+	
+	public void gestionarEventos() {
+    	//Aquest mètode crea un Listener al tableView en el que tenim els alumnes. 
+		tblViewReserva.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Reserva>() {//ChangeListhener ens obliga a definir el m tode abstracte changed
 
+			@Override
+			public void changed(ObservableValue<? extends Reserva> valorActual, Reserva valorAnterior, Reserva valorSeleccionat) {
+				//per evitar errors de nullPointerException a l'hora de desseleccionar/actualitzar dades ens hem d'assegurar que el valorSeleccionat no sigui null
+				if (valorSeleccionat!=null) {
+				// Els arguments que ens dona el m tode changed, es refereixen al valor actual, el calor anterior(guarda l'ultim valor seleccionat) i el valor seleccionat, el que tenim actualment
+				System.out.println("Nom de la reserva seleccionada: "+ valorSeleccionat.getIdReserva()); // Com el valor seleccionat és de tipus Alumne, podem accedir a tots els seus métodes.
+				//Agafarem tots els atributs que surten a la taula i els afegirem als elements
+				
+				// Per afegir els elements als TextFields nom s accepta dades de tipus String
+				TFRestaurant.setText(String.valueOf(valorSeleccionat.getRestaurant()));
+				cmbTorn.setValue(valorSeleccionat.getTorn());
+				TornDAOImpl.Tots(con, llistaTorn, valorSeleccionat.getRestaurant().getIdRestaurant());
+				DPData.setValue(valorSeleccionat.getData());
+				
+				SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, valorSeleccionat.getComensals());
+				spnComensals.setValueFactory(valueFactory);
+				
+				TFRestaurant.setDisable(false);
+				cmbTorn.setDisable(false);
+				DPData.setDisable(false);
+				spnComensals.setDisable(false);
+				
+				//Els botons actualitzar i guardar, est n deshabilitats per defecte. quan cliquem dintre d'una fila de la taula volem que s'habilitin per a poder modificar el seu contingut
+				//botonActualizar.setDisable(false);
+				//botonEliminar.setDisable(false);
+				//botonGuardar.setDisable(true);
+			}
+			}
+		});
+    	
+    }
 }

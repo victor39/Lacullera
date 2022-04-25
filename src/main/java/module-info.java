@@ -7,4 +7,5 @@ module dam2.amv {
 
     opens dam2.amv to javafx.fxml;
     exports dam2.amv;
+    exports model;
 }

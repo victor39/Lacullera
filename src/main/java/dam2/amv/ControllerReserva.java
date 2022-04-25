@@ -164,10 +164,6 @@ public class ControllerReserva implements Initializable{
 			cmbTriaRestaurant.setItems(listaRestaurant);
 			RestaurantDAOImpl.Tots(con, listaRestaurant);
 
-
-			
-
-
 		}
 	}
 
@@ -246,7 +242,6 @@ public class ControllerReserva implements Initializable{
 		cmbTorn.setItems(llistaTorns);
 
 		System.out.println(idRestaurant);
-
 
 		TornDAOImpl.Tots(con, llistaTorns, idRestaurant);
 
