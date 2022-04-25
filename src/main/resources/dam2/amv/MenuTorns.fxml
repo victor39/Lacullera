@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -18,11 +19,6 @@
          <font>
             <Font size="24.0" />
          </font></Button>
-      <TextField fx:id="TFidRest" layoutX="251.0" layoutY="176.0" prefHeight="79.0" prefWidth="491.0" promptText="Entra la id del restaurant:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
       <TextField fx:id="TFDiaSemana" layoutX="251.0" layoutY="300.0" prefHeight="79.0" prefWidth="491.0" promptText="Entra el dia de la semana:">
          <font>
             <Font size="24.0" />
@@ -34,5 +30,6 @@
             <Font size="24.0" />
          </font>
       </TextField>
+      <ComboBox fx:id="CBRestaurants" layoutX="265.0" layoutY="184.0" prefHeight="77.0" prefWidth="458.0" />
    </children>
 </AnchorPane>

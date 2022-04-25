@@ -37,19 +37,19 @@ import model.TornDAOImpl;
 public class TornsController implements Initializable {
 
 	@FXML
-	private Button BtnEntrar;
+    private Button BtnEntrar;
 
-	@FXML
-	private ChoiceBox<String> CbHorari;
+    @FXML
+    private ComboBox<Restaurant> CBRestaurants;
 
-	@FXML
-	private TextField TFDiaReservesDisponibles;
+    @FXML
+    private ChoiceBox<String> CbHorari;
 
-	@FXML
-	private TextField TFDiaSemana;
+    @FXML
+    private TextField TFDiaReservesDisponibles;
 
-	@FXML
-	private TextField TFidRest;
+    @FXML
+    private TextField TFDiaSemana;
 
 	public Connexio con = new Connexio();
 
@@ -63,6 +63,10 @@ public class TornsController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		CbHorari.getItems().setAll("13:00", "14:00", "21:00", "22:00");
+		
+		listaRestaurant=FXCollections.observableArrayList();
+		CBRestaurants.setItems(listaRestaurant);
+		RestaurantDAOImpl.Tots(con, listaRestaurant);
 
 	}
 
@@ -77,7 +81,7 @@ public class TornsController implements Initializable {
 
 		LocalTime hora = LocalTime.of(hora2, segons);
 
-		String integerid = TFidRest.getText();
+		String integerid = CBRestaurants.getValue().toString();
 		int id = Integer.parseInt(integerid);
 
 		String diaseman = TFDiaSemana.getText();
