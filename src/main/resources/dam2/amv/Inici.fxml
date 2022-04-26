@@ -26,27 +26,27 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text fx:id="BtnReserva" onMouseClicked="#reserva" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserva" textAlignment="CENTER" wrappingWidth="267.13671875">
+                        <Text fx:id="BtnReserva" onMouseClicked="#reserva" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserva" textAlignment="CENTER" underline="true" wrappingWidth="267.13671875">
                            <font>
                               <Font size="30.0" />
                            </font>
                         </Text>
-                        <Text fx:id="BtnBuscarRestaurants" onMouseClicked="#modificarReserva" strokeType="OUTSIDE" strokeWidth="0.0" text="en manteniment ( proxima apert)" textAlignment="CENTER" wrappingWidth="267.13671875" GridPane.rowIndex="1">
+                        <Text fx:id="BtnBuscarRestaurants" onMouseClicked="#modificarReserva" strokeType="OUTSIDE" strokeWidth="0.0" text="Modificar" textAlignment="CENTER" underline="true" wrappingWidth="267.13671875" GridPane.rowIndex="1">
                            <font>
                               <Font size="30.0" />
                            </font>
                         </Text>
-                        <Text onMouseClicked="#entrarRestaurant" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrar Restaurant" textAlignment="CENTER" wrappingWidth="267.13671875" GridPane.rowIndex="2">
+                        <Text onMouseClicked="#entrarRestaurant" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrar Restaurant" textAlignment="CENTER" underline="true" wrappingWidth="267.13671875" GridPane.rowIndex="2">
                            <font>
                               <Font size="30.0" />
                            </font>
                         </Text>
-                        <Text onMouseClicked="#borrarRestaurant" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrar Restaurant" textAlignment="CENTER" wrappingWidth="267.13671875" GridPane.rowIndex="3">
+                        <Text onMouseClicked="#borrarRestaurant" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrar Restaurant" textAlignment="CENTER" underline="true" wrappingWidth="267.13671875" GridPane.rowIndex="3">
                            <font>
                               <Font size="30.0" />
                            </font>
                         </Text>
-                        <Text onMouseClicked="#torns" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrar Torns" textAlignment="CENTER" wrappingWidth="267.13671875" GridPane.rowIndex="4">
+                        <Text onMouseClicked="#torns" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrar Torns" textAlignment="CENTER" underline="true" wrappingWidth="267.13671875" GridPane.rowIndex="4">
                            <font>
                               <Font size="30.0" />
                            </font>
