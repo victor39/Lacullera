@@ -153,6 +153,8 @@ public class ControllerModificarReserva implements Initializable {
 		if(res>0) {
     		llistaReserva.set(tblViewReserva.getSelectionModel().getSelectedIndex(), reserv);
     	}
+		
+		
 
 	}
 
