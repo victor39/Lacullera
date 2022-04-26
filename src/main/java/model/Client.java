@@ -8,6 +8,10 @@ public class Client extends Persona{
 		super(nom, cognom, adreça, dni, telefon);
 		this.correu = correu;
 	}
+	
+	public Client(String dni) {
+		super(dni);
+	}
 
 	public String getCorreu() {
 		return correu;
