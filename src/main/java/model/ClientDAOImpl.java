@@ -68,9 +68,9 @@ public class ClientDAOImpl implements ClientDAO {
 		int res = 0;
 
 		try {
-			String sql = "INSERT INTO Client (Dni, Nom, Cognom, Telefon, Adreca, Correu) VALUES ('" + client.getDni()
+			String sql = "INSERT INTO Client (Dni, Nom, Cognom, Telefon, Adreca, Correu, Contrasenya) VALUES ('" + client.getDni()
 			+ "','" + client.getNom() + "','" + client.getCognom() + "'," + client.getTelefon() + ",'"
-			+ client.getAdreça() + "','" + client.getCorreu() + "');";
+			+ client.getAdreça() + "','" + client.getCorreu() + "', 0);";
 
 			System.out.println(sql);
 

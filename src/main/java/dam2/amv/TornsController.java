@@ -82,7 +82,8 @@ public class TornsController implements Initializable {
 		LocalTime hora = LocalTime.of(hora2, segons);
 
 		String integerid = CBRestaurants.getValue().toString();
-		int id = Integer.parseInt(integerid);
+		String[] auxId = integerid.split(" - "); 
+		int id = Integer.parseInt(auxId[0]);
 
 		String diaseman = TFDiaSemana.getText();
 		int diasemana = Integer.parseInt(diaseman);

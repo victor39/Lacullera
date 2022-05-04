@@ -185,7 +185,7 @@ public class ControllerReserva implements Initializable {
 //				}
 
 			} else {
-				Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu);
+				
 				idPanelDades.setDisable(false);
 				panelTria.setDisable(false);
 
@@ -218,10 +218,11 @@ public class ControllerReserva implements Initializable {
 		ClientDAO client = new ClientDAOImpl();
 
 		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu);
-
-		client.create(con, cliento);
 		
-		
+		if(ClientDAOImpl.comprovarDni(con, cliento.getDni()) != 1) {
+			
+			client.create(con, cliento);
+		}
 		
 		if(restaurant.getCapacitatactual() > spnComensals.getValue()) {
 			
