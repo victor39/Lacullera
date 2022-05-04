@@ -48,7 +48,7 @@ public class ReservaDAOImpl implements ReservaDAO {
 		try {
 			// String sql = "SELECT * FROM Reserva WHERE idClient = " + id + " AND Data =
 			// curdate();";
-			String sql = " SELECT c.Dni,c.Nom,c.Cognom ,c.Telefon ,c.Adreca, c.Correu , r.idRestaurant ,r.Nom , r.Adreca , r.telefon, t.idHorari , t.idRestaurant , t.DiaSetmana ,t.HoraInici , t.ReservesDisponibles , re.idReserva , re.idClient, re.idRestaurant , re.idTorn , re.Data , re.Comensals , re.Observacions  FROM Reserva re INNER JOIN Restaurant r ON r.idRestaurant = re.idRestaurant INNER JOIN Torn t ON t.idRestaurant = r.idRestaurant INNER JOIN Client c ON c.Dni = re.idClient WHERE re.idClient = '"
+			String sql = " SELECT c.Dni,c.Nom,c.Cognom ,c.Telefon ,c.Adreca, c.Correu , r.idRestaurant ,r.Nom , r.Adreca , r.capacitat, r.telefon, t.idHorari , t.idRestaurant , t.DiaSetmana ,t.HoraInici , t.ReservesDisponibles , re.idReserva , re.idClient, re.idRestaurant , re.idTorn , re.Data , re.Comensals , re.Observacions  FROM Reserva re INNER JOIN Restaurant r ON r.idRestaurant = re.idRestaurant INNER JOIN Torn t ON t.idRestaurant = r.idRestaurant INNER JOIN Client c ON c.Dni = re.idClient WHERE re.idClient = '"
 					+ id + "';";
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			ResultSet rst = stm.executeQuery(sql);
@@ -68,7 +68,7 @@ public class ReservaDAOImpl implements ReservaDAO {
 				String nomRestaurant = rst.getString("r.Nom");
 				String adrecaRestaurant = rst.getString("r.Adreca");
 				int telefonRestaurant = rst.getInt("r.Telefon");
-				int capacitatRestaurant = rst.getInt("r.Capacitat");
+				int capacitatRestaurant = rst.getInt("r.capacitat");
 				Restaurant restaurant = new Restaurant(idRestaurant, nomRestaurant, adrecaRestaurant, telefonRestaurant, capacitatRestaurant,capacitatRestaurant);
 
 				int idHorari = rst.getInt("t.idHorari");
