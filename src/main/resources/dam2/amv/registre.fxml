@@ -38,20 +38,20 @@
             <Font size="24.0" />
          </font>
       </TextField>
-      <Button fx:id="BtnRegistre" layoutX="502.0" layoutY="668.0" mnemonicParsing="false" onAction="#agafarDades" onMouseClicked="#agafarDades" prefHeight="79.0" prefWidth="262.0" text="REGISTRE">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
       <TextField fx:id="TFAdreca" layoutX="442.0" layoutY="502.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra la teva adreça:">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
-      <TextField fx:id="TFContrasenya" layoutX="442.0" layoutY="577.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra la teva adreça:">
+      <TextField fx:id="TFContrasenya" layoutX="442.0" layoutY="577.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra la teva contrasenya:">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
+      <Button fx:id="BtnRegistre" layoutX="500.0" layoutY="668.0" mnemonicParsing="false" onAction="#agafarDades" prefHeight="61.0" prefWidth="266.0" text="REGISTRE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

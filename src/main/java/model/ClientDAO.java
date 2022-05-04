@@ -8,6 +8,10 @@ public interface ClientDAO {
 		return 0;
 	}
 	
+	public static int login(Connexio con, String correu, String contrasenya) {
+		return 0;
+	}
+	
 	public static int comprovarDni(Connexio con, String Dni) {
 		return 0;
 	}

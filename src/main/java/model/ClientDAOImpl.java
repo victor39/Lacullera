@@ -21,7 +21,8 @@ public class ClientDAOImpl implements ClientDAO {
 				int Telefon = rst.getInt("Telefon");
 				String Adreca = rst.getString("Adreca");
 				String  Correu = rst.getString("Correu");
-				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu);
+				String Pasword = rst.getString("Contraseña");
+				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu,Pasword);
 				array.add(client);
 
 			}
@@ -33,10 +34,31 @@ public class ClientDAOImpl implements ClientDAO {
 		return array.size();
 	}
 
+	public static int login(Connexio con, String correu, String contrasenya) {
+
+		try {
+			String sql = "SELECT Correu, Contraseña FROM Client where Correu = '" + correu + "' and Contraseña = '" + contrasenya + "';";
+			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
+			ResultSet rst = stm.executeQuery(sql);
+
+			while (rst.next()) {
+				String Correu = rst.getString("Correu");
+				String Pasword = rst.getString("Contraseña");
+				
+				System.out.println(Correu + "/" + Pasword);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
 	public static int comprovarDni(Connexio con, String Dni ) {
 
 		int res = 0;
-		
+
 		try {
 			String sql = "SELECT Dni FROM Client where Dni = " + Dni;
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
@@ -49,7 +71,8 @@ public class ClientDAOImpl implements ClientDAO {
 				int Telefon = rst.getInt("Telefon");
 				String Adreca = rst.getString("Adreca");
 				String  Correu = rst.getString("Correu");
-				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu);
+				String Contraseña = rst.getString("Contraseña");
+				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu,Contraseña);
 				res = 1;
 
 			}
@@ -68,9 +91,9 @@ public class ClientDAOImpl implements ClientDAO {
 		int res = 0;
 
 		try {
-			String sql = "INSERT INTO Client (Dni, Nom, Cognom, Telefon, Adreca, Correu, Contrasenya) VALUES ('" + client.getDni()
+			String sql = "INSERT INTO Client (Dni, Nom, Cognom, Telefon, Adreca, Correu, Contraseña) VALUES ('" + client.getDni()
 			+ "','" + client.getNom() + "','" + client.getCognom() + "'," + client.getTelefon() + ",'"
-			+ client.getAdreça() + "','" + client.getCorreu() + "', 0);";
+			+ client.getAdreça() + "','" + client.getCorreu() + "', '" + client.getPasword() + "');";
 
 			System.out.println(sql);
 

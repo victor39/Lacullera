@@ -48,8 +48,38 @@ public class ControllerRegistre {
 
 	public static Connexio con = new Connexio();
 
+	static boolean validarDNI(String dni) {
+		int contadorNumero;
+		int contadorTabla;
+		char[] letraDni = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
+				'H', 'L', 'C', 'K', 'E' };
+		char[] numero = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+		boolean letra = false;
+		contadorNumero = 0;
+		if (dni.length() == 9) {
+			for (int i = 0; i < 8; i++) {
+
+				for (int j = 0; j < numero.length; j++) {
+					if (dni.charAt(i) == numero[j]) {
+						contadorNumero++;
+					}
+				}
+			}
+		}
+		contadorTabla = 0;
+		while (letra == false && contadorNumero == 8) {
+			if (dni.charAt(8) == letraDni[contadorTabla]) {
+				letra = true;
+			} else {
+				contadorTabla++;
+			}
+
+		}
+		return letra;
+	}
+
 	@FXML
-	void agafarDades(MouseEvent event) {
+	void agafarDades(ActionEvent event) {
 
 		String Nom = TFNom.getText();
 		String Cognom = TFCognom.getText();
@@ -62,7 +92,6 @@ public class ControllerRegistre {
 		int Telefono = Integer.parseInt(Telefon);
 
 		String pswd = TFContrasenya.getText();
-		int pasword = Integer.parseInt(pswd);
 
 		con = new Connexio();
 
@@ -97,41 +126,11 @@ public class ControllerRegistre {
 			}
 
 		}
-		
-		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu);
+
+		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu, pswd);
 
 		client.create(con, cliento);
 
-	}
-	
-	static boolean validarDNI(String dni) {
-		int contadorNumero;
-		int contadorTabla;
-		char[] letraDni = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
-				'H', 'L', 'C', 'K', 'E' };
-		char[] numero = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-		boolean letra = false;
-		contadorNumero = 0;
-		if (dni.length() == 9) {
-			for (int i = 0; i < 8; i++) {
-
-				for (int j = 0; j < numero.length; j++) {
-					if (dni.charAt(i) == numero[j]) {
-						contadorNumero++;
-					}
-				}
-			}
-		}
-		contadorTabla = 0;
-		while (letra == false && contadorNumero == 8) {
-			if (dni.charAt(8) == letraDni[contadorTabla]) {
-				letra = true;
-			} else {
-				contadorTabla++;
-			}
-
-		}
-		return letra;
 	}
 }
 
