@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Client;
 import model.Connexio;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.io.IOException;
  */
 public class App extends Application {
 
+	static Client clientLogin = new Client();
 	
     private static Scene scene;
 

@@ -16,6 +16,10 @@ public Client(String nom, String cognom, String adreça, String dni, int telefon
 		super(dni);
 	}
 
+	public Client() {
+		
+	}
+
 	public String getCorreu() {
 		return correu;
 	}
