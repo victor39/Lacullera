@@ -4,8 +4,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -15,98 +13,50 @@
    <children>
       <HBox prefHeight="800.0" prefWidth="1002.0">
          <children>
-            <AnchorPane fx:id="idPanelDades" prefHeight="800.0" prefWidth="476.0">
+            <AnchorPane prefHeight="800.0" prefWidth="496.0">
                <children>
-                  <Text layoutX="10.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTRA LES TEVES DADES:" textAlignment="CENTER" wrappingWidth="402.13671875">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="TFNom" layoutX="52.0" layoutY="99.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu nom:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="TFCognom" layoutX="52.0" layoutY="177.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu cognom:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="TFDni" layoutX="52.0" layoutY="254.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu dni:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="TFTelefon" layoutX="53.0" layoutY="334.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu telefon:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="TFCorreu" layoutX="52.0" layoutY="413.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra el teu correu:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="TFAdreca" layoutX="52.0" layoutY="490.0" prefHeight="51.0" prefWidth="385.0" promptText="Entra la teva adreça:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="BtnReservar" layoutX="114.0" layoutY="627.0" mnemonicParsing="false" onAction="#agafarDades" prefHeight="79.0" prefWidth="262.0" text="Seguent">
+                <AnchorPane fx:id="panelTria" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="511.0">
+                     <children>
+                        <Button fx:id="BtnSeguent" layoutX="165.0" layoutY="518.0" mnemonicParsing="false" onAction="#seguentTorn" onMouseClicked="#seguentTorn" prefHeight="53.0" prefWidth="164.0" text="Seguent">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Text layoutX="45.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tria un restaurant de la llista " wrappingWidth="420.13671875">
+                           <font>
+                              <Font size="39.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="cmbTriaRestaurant" layoutX="61.0" layoutY="365.0" prefHeight="71.0" prefWidth="390.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="panelTorn" minHeight="0.0" minWidth="0.0" onMouseClicked="#submit" prefHeight="410.0" prefWidth="498.0">
+               <children>
+                  <Button fx:id="btnReservar" layoutX="322.0" layoutY="625.0" mnemonicParsing="false" onAction="#reservar" prefHeight="61.0" prefWidth="135.0" text="Reservar">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="800.0" prefWidth="496.0">
-               <children>
-                  <SplitPane dividerPositions="0.48115577889447236" layoutX="3.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="515.0">
-                    <items>
-                      <AnchorPane fx:id="panelTria" minHeight="0.0" minWidth="0.0" onMouseClicked="#agafarDades" prefHeight="388.0" prefWidth="462.0">
-                           <children>
-                              <Button fx:id="BtnSeguent" layoutX="137.0" layoutY="304.0" mnemonicParsing="false" onAction="#submit" prefHeight="53.0" prefWidth="164.0" text="Seguent">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Button>
-                              <Text layoutX="24.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tria un restaurant de la llista " wrappingWidth="420.13671875">
-                                 <font>
-                                    <Font size="39.0" />
-                                 </font>
-                              </Text>
-                              <ComboBox fx:id="cmbTriaRestaurant" layoutX="39.0" layoutY="209.0" onMouseClicked="#agafarDades" prefHeight="71.0" prefWidth="390.0" />
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane fx:id="panelTorn" minHeight="0.0" minWidth="0.0" onMouseClicked="#submit" prefHeight="410.0" prefWidth="498.0">
-                           <children>
-                              <Button fx:id="btnReservar" layoutX="308.0" layoutY="311.0" mnemonicParsing="false" onAction="#reservar" prefHeight="61.0" prefWidth="135.0" text="Reservar">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Button>
-                              <Text layoutX="66.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Comensals:" textAlignment="CENTER">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Spinner fx:id="spnComensals" layoutX="68.0" layoutY="110.0" prefHeight="37.0" prefWidth="115.0" />
-                              <ComboBox fx:id="cmbTorn" layoutX="68.0" layoutY="197.0" onMouseClicked="#submit" prefHeight="47.0" prefWidth="270.0" />
-                              <Text fx:id="txtNomRestaurant" layoutX="39.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui nom de RESTAURANT" textAlignment="CENTER" wrappingWidth="437.47003173828125">
-                                 <font>
-                                    <Font size="36.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="47.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Triar Torn:" textAlignment="CENTER" wrappingWidth="147.625">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <DatePicker fx:id="data" layoutX="66.0" layoutY="286.0" />
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
+                  <Text layoutX="74.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Comensals:" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Spinner fx:id="spnComensals" layoutX="74.0" layoutY="266.0" prefHeight="37.0" prefWidth="115.0" />
+                  <ComboBox fx:id="cmbTorn" layoutX="84.0" layoutY="440.0" onMouseClicked="#submit" prefHeight="47.0" prefWidth="270.0" />
+                  <Text fx:id="txtNomRestaurant" layoutX="27.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui nom de RESTAURANT" textAlignment="CENTER" wrappingWidth="437.47003173828125">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="74.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Triar Torn:" textAlignment="CENTER" wrappingWidth="147.625">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <DatePicker fx:id="data" layoutX="84.0" layoutY="529.0" />
                </children>
             </AnchorPane>
          </children>

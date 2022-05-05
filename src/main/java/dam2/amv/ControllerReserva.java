@@ -111,103 +111,23 @@ public class ControllerReserva implements Initializable {
 
 		panelTria.setDisable(true);
 		panelTorn.setDisable(true);
+        listaRestaurant = FXCollections.observableArrayList();
+        cmbTriaRestaurant.setItems(listaRestaurant);
+		RestaurantDAOImpl.Tots(con, listaRestaurant);
+		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
+		spnComensals.setValueFactory(valueFactory);
 
-	}
+		con = new Connexio();
 
-	@FXML
-	void agafarDades(ActionEvent event) throws IOException {
+		ClientDAO client = new ClientDAOImpl();
 
-		if (!TFNom.getText().isEmpty() && !TFCognom.getText().isEmpty() && !TFDni.getText().isEmpty()
-				&& !TFAdreca.getText().isEmpty() && !TFCorreu.getText().isEmpty() && !TFTelefon.getText().isEmpty()) {
-
-			String Nom = TFNom.getText();
-			String Cognom = TFCognom.getText();
-
-			String Dni = TFDni.getText();
-			String Adreca = TFAdreca.getText();
-			String Correu = TFCorreu.getText();
-
-			String Telefon = TFTelefon.getText();
-			int Telefono = Integer.parseInt(Telefon);
-
-			listaRestaurant = FXCollections.observableArrayList();
-
-			cmbTriaRestaurant.setItems(listaRestaurant);
-			RestaurantDAOImpl.Tots(con, listaRestaurant);
-
-			SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
-			spnComensals.setValueFactory(valueFactory);
-
-			con = new Connexio();
-
-			ClientDAO client = new ClientDAOImpl();
-
-			if (!validarDNI(TFDni.getText())) {
-				Alert confirmacio = new Alert(AlertType.CONFIRMATION);
-				confirmacio.initModality(Modality.WINDOW_MODAL);
-				confirmacio.setTitle("El dni no es el correcte  ");
-				confirmacio.setContentText("Dni incorrecte");
-
-				Optional<ButtonType> result = confirmacio.showAndWait();
-				if (result.isPresent() && result.get() == ButtonType.OK) {
-
-					Alert missatge = new Alert(AlertType.ERROR);
-					missatge.setTitle("Posa un Dni correcte ");
-					missatge.setContentText("Tornar a posar un Dni correcte");
-				}
-
-			} else if (TFTelefon.getText().length() != 9) {
-				Alert confirmacio = new Alert(AlertType.CONFIRMATION);
-				confirmacio.initModality(Modality.WINDOW_MODAL);
-				confirmacio.setTitle("El telefon no es correcte  ");
-				confirmacio.setContentText("Telefon incorrecte");
-
-				Optional<ButtonType> result = confirmacio.showAndWait();
-				if (result.isPresent() && result.get() == ButtonType.OK) {
-
-					Alert missatge = new Alert(AlertType.ERROR);
-					missatge.setTitle("Posa un Telefon correcte ");
-					missatge.setContentText("Tornar a posar un Telefon correcte");
-				}
-				/*
-				 * else if (!validarEmail(TFTelefon.getText())) { Alert confirmacio = new
-				 * Alert(AlertType.CONFIRMATION);
-				 * confirmacio.initModality(Modality.WINDOW_MODAL);
-				 * confirmacio.setTitle("El email no es correcte  ");
-				 * confirmacio.setContentText("Posa un email correcte");
-				 * 
-				 * Optional<ButtonType> result = confirmacio.showAndWait(); if
-				 * (result.isPresent() && result.get() == ButtonType.OK) {
-				 * 
-				 * Alert missatge = new Alert(AlertType.ERROR);
-				 * missatge.setTitle("Posa un Email correcte ");
-				 * missatge.setContentText("Tornar a posar un Email correcte");
-				 * 
-				 */
-			} else {
-
-				idPanelDades.setDisable(false);
-				panelTria.setDisable(false);
-
-				listaRestaurant = FXCollections.observableArrayList();
-
-				cmbTriaRestaurant.setItems(listaRestaurant);
-				RestaurantDAOImpl.Tots(con, listaRestaurant);
-			}
-		}
-
+		cmbTriaRestaurant.setItems(listaRestaurant);
+		RestaurantDAOImpl.Tots(con, listaRestaurant);
 	}
 
 	@FXML
 	void reservar(ActionEvent event) {
 
-		String Nom = TFNom.getText();
-		String Cognom = TFCognom.getText();
-		String Dni = TFDni.getText();
-		String Adreca = TFAdreca.getText();
-		String Correu = TFCorreu.getText();
-		String Telefon = TFTelefon.getText();
-		int Telefono = Integer.parseInt(Telefon);
 
 		Restaurant restaurant = new Restaurant(
 				cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(), "", "", 0, 0, 0);
@@ -215,9 +135,13 @@ public class ControllerReserva implements Initializable {
 		RestaurantDAOImpl.cercaRestaurant(con, restaurant);
 
 		con = new Connexio();
+		
+		
 
 		ClientDAO client = new ClientDAOImpl();
-		String password = "";
+		
+		client = app.clientLogin();
+		
 
 		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu, password);
 
@@ -272,7 +196,7 @@ public class ControllerReserva implements Initializable {
 	}
 
 	@FXML
-	void submit(ActionEvent event) {
+	void seguentTorn(ActionEvent event) {
 
 		panelTorn.setDisable(false);
 
@@ -289,43 +213,12 @@ public class ControllerReserva implements Initializable {
 
 		TornDAOImpl.Tots(con, llistaTorns, idRestaurant);
 
-		System.out.println(llistaTorns.size());
 
 		cmbTorn.setOnAction(e -> System.out.println("Nova selecció: " + cmbTorn.getValue()));
 
 		panelTria.setDisable(false);
 		idPanelDades.setDisable(false);
 
-	}
-
-	static boolean validarDNI(String dni) {
-		int contadorNumero;
-		int contadorTabla;
-		char[] letraDni = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
-				'H', 'L', 'C', 'K', 'E' };
-		char[] numero = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-		boolean letra = false;
-		contadorNumero = 0;
-		if (dni.length() == 9) {
-			for (int i = 0; i < 8; i++) {
-
-				for (int j = 0; j < numero.length; j++) {
-					if (dni.charAt(i) == numero[j]) {
-						contadorNumero++;
-					}
-				}
-			}
-		}
-		contadorTabla = 0;
-		while (letra == false && contadorNumero == 8) {
-			if (dni.charAt(8) == letraDni[contadorTabla]) {
-				letra = true;
-			} else {
-				contadorTabla++;
-			}
-
-		}
-		return letra;
 	}
 
 }

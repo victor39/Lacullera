@@ -61,7 +61,7 @@ public class ControllerLogin {
 		
 				int resultat = ClientDAOImpl.login(con, correu, pasword);
 				
-				if (resultat == 0) {
+				if (resultat == 1) {
 					Alert missatge = new Alert(AlertType.INFORMATION);
 					missatge.setTitle("Login correcte  ");
 					missatge.setContentText("Ja pots començar ");

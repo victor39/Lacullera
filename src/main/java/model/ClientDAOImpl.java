@@ -37,6 +37,8 @@ public class ClientDAOImpl implements ClientDAO {
 	}
 
 	public static int login(Connexio con, String correu, String contrasenya) {
+		
+		int res = 0;
 
 		try {
 			String sql = "SELECT Correu, contrasena FROM Client where Correu = '" + correu + "' and contrasena = '" + contrasenya + "';";
@@ -46,15 +48,15 @@ public class ClientDAOImpl implements ClientDAO {
 			while (rst.next()) {
 				String Correu = rst.getString("Correu");
 				String Pasword = rst.getString("contrasena");
-				
 				System.out.println(Correu + "/" + Pasword);
+				res = 1;
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return 0;
+		return res;
 	}
 
 	public static int comprovarDni(Connexio con, String Dni ) {
