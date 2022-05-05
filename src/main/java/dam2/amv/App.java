@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -11,6 +12,7 @@ import model.Client;
 import model.Connexio;
 
 import java.io.IOException;
+
 
 
 /**s
@@ -25,6 +27,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("PaginaPrincipal"), 640, 480);
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("avatar3.png"))); 
         stage.setScene(scene);
         stage.setResizable(true);
         stage.setMaximized(true);
@@ -43,7 +46,6 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-    
     
 
 

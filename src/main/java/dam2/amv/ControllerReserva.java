@@ -111,8 +111,8 @@ public class ControllerReserva implements Initializable {
 
 		panelTria.setDisable(false);
 		panelTorn.setDisable(true);
-        listaRestaurant = FXCollections.observableArrayList();
-        cmbTriaRestaurant.setItems(listaRestaurant);
+		listaRestaurant = FXCollections.observableArrayList();
+		cmbTriaRestaurant.setItems(listaRestaurant);
 		RestaurantDAOImpl.Tots(con, listaRestaurant);
 		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
 		spnComensals.setValueFactory(valueFactory);
@@ -128,62 +128,71 @@ public class ControllerReserva implements Initializable {
 	@FXML
 	void reservar(ActionEvent event) {
 
-
 		Restaurant restaurant = new Restaurant(
 				cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(), "", "", 0, 0, 0);
 
 		RestaurantDAOImpl.cercaRestaurant(con, restaurant);
 
 		con = new Connexio();
-		
-		
 
 		ClientDAO client = new ClientDAOImpl();
 		Client clt = App.clientLogin;
 
-	if (ClientDAOImpl.comprovarDni(con, clt.getDni()) != 1) {
-		
-		if (restaurant.getCapacitatactual() > spnComensals.getValue()) {
+		if (ClientDAOImpl.comprovarDni(con, clt.getDni()) == 1) {
 
-			Alert confirmacio = new Alert(AlertType.CONFIRMATION);
-			confirmacio.initModality(Modality.WINDOW_MODAL);
-			confirmacio.setTitle("Estas segur que vols fer la reserva? ");
-			confirmacio.setContentText("Prem Enter si es aixi ");
+			if (restaurant.getCapacitatactual() > spnComensals.getValue()) {
 
-			Optional<ButtonType> result = confirmacio.showAndWait();
-			if (result.isPresent() && result.get() == ButtonType.OK) {
-				Reserva res = new Reserva(clt, cmbTriaRestaurant.getValue(), LocalDate.now(), cmbTorn.getValue(),
-						spnComensals.getValue(), null);
-				ReservaDAO reserva = new ReservaDAOImpl();
-				int resultat = reserva.create(con, res);
-				if (resultat == 1) {
-					Alert missatge = new Alert(AlertType.INFORMATION);
-					missatge.setTitle("Reserva feta ");
-					missatge.setContentText("Perfecte , ja tens la teva reserva");
-					missatge.setContentText("  Nom reserva : " + res.getClient().getNom() + "\n Nom Restaurant :"
-							+ res.getRestaurant().getNom() + "\n  Dia :" + data.getValue() + "\n  Hora : "
-							+ res.getTorn().getHoraInici().toString());
+				Alert confirmacio = new Alert(AlertType.CONFIRMATION);
+				confirmacio.initModality(Modality.WINDOW_MODAL);
+				confirmacio.setTitle("Estas segur que vols fer la reserva? ");
+				confirmacio.setContentText("Prem Enter si es aixi ");
 
-					missatge.setHeaderText("Alerta:");
-					missatge.show();
+				Optional<ButtonType> result = confirmacio.showAndWait();
+				if (result.isPresent() && result.get() == ButtonType.OK) {
+					Reserva res = new Reserva(clt, cmbTriaRestaurant.getValue(), LocalDate.now(), cmbTorn.getValue(),
+							spnComensals.getValue(), null);
+					ReservaDAO reserva = new ReservaDAOImpl();
+					int resultat = reserva.create(con, res);
+					if (resultat == 1) {
+						Alert missatge = new Alert(AlertType.INFORMATION);
+						missatge.setTitle("Reserva feta ");
+						missatge.setContentText("Perfecte , ja tens la teva reserva");
+						missatge.setContentText("  Nom reserva : " + res.getClient().getNom() + "\n Nom Restaurant :"
+								+ res.getRestaurant().getNom() + "\n  Dia :" + data.getValue() + "\n  Hora : "
+								+ res.getTorn().getHoraInici().toString());
 
-				} else {
-					Alert missatge = new Alert(AlertType.ERROR);
-					missatge.setTitle("Hi ha un problema, no pots fer la reserva");
-					missatge.setContentText("Tornar a provar ");
-					missatge.setHeaderText("Alerta:");
-					missatge.show();
+						missatge.setHeaderText("Alerta:");
+						missatge.show();
 
+					} else {
+						Alert missatge = new Alert(AlertType.ERROR);
+						missatge.setTitle("Hi ha un problema, no pots fer la reserva");
+						missatge.setContentText("Tornar a provar ");
+						missatge.setHeaderText("Alerta:");
+						missatge.show();
+
+					}
+				}
+				else {
+					
 				}
 			}
-		}
+			else {
+				
+				
+				System.out.println(restaurant.getCapacitatactual() + " " + spnComensals.getValue());
+				
+				Alert confirmacio = new Alert(AlertType.ERROR);
+				confirmacio.initModality(Modality.WINDOW_MODAL);
+				confirmacio.setTitle("No hi ha prou espai per tanta gent! ");
+				confirmacio.setContentText("");
+				confirmacio.show();
+			}
+			
 
 		} else {
-
-			Alert confirmacio = new Alert(AlertType.ERROR);
-			confirmacio.initModality(Modality.WINDOW_MODAL);
-			confirmacio.setTitle("No hi ha prou espai per tanta gent! ");
-			confirmacio.setContentText("");
+			
+			
 
 		}
 
@@ -206,7 +215,6 @@ public class ControllerReserva implements Initializable {
 		System.out.println(idRestaurant);
 
 		TornDAOImpl.Tots(con, llistaTorns, idRestaurant);
-
 
 		cmbTorn.setOnAction(e -> System.out.println("Nova selecció: " + cmbTorn.getValue()));
 
