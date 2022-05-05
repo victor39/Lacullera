@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-	static Client clientLogin = new Client();
+	public static Client clientLogin = new Client();
 	
     private static Scene scene;
 

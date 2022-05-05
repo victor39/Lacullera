@@ -21,7 +21,6 @@ public class ClientDAOImpl implements ClientDAO {
 				int Telefon = rst.getInt("Telefon");
 				String Adreca = rst.getString("Adreca");
 				String  Correu = rst.getString("Correu");
-
 				String Pasword = rst.getString("Contraseña");
 				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu,Pasword);
 
@@ -36,25 +35,41 @@ public class ClientDAOImpl implements ClientDAO {
 		return array.size();
 	}
 
-	public static int login(Connexio con, String correu, String contrasenya) {
+	public static int login(Connexio con, String correu, String contrasenya, Client client) {
 
+		int res = 0;
+		
 		try {
-			String sql = "SELECT Correu, contrasena FROM Client where Correu = '" + correu + "' and contrasena = '" + contrasenya + "';";
+			String sql = "SELECT * FROM Client where Correu = '" + correu + "' and contrasena = '" + contrasenya + "';";
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			ResultSet rst = stm.executeQuery(sql);
 
 			while (rst.next()) {
-				String Correu = rst.getString("Correu");
-				String Pasword = rst.getString("contrasena");
+				String dni = rst.getString("Dni");
+				String Nom = rst.getString("Nom");
+				String Cognom = rst.getString("Cognom");
+				int Telefon = rst.getInt("Telefon");
+				String Adreca = rst.getString("Adreca");
+				String  Correu = rst.getString("Correu");
+				String Contraseña = rst.getString("Contraseña");
 				
-				System.out.println(Correu + "/" + Pasword);
+				client.setDni(dni);
+				client.setNom(Nom);
+				client.setCognom(Cognom);
+				client.setTelefon(Telefon);
+				client.setAdreça(Adreca);
+				client.setCorreu(Correu);
+				client.setPasword(Contraseña);
+				
+				res = 1;
+				
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return 0;
+		return res;
 	}
 
 	public static int comprovarDni(Connexio con, String Dni ) {
@@ -67,6 +82,7 @@ public class ClientDAOImpl implements ClientDAO {
 			ResultSet rst = stm.executeQuery(sql);
 
 			while (rst.next()) {
+				/*
 				String dni = rst.getString("Dni");
 				String Nom = rst.getString("Nom");
 				String Cognom = rst.getString("Cognom");
@@ -74,7 +90,9 @@ public class ClientDAOImpl implements ClientDAO {
 				String Adreca = rst.getString("Adreca");
 				String  Correu = rst.getString("Correu");
 				String Contraseña = rst.getString("Contraseña");
+				
 				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu,Contraseña);
+				*/
 				res = 1;
 
 			}
