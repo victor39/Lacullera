@@ -17,7 +17,7 @@
                <children>
                 <AnchorPane fx:id="panelTria" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="511.0">
                      <children>
-                        <Button fx:id="BtnSeguent" layoutX="165.0" layoutY="518.0" mnemonicParsing="false" onAction="#seguentTorn" onMouseClicked="#seguentTorn" prefHeight="53.0" prefWidth="164.0" text="Seguent">
+                        <Button fx:id="BtnSeguent" layoutX="165.0" layoutY="518.0" mnemonicParsing="false" onAction="#seguentTorn" prefHeight="53.0" prefWidth="164.0" text="Seguent">
                            <font>
                               <Font size="24.0" />
                            </font>

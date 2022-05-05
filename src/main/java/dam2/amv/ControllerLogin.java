@@ -59,9 +59,11 @@ public class ControllerLogin {
 			Optional<ButtonType> result = confirmacio.showAndWait();
 			if (result.isPresent() && result.get() == ButtonType.OK) {
 		
-				int resultat = ClientDAOImpl.login(con, correu, pasword);
+				int resultat = ClientDAOImpl.login(con, correu, pasword, App.clientLogin);
 				
+
 				if (resultat == 1) {
+
 					Alert missatge = new Alert(AlertType.INFORMATION);
 					missatge.setTitle("Login correcte  ");
 					missatge.setContentText("Ja pots començar ");
