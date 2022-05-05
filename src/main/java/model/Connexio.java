@@ -1,14 +1,24 @@
 package model;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
+
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
+
 
 public class Connexio {
 
 	private Connection connexio;
 	
-	public Connexio() {
+	/*public Connexio() {
 		try {
 			
 			this.connexio = DriverManager.getConnection("jdbc:mysql://ffames.cat/projecte_amv","fora","Dam2020!");
@@ -16,7 +26,7 @@ public class Connexio {
 			// TODO Auto-generated catch block
 			System.out.println(e.toString());
 		}
-	}
+	}*/
 	
 	public Connexio(String host, String bd, int port, String usuari, String contrasenya) {
 		try {
@@ -26,6 +36,32 @@ public class Connexio {
 			e.printStackTrace();
 		}
 	}
+	public Connexio() {
+		 try
+	        {
+	     	    SAXBuilder sax = new SAXBuilder();
+	            Document doc = (Document) sax.build("config.xml");
+	            Element arrel = (Element) doc.getRootElement();
+	            
+	            List<Element> llista= arrel.getChildren("config"); 
+	            arrel.getChild("bbdd"); //agafa 1 fill
+	                for (Element target : llista) {
+			            String host = target.getChildText("host");
+			            String bd = target.getChildText("bd");
+			            String port = target.getChildText("port");
+			            String usuari = target.getChildText("usuari");
+			            String contraseña = target.getChildText("contraseña");
+			            
+						this.connexio = DriverManager.getConnection("jdbc:mysql://"+ host  + ":" + Integer.parseInt(port) + "/" + bd , usuari , contraseña);
+	                }
+				    		
+			
+		} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+}
 	
 	public Connection getConnexio() {
 		return connexio;

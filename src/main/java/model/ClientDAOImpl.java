@@ -21,7 +21,8 @@ public class ClientDAOImpl implements ClientDAO {
 				int Telefon = rst.getInt("Telefon");
 				String Adreca = rst.getString("Adreca");
 				String  Correu = rst.getString("Correu");
-				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu);
+				String Contraseña = rst.getString("Contraseña");
+				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu,Contraseña);
 				array.add(client);
 
 			}
@@ -49,7 +50,8 @@ public class ClientDAOImpl implements ClientDAO {
 				int Telefon = rst.getInt("Telefon");
 				String Adreca = rst.getString("Adreca");
 				String  Correu = rst.getString("Correu");
-				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu);
+				String Contraseña = rst.getString("Contraseña");
+				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu,Contraseña);
 				res = 1;
 
 			}
@@ -68,9 +70,9 @@ public class ClientDAOImpl implements ClientDAO {
 		int res = 0;
 
 		try {
-			String sql = "INSERT INTO Client (Dni, Nom, Cognom, Telefon, Adreca, Correu) VALUES ('" + client.getDni()
+			String sql = "INSERT INTO Client (Dni, Nom, Cognom, Telefon, Adreca, Correu,Contraseña) VALUES ('" + client.getDni()
 			+ "','" + client.getNom() + "','" + client.getCognom() + "'," + client.getTelefon() + ",'"
-			+ client.getAdreça() + "','" + client.getCorreu() + "');";
+			+ client.getAdreça() + "','" + client.getCorreu() + "','" + client.getContraseña() + "');";
 
 			System.out.println(sql);
 

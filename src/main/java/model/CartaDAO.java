@@ -8,7 +8,6 @@ public interface CartaDAO {
 		return 0;
 	}
 
-	// Bicicleta cercaArticle(Bicicleta art, Conexio connexio);
 	int create(Carta carta, Connexio con);
 
 	int update(Carta carta, Connexio con);

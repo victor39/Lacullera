@@ -1,0 +1,9 @@
+<config>
+	<bbdd>
+		<host>//ffames.cat</host>
+		<bd>projecte_amv</bd>
+		<port>3306</port>
+		<usuari>fora</usuari>
+		<contraseña>Dam2020!</contraseña>
+	</bbdd>
+</config>
