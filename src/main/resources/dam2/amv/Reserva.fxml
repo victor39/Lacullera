@@ -32,7 +32,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-          <AnchorPane fx:id="panelTorn" minHeight="0.0" minWidth="0.0" onMouseClicked="#submit" prefHeight="410.0" prefWidth="498.0">
+          <AnchorPane fx:id="panelTorn" minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="498.0">
                <children>
                   <Button fx:id="btnReservar" layoutX="322.0" layoutY="625.0" mnemonicParsing="false" onAction="#reservar" prefHeight="61.0" prefWidth="135.0" text="Reservar">
                      <font>
@@ -45,7 +45,7 @@
                      </font>
                   </Text>
                   <Spinner fx:id="spnComensals" layoutX="74.0" layoutY="266.0" prefHeight="37.0" prefWidth="115.0" />
-                  <ComboBox fx:id="cmbTorn" layoutX="84.0" layoutY="440.0" onMouseClicked="#submit" prefHeight="47.0" prefWidth="270.0" />
+                  <ComboBox fx:id="cmbTorn" layoutX="84.0" layoutY="440.0" prefHeight="47.0" prefWidth="270.0" />
                   <Text fx:id="txtNomRestaurant" layoutX="27.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui nom de RESTAURANT" textAlignment="CENTER" wrappingWidth="437.47003173828125">
                      <font>
                         <Font size="36.0" />

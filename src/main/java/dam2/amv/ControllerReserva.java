@@ -109,7 +109,7 @@ public class ControllerReserva implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		panelTria.setDisable(true);
+		panelTria.setDisable(false);
 		panelTorn.setDisable(true);
         listaRestaurant = FXCollections.observableArrayList();
         cmbTriaRestaurant.setItems(listaRestaurant);
@@ -139,17 +139,10 @@ public class ControllerReserva implements Initializable {
 		
 
 		ClientDAO client = new ClientDAOImpl();
+		Client clt = App.clientLogin;
+
+	if (ClientDAOImpl.comprovarDni(con, clt.getDni()) != 1) {
 		
-		client = app.clientLogin();
-		
-
-		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu, password);
-
-		if (ClientDAOImpl.comprovarDni(con, cliento.getDni()) != 1) {
-
-			client.create(con, cliento);
-		}
-
 		if (restaurant.getCapacitatactual() > spnComensals.getValue()) {
 
 			Alert confirmacio = new Alert(AlertType.CONFIRMATION);
@@ -159,7 +152,7 @@ public class ControllerReserva implements Initializable {
 
 			Optional<ButtonType> result = confirmacio.showAndWait();
 			if (result.isPresent() && result.get() == ButtonType.OK) {
-				Reserva res = new Reserva(cliento, cmbTriaRestaurant.getValue(), LocalDate.now(), cmbTorn.getValue(),
+				Reserva res = new Reserva(clt, cmbTriaRestaurant.getValue(), LocalDate.now(), cmbTorn.getValue(),
 						spnComensals.getValue(), null);
 				ReservaDAO reserva = new ReservaDAOImpl();
 				int resultat = reserva.create(con, res);
@@ -183,6 +176,7 @@ public class ControllerReserva implements Initializable {
 
 				}
 			}
+		}
 
 		} else {
 
@@ -217,7 +211,6 @@ public class ControllerReserva implements Initializable {
 		cmbTorn.setOnAction(e -> System.out.println("Nova selecció: " + cmbTorn.getValue()));
 
 		panelTria.setDisable(false);
-		idPanelDades.setDisable(false);
 
 	}
 

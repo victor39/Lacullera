@@ -21,7 +21,7 @@ public class ClientDAOImpl implements ClientDAO {
 				int Telefon = rst.getInt("Telefon");
 				String Adreca = rst.getString("Adreca");
 				String  Correu = rst.getString("Correu");
-				String Pasword = rst.getString("Contraseña");
+				String Pasword = rst.getString("contrasena");
 				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu,Pasword);
 
 				array.add(client);
@@ -54,7 +54,7 @@ public class ClientDAOImpl implements ClientDAO {
 				int Telefon = rst.getInt("Telefon");
 				String Adreca = rst.getString("Adreca");
 				String  Correu = rst.getString("Correu");
-				String Contraseña = rst.getString("Contraseña");
+				String contrasena = rst.getString("contrasena");
 				
 				client.setDni(dni);
 				client.setNom(Nom);
@@ -62,7 +62,7 @@ public class ClientDAOImpl implements ClientDAO {
 				client.setTelefon(Telefon);
 				client.setAdreça(Adreca);
 				client.setCorreu(Correu);
-				client.setPasword(Contraseña);
+				client.setPasword(contrasena);
 				
 				res = 1;
 				
@@ -75,12 +75,12 @@ public class ClientDAOImpl implements ClientDAO {
 		return res;
 	}
 
-	public static int comprovarDni(Connexio con, String Dni ) {
+	public static int comprovarDni(Connexio con, String dni ) {
 
 		int res = 0;
 
 		try {
-			String sql = "SELECT Dni FROM Client where Dni = " + Dni;
+			String sql = "SELECT Dni FROM Client where Dni = '" + dni + "'";
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			ResultSet rst = stm.executeQuery(sql);
 
@@ -92,9 +92,9 @@ public class ClientDAOImpl implements ClientDAO {
 				int Telefon = rst.getInt("Telefon");
 				String Adreca = rst.getString("Adreca");
 				String  Correu = rst.getString("Correu");
-				String Contraseña = rst.getString("Contraseña");
+				String contrasena = rst.getString("contrasena");
 				
-				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu,Contraseña);
+				Client client = new Client(dni,Nom,Cognom,Adreca,Telefon,Correu,contrasena);
 				*/
 				res = 1;
 
