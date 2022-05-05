@@ -93,7 +93,7 @@ public class ControllerRegistre {
 		String Telefon = TFTelefon.getText();
 		int Telefono = Integer.parseInt(Telefon);
 
-		String pswd = TFContrasenya.getText();
+		String password = TFContrasenya.getText();
 
 		con = new Connexio();
 
@@ -129,8 +129,7 @@ public class ControllerRegistre {
 
 		}
 
-		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu, pswd);
-
+		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu, password);
 		client.create(con, cliento);
 		
 	 	

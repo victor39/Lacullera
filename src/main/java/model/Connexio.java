@@ -43,8 +43,7 @@ public class Connexio {
 	            Document doc = (Document) sax.build("config.xml");
 	            Element arrel = (Element) doc.getRootElement();
 	            
-	            List<Element> llista= arrel.getChildren("config"); 
-	            arrel.getChild("bbdd"); //agafa 1 fill
+	            List<Element> llista= arrel.getChildren("bbdd"); 
 	                for (Element target : llista) {
 			            String host = target.getChildText("host");
 			            String bd = target.getChildText("bd");
@@ -53,6 +52,7 @@ public class Connexio {
 			            String contraseña = target.getChildText("contraseña");
 			            
 						this.connexio = DriverManager.getConnection("jdbc:mysql://"+ host  + ":" + Integer.parseInt(port) + "/" + bd , usuari , contraseña);
+						System.out.println("Entra?");
 	                }
 				    		
 			

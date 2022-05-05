@@ -63,9 +63,9 @@ public class EntrarDadesController {
 
 		ClientDAO client = new ClientDAOImpl();
 
-		Client cliento = new Client(Dni,Nom,Cognom,Adreca,Telefono,Correu);
+		//Client cliento = new Client(Dni,Nom,Cognom,Adreca,Telefono,Correu);
 
-		client.create(con, cliento);
+		//client.create(con, cliento);
 		
 
 		System.out.println("Nom: " + Nom);

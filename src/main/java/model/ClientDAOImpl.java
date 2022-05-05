@@ -39,13 +39,13 @@ public class ClientDAOImpl implements ClientDAO {
 	public static int login(Connexio con, String correu, String contrasenya) {
 
 		try {
-			String sql = "SELECT Correu, Contraseña FROM Client where Correu = '" + correu + "' and Contraseña = '" + contrasenya + "';";
+			String sql = "SELECT Correu, contrasena FROM Client where Correu = '" + correu + "' and contrasena = '" + contrasenya + "';";
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			ResultSet rst = stm.executeQuery(sql);
 
 			while (rst.next()) {
 				String Correu = rst.getString("Correu");
-				String Pasword = rst.getString("Contraseña");
+				String Pasword = rst.getString("contrasena");
 				
 				System.out.println(Correu + "/" + Pasword);
 			}
@@ -94,7 +94,7 @@ public class ClientDAOImpl implements ClientDAO {
 
 		try {
 
-			String sql = "INSERT INTO Client (Dni, Nom, Cognom, Telefon, Adreca, Correu, Contraseña) VALUES ('" + client.getDni()
+			String sql = "INSERT INTO Client (Dni, Nom, Cognom, Telefon, Adreca, Correu, contrasena) VALUES ('" + client.getDni()
 			+ "','" + client.getNom() + "','" + client.getCognom() + "'," + client.getTelefon() + ",'"
 			+ client.getAdreça() + "','" + client.getCorreu() + "', '" + client.getPasword() + "');";
 

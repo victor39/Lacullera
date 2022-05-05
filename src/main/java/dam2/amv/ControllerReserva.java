@@ -169,23 +169,23 @@ public class ControllerReserva implements Initializable {
 					missatge.setTitle("Posa un Telefon correcte ");
 					missatge.setContentText("Tornar a posar un Telefon correcte");
 				}
-
-//			} else if (!validarEmail(TFTelefon.getText())) {
-//				Alert confirmacio = new Alert(AlertType.CONFIRMATION);
-//				confirmacio.initModality(Modality.WINDOW_MODAL);
-//				confirmacio.setTitle("El email no es correcte  ");
-//				confirmacio.setContentText("Posa un email correcte");
-//
-//				Optional<ButtonType> result = confirmacio.showAndWait();
-//				if (result.isPresent() && result.get() == ButtonType.OK) {
-//
-//					Alert missatge = new Alert(AlertType.ERROR);
-//					missatge.setTitle("Posa un Email correcte ");
-//					missatge.setContentText("Tornar a posar un Email correcte");
-//				}
-
+				/*
+				 * else if (!validarEmail(TFTelefon.getText())) { Alert confirmacio = new
+				 * Alert(AlertType.CONFIRMATION);
+				 * confirmacio.initModality(Modality.WINDOW_MODAL);
+				 * confirmacio.setTitle("El email no es correcte  ");
+				 * confirmacio.setContentText("Posa un email correcte");
+				 * 
+				 * Optional<ButtonType> result = confirmacio.showAndWait(); if
+				 * (result.isPresent() && result.get() == ButtonType.OK) {
+				 * 
+				 * Alert missatge = new Alert(AlertType.ERROR);
+				 * missatge.setTitle("Posa un Email correcte ");
+				 * missatge.setContentText("Tornar a posar un Email correcte");
+				 * 
+				 */
 			} else {
-				
+
 				idPanelDades.setDisable(false);
 				panelTria.setDisable(false);
 
@@ -208,24 +208,26 @@ public class ControllerReserva implements Initializable {
 		String Correu = TFCorreu.getText();
 		String Telefon = TFTelefon.getText();
 		int Telefono = Integer.parseInt(Telefon);
-		
-		Restaurant restaurant = new Restaurant(cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(), "", "", 0, 0, 0);
-		
-		RestaurantDAOImpl.cercaRestaurant(con,restaurant);
+
+		Restaurant restaurant = new Restaurant(
+				cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(), "", "", 0, 0, 0);
+
+		RestaurantDAOImpl.cercaRestaurant(con, restaurant);
 
 		con = new Connexio();
 
 		ClientDAO client = new ClientDAOImpl();
+		String password = "";
 
-		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu);
-		
-		if(ClientDAOImpl.comprovarDni(con, cliento.getDni()) != 1) {
-			
+		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu, password);
+
+		if (ClientDAOImpl.comprovarDni(con, cliento.getDni()) != 1) {
+
 			client.create(con, cliento);
 		}
-		
-		if(restaurant.getCapacitatactual() > spnComensals.getValue()) {
-			
+
+		if (restaurant.getCapacitatactual() > spnComensals.getValue()) {
+
 			Alert confirmacio = new Alert(AlertType.CONFIRMATION);
 			confirmacio.initModality(Modality.WINDOW_MODAL);
 			confirmacio.setTitle("Estas segur que vols fer la reserva? ");
@@ -257,17 +259,15 @@ public class ControllerReserva implements Initializable {
 
 				}
 			}
-			
-		}
-		else {
-			
+
+		} else {
+
 			Alert confirmacio = new Alert(AlertType.ERROR);
 			confirmacio.initModality(Modality.WINDOW_MODAL);
 			confirmacio.setTitle("No hi ha prou espai per tanta gent! ");
 			confirmacio.setContentText("");
-			
+
 		}
-		
 
 	}
 
@@ -327,7 +327,5 @@ public class ControllerReserva implements Initializable {
 		}
 		return letra;
 	}
-
-	
 
 }
