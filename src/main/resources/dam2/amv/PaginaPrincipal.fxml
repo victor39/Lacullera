@@ -5,13 +5,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerPaginaPrincipal">
+<AnchorPane fx:id="escena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.ControllerPaginaPrincipal">
    <children>
-      <Button fx:id="BtnLogin" layoutX="495.0" layoutY="258.0" mnemonicParsing="false" prefHeight="103.0" prefWidth="332.0" text="LOGIN">
+      <Button fx:id="BtnLogin" layoutX="495.0" layoutY="258.0" mnemonicParsing="false" onAction="#login" prefHeight="103.0" prefWidth="332.0" text="LOGIN">
          <font>
             <Font size="30.0" />
          </font></Button>
-      <Button fx:id="BtnRegistre" layoutX="493.0" layoutY="464.0" mnemonicParsing="false" prefHeight="103.0" prefWidth="332.0" text="REGISTRE">
+      <Button fx:id="BtnRegistre" layoutX="493.0" layoutY="464.0" mnemonicParsing="false" onAction="#registre" prefHeight="103.0" prefWidth="332.0" text="REGISTRE">
          <font>
             <Font size="30.0" />
          </font></Button>

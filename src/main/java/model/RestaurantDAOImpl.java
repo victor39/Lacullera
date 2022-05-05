@@ -20,7 +20,9 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 				String Nom = rst.getString("Nom");
 				String Adreca = rst.getString("Adreca");
 				int Telefon = rst.getInt("Telefon");
-				Restaurant restaurant = new Restaurant(idRestaurant,Nom , Adreca, Telefon);
+				int Capacitat = rst.getInt("capacitat");
+				int Capacitatactual = rst.getInt("capacitatactual");
+				Restaurant restaurant = new Restaurant(idRestaurant,Nom , Adreca, Telefon, Capacitat, Capacitatactual);
 				array.add(restaurant);
 
 			}
@@ -43,7 +45,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 		try {
 			System.out.println("prova");
-			String sql = "INSERT INTO Restaurant (Nom,Adreca,telefon) VALUES ('" + restaurant.getNom() + "' , '" + restaurant.getAdreca() + "'," + restaurant.getTelefon() + ");";
+			String sql = "INSERT INTO Restaurant (Nom,Adreca,telefon,capacitat,capacitatactual) VALUES ('" + restaurant.getNom() + "' , '" + restaurant.getAdreca() + "'," + restaurant.getTelefon() + "," + restaurant.getCapacitat() + "," + restaurant.getCapacitat()+");";
 			System.out.println("prova");
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
@@ -61,8 +63,8 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		int result = 0;
 
 		try {
-			String sql = "UPDATE restaurant " + "SET Adreca"
-					+ restaurant.getAdreca() + "," + "Telefon" + restaurant.getTelefon() + "WHERE idRestaurant = " + restaurant.getIdRestaurant() + ";";
+			String sql = "UPDATE restaurant " + "SET Adreca = '"
+					+ restaurant.getAdreca() + "'," + "Telefon = '" + restaurant.getTelefon() + "'," + "capacitat = '" + restaurant.getCapacitat() + "' WHERE idRestaurant = " + restaurant.getIdRestaurant() + ";";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
@@ -91,6 +93,35 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public static int cercaRestaurant(Connexio con, Restaurant restaurant) {
+		
+		try {
+			String sql = "SELECT * FROM Restaurant WHERE idRestaurant = " + restaurant.getIdRestaurant() + " ;";
+			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
+			ResultSet rst = stm.executeQuery(sql);
+
+			while (rst.next()) {
+				
+				restaurant.setNom(rst.getString("Nom"));
+				restaurant.setAdreca(rst.getString("Adreca"));
+				restaurant.setTelefon(rst.getInt("Telefon"));
+				restaurant.setCapacitat(rst.getInt("capacitat"));
+				restaurant.setCapacitatactual(rst.getInt("capacitatactual"));
+				
+			}
+//			for (int i = 0; i < array.size(); i++) {
+//				System.out.println("idRestaurant: " + array.get(i).getIdRestaurant() + "Nom : " + array.get(i).getNom()
+//						+ "Adreca" + array.get(i).getAdreca() + "Telefon  " + array.get(i).getTelefon());
+//			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return 1;
+		
 	}
 
 }

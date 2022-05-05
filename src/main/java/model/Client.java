@@ -3,12 +3,13 @@ package model;
 public class Client extends Persona{
 
 	private String correu;
-	private String contraseña;
+	private String pasword;
 	
-	public Client(String nom, String cognom, String adreça, String dni, int telefon, String correu, String contraseña) {
+
+public Client(String nom, String cognom, String adreça, String dni, int telefon, String correu, String pasword) {
 		super(nom, cognom, adreça, dni, telefon);
 		this.correu = correu;
-		this.contraseña = contraseña;
+		this.pasword = pasword;
 	}
 	
 	public Client(String dni) {
@@ -16,17 +17,20 @@ public class Client extends Persona{
 	}
 
 	public String getCorreu() {
-		return this.correu;
+		return correu;
 	}
 
 	public void setCorreu(String correu) {
 		this.correu = correu;
 	}
-	public String getContraseña() {
-		return this.contraseña;
+	
+	
+	public void setPasword(String pasword) {
+		this.pasword = pasword;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	
+	public String getPasword() {
+		return this.pasword;
 	}
 
 	@Override

@@ -58,7 +58,7 @@ public class ControllerConfiguracioUsuari {
 
 		ClientDAOImpl client = new ClientDAOImpl();
 
-		List<Client> cliento = (List<Client>) new Client(Dni,Nom,Cognom,Adreca,Telefono,Correu);
+		List<Client> cliento = (List<Client>) new Client(Dni,Nom,Cognom,Adreca,Telefono,Correu,pasword);
 
 		client.Tots(con, cliento);
 		

@@ -3,6 +3,7 @@ package dam2.amv;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -38,6 +39,7 @@ import model.Reserva;
 import model.ReservaDAO;
 import model.ReservaDAOImpl;
 import model.Restaurant;
+import model.RestaurantDAO;
 import model.RestaurantDAOImpl;
 import model.Torn;
 import model.TornDAOImpl;
@@ -183,7 +185,7 @@ public class ControllerReserva implements Initializable {
 //				}
 
 			} else {
-				Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu);
+				
 				idPanelDades.setDisable(false);
 				panelTria.setDisable(false);
 
@@ -206,46 +208,66 @@ public class ControllerReserva implements Initializable {
 		String Correu = TFCorreu.getText();
 		String Telefon = TFTelefon.getText();
 		int Telefono = Integer.parseInt(Telefon);
+		
+		Restaurant restaurant = new Restaurant(cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(), "", "", 0, 0, 0);
+		
+		RestaurantDAOImpl.cercaRestaurant(con,restaurant);
 
 		con = new Connexio();
 
 		ClientDAO client = new ClientDAOImpl();
 
 		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu);
-
-		client.create(con, cliento);
-
-		Alert confirmacio = new Alert(AlertType.CONFIRMATION);
-		confirmacio.initModality(Modality.WINDOW_MODAL);
-		confirmacio.setTitle("Estas segur que vols fer la reserva? ");
-		confirmacio.setContentText("Prem Enter si es aixi ");
-
-		Optional<ButtonType> result = confirmacio.showAndWait();
-		if (result.isPresent() && result.get() == ButtonType.OK) {
-			Reserva res = new Reserva(cliento, cmbTriaRestaurant.getValue(), LocalDate.now(), cmbTorn.getValue(),
-					spnComensals.getValue(), null);
-			ReservaDAO reserva = new ReservaDAOImpl();
-			int resultat = reserva.create(con, res);
-			if (resultat == 1) {
-				Alert missatge = new Alert(AlertType.INFORMATION);
-				missatge.setTitle("Reserva feta ");
-				missatge.setContentText("Perfecte , ja tens la teva reserva");
-				missatge.setContentText("  Nom reserva : " + res.getClient().getNom() + "\n Nom Restaurant :"
-						+ res.getRestaurant().getNom() + "\n  Dia :" + data.getValue() + "\n  Hora : "
-						+ res.getTorn().getHoraInici().toString());
-
-				missatge.setHeaderText("Alerta:");
-				missatge.show();
-
-			} else {
-				Alert missatge = new Alert(AlertType.ERROR);
-				missatge.setTitle("Hi ha un problema, no pots fer la reserva");
-				missatge.setContentText("Tornar a provar ");
-				missatge.setHeaderText("Alerta:");
-				missatge.show();
-
-			}
+		
+		if(ClientDAOImpl.comprovarDni(con, cliento.getDni()) != 1) {
+			
+			client.create(con, cliento);
 		}
+		
+		if(restaurant.getCapacitatactual() > spnComensals.getValue()) {
+			
+			Alert confirmacio = new Alert(AlertType.CONFIRMATION);
+			confirmacio.initModality(Modality.WINDOW_MODAL);
+			confirmacio.setTitle("Estas segur que vols fer la reserva? ");
+			confirmacio.setContentText("Prem Enter si es aixi ");
+
+			Optional<ButtonType> result = confirmacio.showAndWait();
+			if (result.isPresent() && result.get() == ButtonType.OK) {
+				Reserva res = new Reserva(cliento, cmbTriaRestaurant.getValue(), LocalDate.now(), cmbTorn.getValue(),
+						spnComensals.getValue(), null);
+				ReservaDAO reserva = new ReservaDAOImpl();
+				int resultat = reserva.create(con, res);
+				if (resultat == 1) {
+					Alert missatge = new Alert(AlertType.INFORMATION);
+					missatge.setTitle("Reserva feta ");
+					missatge.setContentText("Perfecte , ja tens la teva reserva");
+					missatge.setContentText("  Nom reserva : " + res.getClient().getNom() + "\n Nom Restaurant :"
+							+ res.getRestaurant().getNom() + "\n  Dia :" + data.getValue() + "\n  Hora : "
+							+ res.getTorn().getHoraInici().toString());
+
+					missatge.setHeaderText("Alerta:");
+					missatge.show();
+
+				} else {
+					Alert missatge = new Alert(AlertType.ERROR);
+					missatge.setTitle("Hi ha un problema, no pots fer la reserva");
+					missatge.setContentText("Tornar a provar ");
+					missatge.setHeaderText("Alerta:");
+					missatge.show();
+
+				}
+			}
+			
+		}
+		else {
+			
+			Alert confirmacio = new Alert(AlertType.ERROR);
+			confirmacio.initModality(Modality.WINDOW_MODAL);
+			confirmacio.setTitle("No hi ha prou espai per tanta gent! ");
+			confirmacio.setContentText("");
+			
+		}
+		
 
 	}
 

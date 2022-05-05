@@ -6,18 +6,24 @@ public class Restaurant {
 	private String nom;
 	private String adreca;
 	private int telefon;
+	private int capacitat;
+	private int capacitatactual;
 	
-	public Restaurant(int idRestaurant, String nom, String adreca, int telefon) {
+	public Restaurant(int idRestaurant, String nom, String adreca, int telefon, int capacitat, int capacitatactual) {
 		this.idRestaurant = idRestaurant;
 		this.nom = nom;
 		this.adreca = adreca;
 		this.telefon = telefon;
+		this.capacitat = capacitat;
+		this.capacitatactual = capacitatactual;
 	}
 
-	public Restaurant(String nom, String adreca, int telefon) {
+	public Restaurant(String nom, String adreca, int telefon,int capacitat, int capacitatactual) {
 		this.nom= nom;
 		this.adreca = adreca;
 		this.telefon = telefon;
+		this.capacitat = capacitat;
+		this.capacitatactual = capacitatactual;
 	}
 	
 	public Restaurant(int idRestaurant) {
@@ -33,11 +39,11 @@ public class Restaurant {
 	}
 
 	public int getIdRestaurant() {
-		return idRestaurant;
+		return this.idRestaurant;
 	}
 
 	public String getAdreca() {
-		return adreca;
+		return this.adreca;
 	}
 
 	public void setAdreca(String adreca) {
@@ -45,16 +51,34 @@ public class Restaurant {
 	}
 
 	public int getTelefon() {
-		return telefon;
+		return this.telefon;
 	}
 
 	public void setTelefon(int telefon) {
 		this.telefon = telefon;
 	}
 
+	public int getCapacitat() {
+		return this.capacitat;
+	}
+
+	public void setCapacitat(int capacitat) {
+		this.capacitat = capacitat;
+	}
+	
+	public int getCapacitatactual() {
+		return this.capacitatactual;
+	}
+
+	public void setCapacitatactual(int capacitatactual) {
+		this.capacitatactual = capacitatactual;
+	}
+	
 	@Override
 	public String toString() {
 		return idRestaurant + " - " + nom;
 	}
+	
+	
 	
 }

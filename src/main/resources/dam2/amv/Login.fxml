@@ -4,21 +4,31 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="escena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.ControllerLogin">
    <children>
-      <TextField fx:id="TfCorreu" layoutX="450.0" layoutY="189.0" prefHeight="49.0" prefWidth="345.0" promptText="Correu Electronic">
+      <TextField fx:id="TfCorreu" layoutX="415.0" layoutY="254.0" prefHeight="63.0" prefWidth="439.0" promptText="Correu Electrònic">
          <font>
             <Font size="29.0" />
          </font>
       </TextField>
-      <TextField fx:id="TfContrasenya" layoutX="452.0" layoutY="309.0" prefHeight="49.0" prefWidth="345.0" promptText="Contrasenya">
+      <TextField fx:id="TfContrasenya" layoutX="430.0" layoutY="360.0" prefHeight="63.0" prefWidth="407.0" promptText="Contrasenya">
          <font>
             <Font size="29.0" />
          </font>
       </TextField>
-      <Button fx:id="BtnLogin" layoutX="512.0" layoutY="444.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="232.0" text="LOGIN">
+      <Button fx:id="BtnLogin" layoutX="667.0" layoutY="495.0" mnemonicParsing="false" onAction="#entrar" prefHeight="89.0" prefWidth="232.0" text="LOGIN">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Text layoutX="452.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" textAlignment="CENTER" wrappingWidth="366.13671875">
+         <font>
+            <Font size="72.0" />
+         </font>
+      </Text>
+      <Button fx:id="BtnSortir" layoutX="373.0" layoutY="493.0" mnemonicParsing="false" onAction="#atras" prefHeight="89.0" prefWidth="232.0" text="SORTIR">
          <font>
             <Font size="30.0" />
          </font>
