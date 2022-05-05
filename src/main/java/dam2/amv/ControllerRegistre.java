@@ -1,9 +1,11 @@
 package dam2.amv;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -79,7 +81,7 @@ public class ControllerRegistre {
 	}
 
 	@FXML
-	void agafarDades(ActionEvent event) {
+	void agafarDades(ActionEvent event) throws IOException {
 
 		String Nom = TFNom.getText();
 		String Cognom = TFCognom.getText();
@@ -130,6 +132,11 @@ public class ControllerRegistre {
 		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu, pswd);
 
 		client.create(con, cliento);
+		
+	 	
+    	AnchorPane nuevo;
+    	nuevo = FXMLLoader.load(getClass().getResource("PaginaPrincipal.fxml"));
+    	escena.getChildren().setAll(nuevo);
 
 	}
 }
