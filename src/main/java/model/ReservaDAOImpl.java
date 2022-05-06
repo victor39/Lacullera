@@ -49,7 +49,7 @@ public class ReservaDAOImpl implements ReservaDAO {
 			// String sql = "SELECT * FROM Reserva WHERE idClient = " + id + " AND Data =
 			// curdate();";
 
-			String sql = " SELECT c.Dni,c.Nom,c.Cognom ,c.Telefon ,c.Adreca, c.Correu , r.capacitat, r.idRestaurant ,r.Nom , r.Adreca , r.telefon, t.idHorari , t.idRestaurant , t.DiaSetmana ,t.HoraInici , t.ReservesDisponibles , re.idReserva , re.idClient, re.idRestaurant , re.idTorn , re.Data , re.Comensals , re.Observacions , c.contrasena FROM Reserva re INNER JOIN Restaurant r ON r.idRestaurant = re.idRestaurant INNER JOIN Torn t ON t.idRestaurant = r.idRestaurant INNER JOIN Client c ON c.Dni = re.idClient WHERE re.idClient = '"
+			String sql = " SELECT c.Dni,c.Nom,c.Cognom ,c.Telefon ,c.Adreca, c.Correu , r.capacitat, r.idRestaurant ,r.Nom , r.Adreca , r.telefon, t.idHorari , t.idRestaurant , t.DiaSetmana ,t.HoraInici , t.ReservesDisponibles , re.idReserva , re.idClient, re.idRestaurant , re.idTorn , re.Data , re.Comensals , re.Observacions , c.contrasena FROM Reserva re INNER JOIN Restaurant r ON r.idRestaurant = re.idRestaurant INNER JOIN Torn t ON t.idHorari = re.idTorn INNER JOIN Client c ON c.Dni = re.idClient WHERE re.idClient = '"
 					+ id + "';";
 			
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
