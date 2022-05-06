@@ -52,7 +52,6 @@ public class Connexio {
 			            String contraseña = target.getChildText("contraseña");
 			            
 						this.connexio = DriverManager.getConnection("jdbc:mysql://"+ host  + ":" + Integer.parseInt(port) + "/" + bd , usuari , contraseña);
-						System.out.println("Entra?");
 	                }
 				    		
 			

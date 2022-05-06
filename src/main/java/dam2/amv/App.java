@@ -23,6 +23,7 @@ public class App extends Application {
 	public static Client clientLogin = new Client();
 	
     private static Scene scene;
+    
 
     @Override
     public void start(Stage stage) throws IOException {

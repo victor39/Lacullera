@@ -63,7 +63,7 @@ public class ReservaDAOImpl implements ReservaDAO {
 				String dni = rst.getString("Dni");
 				int telefon = rst.getInt("Telefon");
 				String correu = rst.getString("Adreca");
-				String pasword = rst.getString("Contraseña");
+				String pasword = rst.getString("contrasena");
 				Client client = new Client(nom, cognom, adreca, dni, telefon, correu, pasword);
 
 				int idRestaurant = rst.getInt("idRestaurant");

@@ -64,6 +64,10 @@ public class ClientDAOImpl implements ClientDAO {
 				client.setCorreu(Correu);
 				client.setPasword(contrasena);
 				
+				System.out.println("dni"+dni);
+				System.out.println("nom"+Nom);
+
+				
 				res = 1;
 				
 			}

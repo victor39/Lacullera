@@ -80,6 +80,35 @@ public class ControllerRegistre {
 		return letra;
 	}
 
+	static boolean validarContra(String contra) {
+
+		int contNumero = 0, contLetraMay = 0, contLetraMin = 0;
+		char clave;
+
+		for (int i = 0; i < contra.length(); i++) {
+
+			clave = contra.charAt(i);
+
+			String passValue = String.valueOf(clave);
+
+			if (passValue.matches("[A-Z]")) {
+
+				contLetraMay++;
+
+			} else if (passValue.matches("[a-z]")) {
+
+				contLetraMin++;
+
+			} else if (passValue.matches("[0-9]")) {
+
+				contNumero++;
+
+			}
+
+		}
+		return true;
+	}
+
 	@FXML
 	void agafarDades(ActionEvent event) throws IOException {
 
@@ -129,14 +158,35 @@ public class ControllerRegistre {
 
 		}
 
-		Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu, password);
-		client.create(con, cliento);
-		
-	 	
-    	AnchorPane nuevo;
-    	nuevo = FXMLLoader.load(getClass().getResource("PaginaPrincipal.fxml"));
-    	escena.getChildren().setAll(nuevo);
+		Alert confirmacio = new Alert(AlertType.CONFIRMATION);
+		confirmacio.initModality(Modality.WINDOW_MODAL);
+		Optional<ButtonType> result = confirmacio.showAndWait();
+		if (result.isPresent() && result.get() == ButtonType.OK) {
 
+			boolean resultat = validarContra(TFContrasenya.getText());
+
+			if (resultat == true) {
+
+				Alert missatge = new Alert(AlertType.INFORMATION);
+				missatge.setTitle("Usuari afegit correctament  ");
+				missatge.setContentText("Usuari afegit correctament  " + Nom);
+				missatge.show();
+
+				Client cliento = new Client(Nom, Cognom, Adreca, Dni, Telefono, Correu, password);
+				client.create(con, cliento);
+
+				AnchorPane nuevo;
+				nuevo = FXMLLoader.load(getClass().getResource("PaginaPrincipal.fxml"));
+				escena.getChildren().setAll(nuevo);
+
+			} else {
+				Alert missatge = new Alert(AlertType.ERROR);
+				missatge.setTitle("Contrasenya incorrecta ");
+				missatge.setContentText("Tornar a provar ");
+				missatge.setHeaderText("Alerta: ");
+				missatge.show();
+			}
+
+		}
 	}
 }
-

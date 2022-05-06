@@ -45,18 +45,18 @@
                      </font>
                   </Text>
                   <Spinner fx:id="spnComensals" layoutX="74.0" layoutY="266.0" prefHeight="37.0" prefWidth="115.0" />
-                  <ComboBox fx:id="cmbTorn" layoutX="84.0" layoutY="440.0" prefHeight="47.0" prefWidth="270.0" />
+                  <ComboBox fx:id="cmbTorn" layoutX="61.0" layoutY="480.0" prefHeight="47.0" prefWidth="270.0" />
                   <Text fx:id="txtNomRestaurant" layoutX="27.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui nom de RESTAURANT" textAlignment="CENTER" wrappingWidth="437.47003173828125">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text layoutX="74.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Triar Torn:" textAlignment="CENTER" wrappingWidth="147.625">
+                  <Text layoutX="27.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Triar dia y torn:" textAlignment="CENTER" wrappingWidth="255.5">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <DatePicker fx:id="data" layoutX="84.0" layoutY="529.0" />
+                  <DatePicker fx:id="data" layoutX="70.0" layoutY="421.0" prefHeight="27.0" prefWidth="174.0" />
                </children>
             </AnchorPane>
          </children>

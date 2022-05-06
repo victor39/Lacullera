@@ -70,7 +70,7 @@ public class Torn {
 	
 	@Override
 	public String toString() {
-		return this.horaInici.toString();
+		return horaInici.toString();
 	}
 	
 }

@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
+import model.Client;
 import model.ClientDAO;
 import model.ClientDAOImpl;
 import model.Connexio;
@@ -54,19 +55,24 @@ public class ControllerLogin {
 			String pasword = TfContrasenya.getText();
 			
 			con = new Connexio();
+			
 			Alert confirmacio = new Alert(AlertType.CONFIRMATION);
 			confirmacio.initModality(Modality.WINDOW_MODAL);
+			confirmacio.setTitle("Estas segur ? ");
+			confirmacio.setContentText("Estas segur que aquestes son les credencials ? ");
 			Optional<ButtonType> result = confirmacio.showAndWait();
+			
 			if (result.isPresent() && result.get() == ButtonType.OK) {
 		
 				int resultat = ClientDAOImpl.login(con, correu, pasword, App.clientLogin);
-				
+				ClientDAO client = new ClientDAOImpl();
+				Client clt = App.clientLogin;
 
 				if (resultat == 1) {
 
 					Alert missatge = new Alert(AlertType.INFORMATION);
 					missatge.setTitle("Login correcte  ");
-					missatge.setContentText("Ja pots començar ");
+					missatge.setContentText("Login correcte "+clt.getNom());
 					missatge.show();
 					AnchorPane nuevo;
 					nuevo = FXMLLoader.load(getClass().getResource("Inici.fxml"));

@@ -118,11 +118,7 @@ public class ControllerReserva implements Initializable {
 		spnComensals.setValueFactory(valueFactory);
 
 		con = new Connexio();
-
 		ClientDAO client = new ClientDAOImpl();
-
-		cmbTriaRestaurant.setItems(listaRestaurant);
-		RestaurantDAOImpl.Tots(con, listaRestaurant);
 	}
 
 	@FXML
@@ -137,6 +133,7 @@ public class ControllerReserva implements Initializable {
 
 		ClientDAO client = new ClientDAOImpl();
 		Client clt = App.clientLogin;
+		System.out.println(clt.getNom());
 
 		if (ClientDAOImpl.comprovarDni(con, clt.getDni()) == 1) {
 
@@ -151,13 +148,19 @@ public class ControllerReserva implements Initializable {
 				if (result.isPresent() && result.get() == ButtonType.OK) {
 					Reserva res = new Reserva(clt, cmbTriaRestaurant.getValue(), LocalDate.now(), cmbTorn.getValue(),
 							spnComensals.getValue(), null);
+					int capacitatActual = restaurant.getCapacitatactual()  - spnComensals.getValue();
+					System.out.println("lo que resto " + spnComensals.getValue());
+					System.out.println("la capacitat antes de restar " + restaurant.getCapacitatactual());
+					restaurant.setCapacitatactual(capacitatActual);
+					System.out.print("despues de " + restaurant.getCapacitatactual());
+					// no se añade al restaurante 
 					ReservaDAO reserva = new ReservaDAOImpl();
 					int resultat = reserva.create(con, res);
 					if (resultat == 1) {
 						Alert missatge = new Alert(AlertType.INFORMATION);
 						missatge.setTitle("Reserva feta ");
 						missatge.setContentText("Perfecte , ja tens la teva reserva");
-						missatge.setContentText("  Nom reserva : " + res.getClient().getNom() + "\n Nom Restaurant :"
+						missatge.setContentText("  Nom reserva : " + clt.getNom() + "\n Nom Restaurant :"
 								+ res.getRestaurant().getNom() + "\n  Dia :" + data.getValue() + "\n  Hora : "
 								+ res.getTorn().getHoraInici().toString());
 
