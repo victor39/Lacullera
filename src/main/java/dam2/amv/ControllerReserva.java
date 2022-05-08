@@ -119,6 +119,9 @@ public class ControllerReserva implements Initializable {
 		RestaurantDAOImpl.Tots(con, listaRestaurant);
 		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
 		spnComensals.setValueFactory(valueFactory);
+		
+		LocalDate local = LocalDate.now();
+		local.getDayOfWeek().getValue();
 
 		con = new Connexio();
 		ClientDAO client = new ClientDAOImpl();
@@ -131,7 +134,7 @@ public class ControllerReserva implements Initializable {
 
 		Restaurant restaurant = new Restaurant(
 				cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(), "", "", 0);
-
+		
 		
 		RestaurantDAOImpl.cercaRestaurant(con, restaurant);
 
@@ -191,8 +194,6 @@ public class ControllerReserva implements Initializable {
 
 		} else {
 			
-			
-
 		}
 
 	}

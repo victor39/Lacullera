@@ -50,8 +50,6 @@ public class ControllerModificarReserva implements Initializable {
 	@FXML
 	private SplitPane SplitPane;
 
-	@FXML
-	private TextField TFClient;
 
 	@FXML
 	private AnchorPane anchor;
@@ -134,7 +132,7 @@ public class ControllerModificarReserva implements Initializable {
 		llistaReserva.clear();
 		neteja();
 
-	    String DNI = TFClient.getText();
+	    String DNI = App.clientLogin.getDni();
 	    ReservaDAOImpl.buscar(con, llistaReserva, DNI);
 		
 	}
@@ -142,7 +140,7 @@ public class ControllerModificarReserva implements Initializable {
 	@FXML
 	void actualitzarReserva(ActionEvent event) {//
 		
-		Client clt = new Client(TFClient.getText());
+		Client clt = new Client(App.clientLogin.getDni());
 		Restaurant rest = new Restaurant(tblViewReserva.getSelectionModel().getSelectedItem().getRestaurant().getIdRestaurant());
 		
 		Reserva reserv = new Reserva(tblViewReserva.getSelectionModel().getSelectedItem().getIdReserva(),clt, rest, DPData.getValue(), cmbTorn.getValue(), spnComensals.getValue(), "" );
@@ -161,7 +159,7 @@ public class ControllerModificarReserva implements Initializable {
 	@FXML
 	void eliminarReserva(ActionEvent event) {
 		
-		Client clt = new Client(TFClient.getText());
+		Client clt = new Client(App.clientLogin.getDni());
 		Restaurant rest = new Restaurant(tblViewReserva.getSelectionModel().getSelectedItem().getRestaurant().getIdRestaurant());
 		
 		Reserva reserv = new Reserva(tblViewReserva.getSelectionModel().getSelectedItem().getIdReserva(),clt, rest, DPData.getValue(), cmbTorn.getValue(), spnComensals.getValue(), "" );

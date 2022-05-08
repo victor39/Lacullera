@@ -36,31 +36,24 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Client">
+                              <Label text="Restaurant">
                                  <padding>
                                     <Insets right="5.0" />
                                  </padding>
                               </Label>
-                              <Label text="Restaurant" GridPane.rowIndex="1">
+                              <Label text="Torn" GridPane.rowIndex="1">
                                  <padding>
                                     <Insets right="5.0" />
                                  </padding>
                               </Label>
-                              <Label text="Torn" GridPane.rowIndex="2">
-                                 <padding>
-                                    <Insets right="5.0" />
-                                 </padding>
-                              </Label>
-                              <Label text="Data" GridPane.rowIndex="3" />
-                              <Label text="Comensals" GridPane.rowIndex="4" />
-                              <ComboBox fx:id="cmbTorn" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <DatePicker fx:id="DPData" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Spinner fx:id="spnComensals" prefHeight="25.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <TextField fx:id="TFClient" prefHeight="28.0" prefWidth="174.0" GridPane.columnIndex="1" />
-                              <TextField fx:id="TFRestaurant" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="Data" GridPane.rowIndex="2" />
+                              <Label text="Comensals" GridPane.rowIndex="3" />
+                              <ComboBox fx:id="cmbTorn" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="DPData" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Spinner fx:id="spnComensals" prefHeight="25.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="TFRestaurant" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
                         <HBox alignment="BASELINE_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
