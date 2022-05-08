@@ -39,24 +39,24 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Text layoutX="74.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Comensals:" textAlignment="CENTER">
+                  <Text layoutX="114.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Comensals:" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Spinner fx:id="spnComensals" layoutX="74.0" layoutY="266.0" prefHeight="37.0" prefWidth="115.0" />
-                  <ComboBox fx:id="cmbTorn" layoutX="61.0" layoutY="480.0" prefHeight="47.0" prefWidth="270.0" />
+                  <Spinner fx:id="spnComensals" layoutX="155.0" layoutY="421.0" prefHeight="37.0" prefWidth="115.0" />
+                  <ComboBox fx:id="cmbTorn" layoutX="88.0" layoutY="502.0" prefHeight="47.0" prefWidth="270.0" />
                   <Text fx:id="txtNomRestaurant" layoutX="27.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui nom de RESTAURANT" textAlignment="CENTER" wrappingWidth="437.47003173828125">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text layoutX="27.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Triar dia y torn:" textAlignment="CENTER" wrappingWidth="255.5">
+                  <Text layoutX="42.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Triar dia y torn:" textAlignment="CENTER" wrappingWidth="255.5">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <DatePicker fx:id="data" layoutX="70.0" layoutY="421.0" prefHeight="27.0" prefWidth="174.0" />
+                  <DatePicker fx:id="data" layoutX="106.0" layoutY="245.0" onAction="#eleccioNumeroComensals" onMouseClicked="#eleccioNumeroComensals" prefHeight="27.0" prefWidth="174.0" />
                </children>
             </AnchorPane>
          </children>

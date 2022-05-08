@@ -108,6 +108,9 @@ public class ControllerReserva implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		spnComensals.setDisable(true);
+		cmbTorn.setDisable(true);
 
 		panelTria.setDisable(false);
 		panelTorn.setDisable(true);
@@ -127,8 +130,6 @@ public class ControllerReserva implements Initializable {
 		Restaurant restaurant = new Restaurant(
 				cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(), "", "", 0);
 
-		Torn torn = new Torn(0,cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(),0,0);
-		
 		
 		RestaurantDAOImpl.cercaRestaurant(con, restaurant);
 
@@ -202,6 +203,15 @@ public class ControllerReserva implements Initializable {
 
 		}
 
+	}
+	
+	void eleccioNumeroComensals(ActionEvent event) {
+		
+		data.setOnAction(e -> System.out.println("Nova eleccio :" + data.getValue()));
+		spnComensals.setDisable(false);
+		cmbTorn.setDisable(false);
+
+		
 	}
 
 	@FXML

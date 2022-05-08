@@ -23,8 +23,7 @@ public class TornDAOImpl implements TornDAO{
 				int DiaSetmana= rst.getInt("DiaSetmana");
 				LocalTime HoraInici = rst.getObject("HoraInici", LocalTime.class);
 				int ReservesDisponibles = rst.getInt("ReservesDisponibles");
-				int capacitat = rst.getInt("capacitat");
-				Torn torns = new Torn(idHorari,idRestaurant,DiaSetmana,HoraInici,ReservesDisponibles,capacitat);
+				Torn torns = new Torn(idHorari,idRestaurant,DiaSetmana,HoraInici,ReservesDisponibles);
 				torn.add(torns);
 
 			}
@@ -41,8 +40,8 @@ public class TornDAOImpl implements TornDAO{
 		int res = 0;
 
 		try {
-			String sql = "INSERT INTO Torn (idRestaurant, DiaSetmana, HoraInici, ReservesDisponibles,capacitat) VALUES ('" + torn.getRestaurant()
-			+ "','" + torn.getDiaSetmana() + "','" + torn.getHoraInici() + "'," + torn.getReservesDisponibles()  + torn.getcapacitat()+ ");";
+			String sql = "INSERT INTO Torn (idRestaurant, DiaSetmana, HoraInici, ReservesDisponibles) VALUES ('" + torn.getRestaurant()
+			+ "','" + torn.getDiaSetmana() + "','" + torn.getHoraInici() + "'," + torn.getReservesDisponibles() + ");";
 
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
