@@ -189,4 +189,14 @@ public class ControllerRegistre {
 
 		}
 	}
+	
+	 @FXML
+	    void Sortir(ActionEvent event) throws IOException {
+
+			AnchorPane nuevo;
+			nuevo = FXMLLoader.load(getClass().getResource("PaginaPrincipal.fxml"));
+			escena.getChildren().setAll(nuevo);
+		 
+	    }
+	
 }

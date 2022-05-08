@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="escena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.ControllerRegistre">
+<AnchorPane fx:id="escena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam2.amv.ControllerRegistre">
    <children>
       <Text layoutX="438.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTRA LES TEVES DADES:" textAlignment="CENTER" wrappingWidth="402.13671875">
          <font>
@@ -46,7 +46,7 @@
             <Font size="24.0" />
          </font>
       </TextField>
-      <Button fx:id="BtnRegistre" layoutX="500.0" layoutY="668.0" mnemonicParsing="false" onAction="#agafarDades" prefHeight="61.0" prefWidth="266.0" text="REGISTRE">
+      <Button fx:id="BtnRegistre" layoutX="643.0" layoutY="656.0" mnemonicParsing="false" onAction="#agafarDades" prefHeight="61.0" prefWidth="266.0" text="REGISTRE">
          <font>
             <Font size="24.0" />
          </font>
@@ -61,5 +61,10 @@
             <Font size="24.0" />
          </font>
       </PasswordField>
+      <Button fx:id="BtnSortir" layoutX="344.0" layoutY="654.0" mnemonicParsing="false" onAction="#Sortir" prefHeight="61.0" prefWidth="266.0" text="SORTIR">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
