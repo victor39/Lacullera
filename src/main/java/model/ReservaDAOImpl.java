@@ -49,14 +49,20 @@ public class ReservaDAOImpl implements ReservaDAO {
 			// String sql = "SELECT * FROM Reserva WHERE idClient = " + id + " AND Data =
 			// curdate();";
 
-			String sql = " SELECT c.Dni,c.Nom,c.Cognom ,c.Telefon ,c.Adreca, c.Correu , r.idRestaurant ,r.Nom , r.Adreca , r.telefon, t.idHorari , t.idRestaurant , t.DiaSetmana ,t.HoraInici , t.ReservesDisponibles , re.idReserva , re.idClient, re.idRestaurant , re.idTorn , re.Data , re.Comensals , re.Observacions , c.contrasena FROM Reserva re INNER JOIN Restaurant r ON r.idRestaurant = re.idRestaurant INNER JOIN Torn t ON t.idHorari = re.idTorn INNER JOIN Client c ON c.Dni = re.idClient WHERE re.idClient = '"
+			String sql = " SELECT c.Dni,c.Nom,c.Cognom ,c.Telefon ,c.Adreca, "
+					+ "c.Correu , r.idRestaurant ,r.Nom , r.Adreca , r.telefon, "
+					+ "t.idHorari , t.idRestaurant , t.DiaSetmana ,t.HoraInici , "
+					+ "t.ReservesDisponibles , re.idReserva , re.idClient, re.idRestaurant , "
+					+ "re.idTorn , re.Data , re.Comensals , re.Observacions , c.contrasena FROM "
+					+ "Reserva re INNER JOIN Restaurant r ON r.idRestaurant = re.idRestaurant "
+					+ "INNER JOIN Torn t ON t.idHorari = re.idTorn INNER JOIN Client c ON c.Dni = re.idClient WHERE re.idClient = '"
 					+ id + "';";
 			
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			ResultSet rst = stm.executeQuery(sql);
 
 			while (rst.next()) {
-				System.out.println("a");
+				
 				int idReserva = rst.getInt("idReserva");
 				String idClient = rst.getString("idClient");
 				String nom = rst.getString("Nom");
@@ -81,8 +87,8 @@ public class ReservaDAOImpl implements ReservaDAO {
 				int reservesDisponibles = rst.getInt("t.reservesDisponibles");
 				Torn torn = new Torn(idHorari, idRestaurant, horari1, reservesDisponibles);
 
-				LocalDate Data = rst.getObject("Data", LocalDate.class);
-				int Comensals = rst.getInt("Comensals");
+				LocalDate Data = rst.getObject("re.Data", LocalDate.class);
+				int Comensals = rst.getInt("re.Comensals");
 				Reserva reserva = new Reserva(idReserva, client, restaurant, Data, torn, Comensals, "");
 
 				llista.add(reserva);

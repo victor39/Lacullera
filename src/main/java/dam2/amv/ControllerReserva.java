@@ -144,7 +144,7 @@ public class ControllerReserva implements Initializable {
 		Client clt = App.clientLogin;
 		System.out.println(clt.getNom());
 
-		if (ClientDAOImpl.comprovarDni(con, clt.getDni()) == 1) {
+		if (spnComensals.getValue() > 0) {
 
 			
 
@@ -184,16 +184,17 @@ public class ControllerReserva implements Initializable {
 			}
 			else {
 							
-				Alert cosa = new Alert(AlertType.ERROR);
-				confirmacio.initModality(Modality.WINDOW_MODAL);
-				confirmacio.setTitle("No hi ha prou espai per tanta gent! ");
-				confirmacio.setContentText("");
-				confirmacio.show();
+				
 			}
 			
 
 		} else {
 			
+			Alert cosa = new Alert(AlertType.ERROR);
+			cosa.initModality(Modality.WINDOW_MODAL);
+			cosa.setTitle("No hi ha prou espai per tanta gent! ");
+			cosa.setContentText("");
+			cosa.show();
 		}
 
 	}
@@ -224,7 +225,10 @@ public class ControllerReserva implements Initializable {
 			llistaTorns = FXCollections.observableArrayList();
 			cmbTorn.setItems(llistaTorns);
 
-			TornDAOImpl.Tots(con, llistaTorns, idRestaurant, data.getValue());
+			int come = TornDAOImpl.Tots(con, llistaTorns, idRestaurant, data.getValue());
+			
+			SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, come, 0);
+			spnComensals.setValueFactory(valueFactory);
 
 		});
 		

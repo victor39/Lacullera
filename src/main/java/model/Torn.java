@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Torn {
@@ -13,6 +14,8 @@ public class Torn {
 	private int diaSetmana;
 	private LocalTime horaInici;
 	private int reservesDisponibles;
+	
+	private LocalDate dia;
 
 	
 	
@@ -34,6 +37,14 @@ public class Torn {
 		this.diaSetmana = diaSetmana;
 		this.horaInici = horaInici;
 		this.reservesDisponibles = reservesDisponibles;
+	}
+	
+	public void setDia(LocalDate data) {
+		this.dia = data;
+	}
+	
+	public LocalDate getDia() {
+		return this.dia;
 	}
 
 	public int getIdHorari() {
@@ -82,8 +93,8 @@ public class Torn {
 		
 		try {
 
-			String sql =  "SELECT SUM(Comensals) as capacitat FROM Reserva rese INNER JOIN Torn t on rese.idTorn = t.idHorari WHERE rese.idTorn = '" + idHorari + "';";
-
+			String sql =  "SELECT SUM(Comensals) as capacitat FROM Reserva rese INNER JOIN Torn t on rese.idTorn = t.idHorari WHERE rese.idTorn = '" + this.idHorari + "';";
+			
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			ResultSet rst = stm.executeQuery(sql);
 			

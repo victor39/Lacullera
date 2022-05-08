@@ -13,6 +13,8 @@ public class TornDAOImpl implements TornDAO{
 
 	public static int Tots(Connexio con, List<Torn> torn, int idRestaurant, LocalDate data) {
 
+		int respo = 0;
+		
 		try {
 			String sql = "SELECT * FROM Torn where idRestaurant = " + idRestaurant + " AND DiaSetmana = " + data.getDayOfWeek().getValue()+";";
 			System.out.println(sql);
@@ -28,13 +30,16 @@ public class TornDAOImpl implements TornDAO{
 				Torn torns = new Torn(idHorari,idRestaurant,DiaSetmana,HoraInici,ReservesDisponibles);
 				torn.add(torns);
 
+				String[] aux = torn.toString().split("Capacitat: ");
+				
+				respo = Integer.parseInt(aux[1].substring(0,aux[1].length()-1));
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
-		return torn.size();
+		return respo;
 	}
 	@Override
 	public int create(Connexio con, Torn torn) {

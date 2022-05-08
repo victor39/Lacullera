@@ -136,8 +136,6 @@ public class ControllerModificarReserva implements Initializable {
 
 	    String DNI = App.clientLogin.getDni();
 	    ReservaDAOImpl.buscar(con, llistaReserva, DNI);
-	    System.out.println(llistaReserva);
-	    System.out.println(DNI);
 		
 	}
 
@@ -241,6 +239,23 @@ public class ControllerModificarReserva implements Initializable {
 				//botonGuardar.setDisable(true);
 			}
 			}
+		});
+	
+		
+		DPData.valueProperty().addListener(l ->{
+			
+			// treure id del restaurant d'abans
+			String[] aux = TFRestaurant.getText().split(" - ");
+			int idRestaurant = Integer.parseInt(aux[0]);
+
+			llistaTorn = FXCollections.observableArrayList();
+			cmbTorn.setItems(llistaTorn);
+
+			int come = TornDAOImpl.Tots(con, llistaTorn, idRestaurant, DPData.getValue());
+			
+			SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, come);
+			spnComensals.setValueFactory(valueFactory);
+
 		});
     	
     }
