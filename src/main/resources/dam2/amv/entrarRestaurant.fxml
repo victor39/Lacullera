@@ -28,11 +28,6 @@
             <Font size="24.0" />
          </font>
       </TextField>
-      <TextField fx:id="TFCapacitat" layoutX="275.0" layoutY="400.0" prefHeight="51.0" prefWidth="455.0" promptText="Entra la capacitat màxima del restaurant:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
       <Button fx:id="BtnReservar" layoutX="352.0" layoutY="612.0" mnemonicParsing="false" onAction="#entrarDades" prefHeight="79.0" prefWidth="297.0" text="ENTRAR RESTAURANT">
          <font>
             <Font size="24.0" />

@@ -42,21 +42,16 @@ public class EntrarRestaurantController {
 
 	@FXML
 	private AnchorPane escena;
-	
-    @FXML
-    private TextField TFCapacitat;
 
 	@FXML
 	void entrarDades(ActionEvent event) {
 
-		if(!TFNom.getText().isEmpty() && !TFAdreca.getText().isEmpty() && !TFTelefon.getText().isEmpty() && !TFCapacitat.getText().isEmpty()) {
+		if(!TFNom.getText().isEmpty() && !TFAdreca.getText().isEmpty() && !TFTelefon.getText().isEmpty()) {
 
 			String Nom = TFNom.getText();
 			String Adreca = TFAdreca.getText();
 			String Telefon = TFTelefon.getText();
 			int Telefono=Integer.parseInt(Telefon);
-			String Capacitat = TFCapacitat.getText();
-			int capacitat=Integer.parseInt(Capacitat);
 			
 
 			con = new Connexio();
@@ -66,7 +61,6 @@ public class EntrarRestaurantController {
 			System.out.println("Nom: " + Nom);
 			System.out.println("Adreça: " + Adreca);
 			System.out.println("Telefon: " + Telefon);
-			System.out.println("Capacitat: " + capacitat);
 
 			Alert confirmacio=new Alert(AlertType.CONFIRMATION);
 			confirmacio.initModality(Modality.WINDOW_MODAL);
@@ -78,7 +72,7 @@ public class EntrarRestaurantController {
 			if(result.isPresent() && result.get() == ButtonType.OK) {
 
 				RestaurantDAO restaurantDAOI = new RestaurantDAOImpl();
-				Restaurant restaurant = new Restaurant(Nom,Adreca,Telefono,capacitat,0);
+				Restaurant restaurant = new Restaurant(Nom,Adreca,Telefono);
 
 				int resultat = restaurantDAOI.create(con, restaurant);
 				if (resultat==1)
