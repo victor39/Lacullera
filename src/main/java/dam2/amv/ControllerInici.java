@@ -66,7 +66,6 @@ public class ControllerInici implements Initializable  {
     		btnBorrarRestaurant.setVisible(false);
     		btnTorns.setVisible(false);
     		btnRestaurant.setVisible(false);
-    		
     	}
 		
 	}
