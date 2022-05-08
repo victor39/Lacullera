@@ -136,6 +136,7 @@ public class ControllerModificarReserva implements Initializable {
 
 	    String DNI = App.clientLogin.getDni();
 	    ReservaDAOImpl.buscar(con, llistaReserva, DNI);
+	    System.out.println(llistaReserva);
 	    System.out.println(DNI);
 		
 	}
