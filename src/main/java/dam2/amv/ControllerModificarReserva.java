@@ -223,8 +223,8 @@ public class ControllerModificarReserva implements Initializable {
 				// Per afegir els elements als TextFields nom s accepta dades de tipus String
 				TFRestaurant.setText(String.valueOf(valorSeleccionat.getRestaurant()));
 				cmbTorn.setValue(valorSeleccionat.getTorn());
-				TornDAOImpl.Tots(con, llistaTorn, valorSeleccionat.getRestaurant().getIdRestaurant());
 				DPData.setValue(valorSeleccionat.getData());
+				TornDAOImpl.Tots(con, llistaTorn, valorSeleccionat.getRestaurant().getIdRestaurant(),DPData.getValue());
 				
 				SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, valorSeleccionat.getComensals());
 				spnComensals.setValueFactory(valueFactory);

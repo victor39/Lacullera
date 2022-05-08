@@ -1,5 +1,8 @@
 package model;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalTime;
 
@@ -73,8 +76,30 @@ public class Torn {
 	@Override
 	public String toString() {
 		
+		Connexio con = new Connexio();
 		
-		return horaInici.toString()  ;
+		String resActu = "";
+		
+		try {
+
+			String sql =  "SELECT SUM(Comensals) as capacitat FROM Reserva rese INNER JOIN Torn t on rese.idTorn = t.idHorari WHERE rese.idTorn = '" + idHorari + "';";
+
+			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
+			ResultSet rst = stm.executeQuery(sql);
+			
+			while(rst.next()) {
+				resActu = rst.getString("capacitat");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		if(resActu == null) {
+			resActu = "0";
+		}
+		
+		return horaInici.toString() + " | Capacitat: " + (reservesDisponibles - Integer.parseInt(resActu)) ;
 	}
 	
 }

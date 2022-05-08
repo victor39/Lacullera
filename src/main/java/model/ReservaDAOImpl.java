@@ -72,6 +72,10 @@ public class ReservaDAOImpl implements ReservaDAO {
 				String nomRestaurant = rst.getString("r.Nom");
 				String adrecaRestaurant = rst.getString("r.Adreca");
 				int telefonRestaurant = rst.getInt("r.Telefon");
+<<<<<<< HEAD
+=======
+				int capacitatRestaurant = rst.getInt("r.capacitat");
+>>>>>>> branch 'master' of git@github.com:victor39/projecteAMV.git
 				Restaurant restaurant = new Restaurant(idRestaurant, nomRestaurant, adrecaRestaurant, telefonRestaurant);
 
 				int idHorari = rst.getInt("t.idHorari");
