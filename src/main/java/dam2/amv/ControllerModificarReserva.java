@@ -123,6 +123,8 @@ public class ControllerModificarReserva implements Initializable {
 		clmComensals.setCellValueFactory(new PropertyValueFactory<Reserva,Integer>("comensals"));
 
 		gestionarEventos();
+		
+		
 
 	}
 
@@ -134,13 +136,14 @@ public class ControllerModificarReserva implements Initializable {
 
 	    String DNI = App.clientLogin.getDni();
 	    ReservaDAOImpl.buscar(con, llistaReserva, DNI);
+	    System.out.println(DNI);
 		
 	}
 
 	@FXML
 	void actualitzarReserva(ActionEvent event) {//
 		
-		Client clt = new Client(App.clientLogin.getDni());
+		Client clt = App.clientLogin;
 		Restaurant rest = new Restaurant(tblViewReserva.getSelectionModel().getSelectedItem().getRestaurant().getIdRestaurant());
 		
 		Reserva reserv = new Reserva(tblViewReserva.getSelectionModel().getSelectedItem().getIdReserva(),clt, rest, DPData.getValue(), cmbTorn.getValue(), spnComensals.getValue(), "" );
@@ -159,7 +162,7 @@ public class ControllerModificarReserva implements Initializable {
 	@FXML
 	void eliminarReserva(ActionEvent event) {
 		
-		Client clt = new Client(App.clientLogin.getDni());
+		Client clt = App.clientLogin;
 		Restaurant rest = new Restaurant(tblViewReserva.getSelectionModel().getSelectedItem().getRestaurant().getIdRestaurant());
 		
 		Reserva reserv = new Reserva(tblViewReserva.getSelectionModel().getSelectedItem().getIdReserva(),clt, rest, DPData.getValue(), cmbTorn.getValue(), spnComensals.getValue(), "" );
