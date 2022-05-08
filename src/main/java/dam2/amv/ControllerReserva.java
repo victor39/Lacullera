@@ -122,6 +122,8 @@ public class ControllerReserva implements Initializable {
 
 		con = new Connexio();
 		ClientDAO client = new ClientDAOImpl();
+		
+		gestionarEvents();
 	}
 
 	@FXML
@@ -141,7 +143,7 @@ public class ControllerReserva implements Initializable {
 
 		if (ClientDAOImpl.comprovarDni(con, clt.getDni()) == 1) {
 
-			if (torn.getCapacitatactual() > spnComensals.getValue()) {
+			
 
 				Alert confirmacio = new Alert(AlertType.CONFIRMATION);
 				confirmacio.initModality(Modality.WINDOW_MODAL);
@@ -150,13 +152,9 @@ public class ControllerReserva implements Initializable {
 
 				Optional<ButtonType> result = confirmacio.showAndWait();
 				if (result.isPresent() && result.get() == ButtonType.OK) {
-					Reserva res = new Reserva(clt, cmbTriaRestaurant.getValue(), LocalDate.now(), cmbTorn.getValue(),
+					Reserva res = new Reserva(clt, cmbTriaRestaurant.getValue(), data.getValue(), cmbTorn.getValue(),
 							spnComensals.getValue(), null);
-					int capacitatActual = restaurant.getCapacitatactual()  - spnComensals.getValue();
-					System.out.println("lo que resto " + spnComensals.getValue());
-					System.out.println("la capacitat antes de restar " + restaurant.getCapacitatactual());
-					restaurant.setCapacitatactual(capacitatActual);
-					System.out.print("despues de " + restaurant.getCapacitatactual());
+					
 					// no se añade al restaurante 
 					ReservaDAO reserva = new ReservaDAOImpl();
 					int resultat = reserva.create(con, res);
@@ -179,17 +177,11 @@ public class ControllerReserva implements Initializable {
 						missatge.show();
 
 					}
-				}
-				else {
-					
-				}
+				
 			}
 			else {
-				
-				
-				System.out.println(restaurant.getCapacitatactual() + " " + spnComensals.getValue());
-				
-				Alert confirmacio = new Alert(AlertType.ERROR);
+							
+				Alert cosa = new Alert(AlertType.ERROR);
 				confirmacio.initModality(Modality.WINDOW_MODAL);
 				confirmacio.setTitle("No hi ha prou espai per tanta gent! ");
 				confirmacio.setContentText("");
@@ -204,38 +196,36 @@ public class ControllerReserva implements Initializable {
 		}
 
 	}
-	
-	void eleccioNumeroComensals(ActionEvent event) {
-		
-		data.setOnAction(e -> System.out.println("Nova eleccio :" + data.getValue()));
-		spnComensals.setDisable(false);
-		cmbTorn.setDisable(false);
-
-		
-	}
 
 	@FXML
 	void seguentTorn(ActionEvent event) {
 
+		panelTria.setDisable(false);
 		panelTorn.setDisable(false);
-
-		// treure id del restaurant d'abans
-		int idRestaurant = cmbTriaRestaurant.getValue().getIdRestaurant();
+		data.setDisable(false);
+		spnComensals.setDisable(true);
+		cmbTorn.setDisable(true);
 
 		// posar el nom de restaurant
 		txtNomRestaurant.setText(cmbTriaRestaurant.getValue().getNom());
 
-		llistaTorns = FXCollections.observableArrayList();
-		cmbTorn.setItems(llistaTorns);
-
-		System.out.println(idRestaurant);
-
-		TornDAOImpl.Tots(con, llistaTorns, idRestaurant);
-
-		cmbTorn.setOnAction(e -> System.out.println("Nova selecció: " + cmbTorn.getValue()));
-
-		panelTria.setDisable(false);
-
 	}
 
+	public void gestionarEvents() {
+		
+		data.valueProperty().addListener(l ->{
+			spnComensals.setDisable(false);
+			cmbTorn.setDisable(false);
+			
+			// treure id del restaurant d'abans
+			int idRestaurant = cmbTriaRestaurant.getValue().getIdRestaurant();
+
+			llistaTorns = FXCollections.observableArrayList();
+			cmbTorn.setItems(llistaTorns);
+
+			TornDAOImpl.Tots(con, llistaTorns, idRestaurant, data.getValue());
+
+		});
+		
+	}
 }

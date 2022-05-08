@@ -4,16 +4,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
 public class TornDAOImpl implements TornDAO{
 
 
-	public static int Tots(Connexio con, List<Torn> torn, int idRestaurant) {
+	public static int Tots(Connexio con, List<Torn> torn, int idRestaurant, LocalDate data) {
 
 		try {
-			String sql = "SELECT * FROM Torn where idRestaurant = " + idRestaurant + ";";
+			String sql = "SELECT * FROM Torn where idRestaurant = " + idRestaurant + " AND DiaSetmana = " + data.getDayOfWeek().getValue()+";";
+			System.out.println(sql);
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			ResultSet rst = stm.executeQuery(sql);
 
