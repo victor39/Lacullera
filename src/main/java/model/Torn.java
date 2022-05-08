@@ -10,16 +10,16 @@ public class Torn {
 	private int diaSetmana;
 	private LocalTime horaInici;
 	private int reservesDisponibles;
-	private int capacitat;
+
 	
 	
-	public Torn(int idHorari, int idRestaurant, int diaSetmana, LocalTime horaInici, int reservesDisponibles,int capacitat) {
+	public Torn(int idHorari, int idRestaurant, int diaSetmana, LocalTime horaInici, int reservesDisponibles) {
 		this.idHorari = idHorari;
 		this.restaurant = idRestaurant;
 		this.diaSetmana = diaSetmana;
 		this.horaInici = horaInici;
 		this.reservesDisponibles = reservesDisponibles;
-		this.capacitat = capacitat;
+		
 	}
 	
 	public Torn(LocalTime horaInici) {
@@ -31,7 +31,6 @@ public class Torn {
 		this.diaSetmana = diaSetmana;
 		this.horaInici = horaInici;
 		this.reservesDisponibles = reservesDisponibles;
-		this.capacitat=capacitat;
 	}
 
 	public int getIdHorari() {
@@ -53,13 +52,7 @@ public class Torn {
 	public void setDiaSetmana(int diaSetmana) {
 		this.diaSetmana = diaSetmana;
 	}
-	public int getcapacitat() {
-		return capacitat;
-	}
 
-	public void setCapacitat(int capacitat) {
-		this.capacitat = capacitat;
-	}
 
 	public LocalTime getHoraInici() {
 		return horaInici;
@@ -79,7 +72,9 @@ public class Torn {
 	
 	@Override
 	public String toString() {
-		return horaInici.toString() + "| " + capacitat ;
+		
+		
+		return horaInici.toString()  ;
 	}
 	
 }

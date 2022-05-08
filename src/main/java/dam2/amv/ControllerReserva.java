@@ -125,8 +125,11 @@ public class ControllerReserva implements Initializable {
 	void reservar(ActionEvent event) {
 
 		Restaurant restaurant = new Restaurant(
-				cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(), "", "", 0, 0, 0);
+				cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(), "", "", 0);
 
+		Torn torn = new Torn(0,cmbTriaRestaurant.getSelectionModel().getSelectedItem().getIdRestaurant(),0,0);
+		
+		
 		RestaurantDAOImpl.cercaRestaurant(con, restaurant);
 
 		con = new Connexio();
@@ -137,7 +140,7 @@ public class ControllerReserva implements Initializable {
 
 		if (ClientDAOImpl.comprovarDni(con, clt.getDni()) == 1) {
 
-			if (restaurant.getCapacitatactual() > spnComensals.getValue()) {
+			if (torn.getCapacitatactual() > spnComensals.getValue()) {
 
 				Alert confirmacio = new Alert(AlertType.CONFIRMATION);
 				confirmacio.initModality(Modality.WINDOW_MODAL);
