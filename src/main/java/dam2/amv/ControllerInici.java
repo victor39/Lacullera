@@ -59,10 +59,10 @@ public class ControllerInici implements Initializable  {
     		gestionarEventos();
     		
     		Translate translate = new Translate();     
-    		translate.setY(320); 
+    		translate.setY(220); 
     	     //Adding transformation to circle2 
-    	    BtnReserva.getTransforms().addAll(translate); 
-    	    
+    	    BtnReserva.getTransforms().addAll(translate);
+    	    BtnBuscarRestaurants.getTransforms().addAll(translate);
     		btnBorrarRestaurant.setVisible(false);
     		btnTorns.setVisible(false);
     		btnRestaurant.setVisible(false);

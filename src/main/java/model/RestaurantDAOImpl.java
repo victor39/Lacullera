@@ -20,9 +20,8 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 				String Nom = rst.getString("Nom");
 				String Adreca = rst.getString("Adreca");
 				int Telefon = rst.getInt("Telefon");
-				int Capacitat = rst.getInt("capacitat");
-				int Capacitatactual = rst.getInt("capacitatactual");
-				Restaurant restaurant = new Restaurant(idRestaurant,Nom , Adreca, Telefon, Capacitat, Capacitatactual);
+		
+				Restaurant restaurant = new Restaurant(idRestaurant,Nom , Adreca, Telefon);
 				array.add(restaurant);
 
 			}
@@ -44,9 +43,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		int result = 0;
 
 		try {
-			System.out.println("prova");
-			String sql = "INSERT INTO Restaurant (Nom,Adreca,telefon,capacitat,capacitatactual) VALUES ('" + restaurant.getNom() + "' , '" + restaurant.getAdreca() + "'," + restaurant.getTelefon() + "," + restaurant.getCapacitat() + "," + restaurant.getCapacitat()+");";
-			System.out.println("prova");
+			String sql = "INSERT INTO Restaurant (Nom,Adreca,telefon) VALUES ('" + restaurant.getNom() + "' , '" + restaurant.getAdreca() + "'," + restaurant.getTelefon() + ");";
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
 			System.out.println(sql);
@@ -64,7 +61,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 		try {
 			String sql = "UPDATE restaurant " + "SET Adreca = '"
-					+ restaurant.getAdreca() + "'," + "Telefon = '" + restaurant.getTelefon() + "'," + "capacitat = '" + restaurant.getCapacitat() + "' WHERE idRestaurant = " + restaurant.getIdRestaurant() + ";";
+					+ restaurant.getAdreca() + "'," + "Telefon = '" + restaurant.getTelefon() +  "' WHERE idRestaurant = " + restaurant.getIdRestaurant() + ";";
 
 			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
 			stm.executeUpdate(sql);
@@ -107,8 +104,6 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 				restaurant.setNom(rst.getString("Nom"));
 				restaurant.setAdreca(rst.getString("Adreca"));
 				restaurant.setTelefon(rst.getInt("Telefon"));
-				restaurant.setCapacitat(rst.getInt("capacitat"));
-				restaurant.setCapacitatactual(rst.getInt("capacitatactual"));
 				
 			}
 //			for (int i = 0; i < array.size(); i++) {
