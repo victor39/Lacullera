@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.FontSmoothingType;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Translate;
 import model.Client;
 import model.Reserva;
 import model.Restaurant;
@@ -48,9 +49,26 @@ public class ControllerInici implements Initializable  {
 
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
-
-		gestionarEventos();
-
+    	
+    	if(App.clientLogin.getPasword().equalsIgnoreCase("administrador")) {
+    		
+    		gestionarEventos();
+    		
+    	}
+    	else  {
+    		gestionarEventos();
+    		
+    		Translate translate = new Translate();     
+    		translate.setY(320); 
+    	     //Adding transformation to circle2 
+    	    BtnReserva.getTransforms().addAll(translate); 
+    	    
+    		btnBorrarRestaurant.setVisible(false);
+    		btnTorns.setVisible(false);
+    		btnRestaurant.setVisible(false);
+    		
+    	}
+		
 	}
 
 	@FXML
