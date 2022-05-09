@@ -19,11 +19,6 @@
          <font>
             <Font size="24.0" />
          </font></Button>
-      <TextField fx:id="TFDiaSemana" layoutX="251.0" layoutY="300.0" prefHeight="79.0" prefWidth="491.0" promptText="Entra el dia de la semana:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
       <ChoiceBox fx:id="CbHorari" layoutX="306.0" layoutY="423.0" prefHeight="67.0" prefWidth="380.0" />
       <TextField fx:id="TFDiaReservesDisponibles" layoutX="248.0" layoutY="528.0" prefHeight="79.0" prefWidth="491.0" promptText="Entra les reserves disponibles:">
          <font>
@@ -31,5 +26,6 @@
          </font>
       </TextField>
       <ComboBox fx:id="CBRestaurants" layoutX="265.0" layoutY="184.0" prefHeight="77.0" prefWidth="458.0" promptText="Entra el restaurant:" />
+      <ComboBox fx:id="CBDiaSemana" layoutX="249.0" layoutY="298.0" prefHeight="87.0" prefWidth="484.0" promptText="Entra un dia de la semana:" />
    </children>
 </AnchorPane>

@@ -3,6 +3,7 @@ package dam2.amv;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -16,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
@@ -49,7 +52,7 @@ public class TornsController implements Initializable {
     private TextField TFDiaReservesDisponibles;
 
     @FXML
-    private TextField TFDiaSemana;
+    private ComboBox<String> CBDiaSemana;
 
 	public Connexio con = new Connexio();
 
@@ -67,6 +70,11 @@ public class TornsController implements Initializable {
 		listaRestaurant=FXCollections.observableArrayList();
 		CBRestaurants.setItems(listaRestaurant);
 		RestaurantDAOImpl.Tots(con, listaRestaurant);
+		
+		CBDiaSemana.getItems().setAll("Dilluns","Dimarts","Dimecres","Dijous","Divendres","Dissabte","Diumenge");
+		
+		
+		
 
 	}
 
@@ -85,14 +93,43 @@ public class TornsController implements Initializable {
 		String[] auxId = integerid.split(" - "); 
 		int id = Integer.parseInt(auxId[0]);
 
-		String diaseman = TFDiaSemana.getText();
-		int diasemana = Integer.parseInt(diaseman);
+		String diasemana= CBDiaSemana.getValue();
+		
+		int diasetmana = 0;
+		
+		if(diasemana.equalsIgnoreCase("Dilluns")) {
+			diasetmana = 1;
+		}
+		
+		if(diasemana.equalsIgnoreCase("Dimarts")) {
+			diasetmana = 2;
+		}
+		
+		if(diasemana.equalsIgnoreCase("Dimecres")) {
+			diasetmana = 3;
+		}
+		
+		if(diasemana.equalsIgnoreCase("Dijous")) {
+			diasetmana = 4;
+		}
+		
+		if(diasemana.equalsIgnoreCase("Divendres")) {
+			diasetmana = 5;
+		}
+		
+		if(diasemana.equalsIgnoreCase("Dissabte")) {
+			diasetmana = 6;
+		}
+		
+		if(diasemana.equalsIgnoreCase("Diumenge")) {
+			diasetmana = 7;
+		}
 
 		String reservesdinsponibles = TFDiaReservesDisponibles.getText();
 		int reservesd = Integer.parseInt(reservesdinsponibles);
 		
 		TornDAO torn = new TornDAOImpl();
-		Torn torno = new Torn(id, diasemana, hora, reservesd);
+		Torn torno = new Torn(id, diasetmana, hora, reservesd);
 		int resultat = 0;
 		
 		if(TornDAOImpl.Existeix(con,torno) > 0) {
