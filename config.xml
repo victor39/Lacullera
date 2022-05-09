@@ -1,9 +1,9 @@
 <config>
 	<bbdd>
-		<host>localhost</host>
+		<host>ffames.cat</host>
 		<bd>projecte_amv</bd>
 		<port>3306</port>
-		<usuari>amv</usuari>
-		<contraseña>dam22022</contraseña>
+		<usuari>fora</usuari>
+		<contraseña>Dam2020!</contraseña>
 	</bbdd>
 </config>

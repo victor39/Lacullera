@@ -14,7 +14,7 @@ public class TornDAOImpl implements TornDAO{
 	public static int Tots(Connexio con, List<Torn> torn, int idRestaurant, LocalDate data) {
 
 		int respo = 0;
-		
+
 		try {
 			String sql = "SELECT * FROM Torn where idRestaurant = " + idRestaurant + " AND DiaSetmana = " + data.getDayOfWeek().getValue()+";";
 			System.out.println(sql);
@@ -31,8 +31,17 @@ public class TornDAOImpl implements TornDAO{
 				torn.add(torns);
 
 				String[] aux = torn.toString().split("Capacitat: ");
-				
-				respo = Integer.parseInt(aux[1].substring(0,aux[1].length()-1));
+				System.out.println(aux[0] + aux[1]);
+				if(aux[1].indexOf(',') < 0) {
+					System.out.println("Ho sento estem plens " + (aux[1].substring(0,aux[1].length()-1)));
+					respo = Integer.parseInt(aux[1].substring(0,aux[1].length()-1));
+					
+				}
+				else {
+					
+					System.out.println("Endavant " + aux[1]);
+					respo = Integer.parseInt(aux[1].substring(0,aux[1].indexOf(',')));
+				}
 			}
 
 		} catch (SQLException e) {
@@ -96,5 +105,27 @@ public class TornDAOImpl implements TornDAO{
 
 		return res;
 
+	}
+	
+	public static int Existeix(Connexio con, Torn torn) {
+
+		int respo = 0;
+
+		try {
+			String sql = "SELECT count(*) as existeix FROM Torn WHERE idRestaurant = '" + torn.getRestaurant() + "' AND DiaSetmana = '" + torn.getDiaSetmana() + "' AND HoraInici = '" + torn.getHoraInici() + "';";
+			System.out.println(sql);
+			PreparedStatement stm = con.getConnexio().prepareStatement(sql);
+			ResultSet rst = stm.executeQuery(sql);
+
+			if(rst.next()) {
+				respo = rst.getInt("existeix");
+			}
+			
+
+		} catch (SQLException e) {
+			//e.printStackTrace();
+		}
+
+		return respo;
 	}
 }

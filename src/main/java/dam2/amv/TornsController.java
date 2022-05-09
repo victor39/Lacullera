@@ -90,34 +90,33 @@ public class TornsController implements Initializable {
 
 		String reservesdinsponibles = TFDiaReservesDisponibles.getText();
 		int reservesd = Integer.parseInt(reservesdinsponibles);
+		
+		TornDAO torn = new TornDAOImpl();
+		Torn torno = new Torn(id, diasemana, hora, reservesd);
+		int resultat = 0;
+		
+		if(TornDAOImpl.Existeix(con,torno) > 0) {
+			System.out.println("hey");
+			resultat = 0;
+		}else {
+			resultat = torn.create(con, torno);
+		}
+		
+		if (resultat == 1) {
+			Alert missatge = new Alert(AlertType.INFORMATION);
+			missatge.setTitle("Torn afegit ");
+			missatge.setContentText("Perfecte , ja tens el teu torn fet ");
 
-		Alert confirmacio = new Alert(AlertType.CONFIRMATION);
-		confirmacio.initModality(Modality.WINDOW_MODAL);
-		confirmacio.setTitle("Estas segur que vols entrar aquest torn ? ");
-		confirmacio.setContentText("Prem Enter si es aixi ");
+			missatge.setHeaderText("Alerta:");
+			missatge.show();
 
-		Optional<ButtonType> result = confirmacio.showAndWait();
-		if (result.isPresent() && result.get() == ButtonType.OK) {
-			TornDAO torn = new TornDAOImpl();
-			Torn torno = new Torn(id, diasemana, hora, reservesd);
-			int resultat = torn.create(con, torno);
-			;
-			if (resultat == 1) {
-				Alert missatge = new Alert(AlertType.INFORMATION);
-				missatge.setTitle("Torn afegit ");
-				missatge.setContentText("Perfecte , ja tens el teu torn fet ");
+		} else {
+			Alert missatge = new Alert(AlertType.ERROR);
+			missatge.setTitle("Hi ha un problema, no pots fer aquest torn ");
+			missatge.setContentText("Ja existeix un torn amb aquestes caracteristiques");
+			missatge.setHeaderText("Alerta:");
+			missatge.show();
 
-				missatge.setHeaderText("Alerta:");
-				missatge.show();
-
-			} else {
-				Alert missatge = new Alert(AlertType.ERROR);
-				missatge.setTitle("Hi ha un problema, no pots fer aquest torn ");
-				missatge.setContentText("Tornar a provar ");
-				missatge.setHeaderText("Alerta:");
-				missatge.show();
-
-			}
 		}
 	}
 

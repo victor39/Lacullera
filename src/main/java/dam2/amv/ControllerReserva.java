@@ -117,8 +117,9 @@ public class ControllerReserva implements Initializable {
 		listaRestaurant = FXCollections.observableArrayList();
 		cmbTriaRestaurant.setItems(listaRestaurant);
 		RestaurantDAOImpl.Tots(con, listaRestaurant);
-		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
-		spnComensals.setValueFactory(valueFactory);
+		
+		//SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
+		//spnComensals.setValueFactory(valueFactory);
 		
 		LocalDate local = LocalDate.now();
 		local.getDayOfWeek().getValue();
@@ -226,9 +227,12 @@ public class ControllerReserva implements Initializable {
 			cmbTorn.setItems(llistaTorns);
 
 			int come = TornDAOImpl.Tots(con, llistaTorns, idRestaurant, data.getValue());
+			System.out.println(come);
 			
 			SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, come, 0);
 			spnComensals.setValueFactory(valueFactory);
+			
+			
 
 		});
 		
