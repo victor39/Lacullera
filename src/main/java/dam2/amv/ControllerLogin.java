@@ -55,7 +55,7 @@ public class ControllerLogin {
 			String pasword = TfContrasenya.getText();
 			
 			con = new Connexio();
-			
+			/*
 			Alert confirmacio = new Alert(AlertType.CONFIRMATION);
 			confirmacio.initModality(Modality.WINDOW_MODAL);
 			confirmacio.setTitle("Estas segur ? ");
@@ -63,17 +63,18 @@ public class ControllerLogin {
 			Optional<ButtonType> result = confirmacio.showAndWait();
 			
 			if (result.isPresent() && result.get() == ButtonType.OK) {
-		
+		*/
 				int resultat = ClientDAOImpl.login(con, correu, pasword, App.clientLogin);
 				ClientDAO client = new ClientDAOImpl();
 				Client clt = App.clientLogin;
 
 				if (resultat == 1) {
-
+					/*
 					Alert missatge = new Alert(AlertType.INFORMATION);
 					missatge.setTitle("Login correcte  ");
 					missatge.setContentText("Login correcte "+clt.getNom());
 					missatge.show();
+					*/
 					AnchorPane nuevo;
 					nuevo = FXMLLoader.load(getClass().getResource("Inici.fxml"));
 					escena.getChildren().setAll(nuevo);
@@ -85,7 +86,7 @@ public class ControllerLogin {
 					missatge.setHeaderText("Alerta: ");
 					missatge.show();
 				}
-			}
+			//}
 		}
 	}
 }
