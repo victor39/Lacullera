@@ -10,4 +10,4 @@ Per la banda de client tens la posibilitat de fer una reserva o modificarla .
 Tot en java , utilizant per la part grafica JAVAFX , fen servir MAVEN.
 
 
-![avatar3.png](https://github.com/victor39/Lacullera/blob/master/avatar3.PNG)
+![avatar3.png](https://github.com/victor39/Lacullera/master/avatar3.PNG)
