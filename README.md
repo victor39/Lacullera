@@ -11,3 +11,4 @@ Tot en java , utilizant per la part grafica JAVAFX , fen servir MAVEN.
 
 
 ![Lacullera.png](https://github.com/victor39/Lacullera/blob/master/Lacullera.PNG)
+
